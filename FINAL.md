@@ -1,6 +1,6 @@
 # FINAL.md — where Raha stands
 
-Built in one autonomous session, 2026-07-19. 20 commits, working state throughout.
+Built in one autonomous session, 2026-07-19. 16 commits, working state throughout.
 
 ## What exists and works
 
@@ -17,7 +17,7 @@ Built in one autonomous session, 2026-07-19. 20 commits, working state throughou
 - Invoice generator: 18% domestic (CGST/SGST vs IGST by state) or zero-rated export with LUT note, per-FY sequential numbering, PDF download, draft→final locking, creator branding via Settings.
 - Live dashboard: "Set aside ₹X" (GST estimate + next advance-tax installment − TDS), due-date countdowns, platform breakdown, at-risk callout.
 - Document vault: private storage, per-user folder isolation, categories, signed-URL downloads.
-- Auth: magic link + Google OAuth, middleware-protected `/app/*`, RLS on **every** table (+ same-owner FK hardening). 76 unit tests green, production build green, security headers on.
+- Auth: magic link + Google OAuth, middleware-protected `/app/*`, RLS on **every** table (+ same-owner FK hardening). 68 unit tests green, production build green, security headers on.
 - Every computed figure carries "estimate — verify with your CA before filing." No automated-filing claims anywhere.
 
 ## Command center (already populated)
@@ -49,4 +49,4 @@ API imports (AdSense/Patreon/Stripe/Razorpay) · automated GSTR-1/3B filing · C
 
 ## For future dev sessions
 
-Ground truth docs: `docs/raha_prd.md`, `docs/SPEC.md`, `docs/PLAN.md`, `DECISIONS.md` (all 16 decisions), `docs/DEPLOY.md`, `docs/creator-guide.md`. Test suites: `npm test` (76 unit), `npx playwright test` (e2e, needs creds). The fresh-clone check and authed-loop QA remain to be run once Supabase credentials exist.
+Ground truth docs: `docs/raha_prd.md`, `docs/SPEC.md`, `docs/PLAN.md`, `DECISIONS.md` (all 16 decisions), `docs/DEPLOY.md`, `docs/creator-guide.md`. Test suites: `npm test` (68 unit), `npx playwright test` (e2e, needs creds). The fresh-clone check and authed-loop QA remain to be run once Supabase credentials exist.
