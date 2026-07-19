@@ -26,6 +26,12 @@ export default async function AppLayout({
             Raha
           </Link>
           <div className="flex items-center gap-3">
+            <Link
+              href="/app/settings"
+              className="text-sm text-raha-ink/55 hover:text-raha-ink"
+            >
+              Settings
+            </Link>
             <span className="hidden text-sm text-raha-ink/55 sm:inline">
               {user.email}
             </span>
