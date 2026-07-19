@@ -17,10 +17,13 @@ create table if not exists public.profiles (
 
 alter table public.profiles enable row level security;
 
+drop policy if exists "profiles_select_own" on public.profiles;
 create policy "profiles_select_own" on public.profiles
   for select to authenticated using (id = (select auth.uid()));
+drop policy if exists "profiles_insert_own" on public.profiles;
 create policy "profiles_insert_own" on public.profiles
   for insert to authenticated with check (id = (select auth.uid()));
+drop policy if exists "profiles_update_own" on public.profiles;
 create policy "profiles_update_own" on public.profiles
   for update to authenticated using (id = (select auth.uid())) with check (id = (select auth.uid()));
 
@@ -59,6 +62,7 @@ create index if not exists documents_user_category_idx on public.documents (user
 
 alter table public.documents enable row level security;
 
+drop policy if exists "documents_all_own" on public.documents;
 create policy "documents_all_own" on public.documents
   for all to authenticated
   using (user_id = (select auth.uid()))
@@ -86,6 +90,7 @@ create index if not exists income_entries_user_date_idx on public.income_entries
 
 alter table public.income_entries enable row level security;
 
+drop policy if exists "income_entries_all_own" on public.income_entries;
 create policy "income_entries_all_own" on public.income_entries
   for all to authenticated
   using (user_id = (select auth.uid()))
@@ -110,6 +115,7 @@ create index if not exists firc_records_user_date_idx on public.firc_records (us
 
 alter table public.firc_records enable row level security;
 
+drop policy if exists "firc_records_all_own" on public.firc_records;
 create policy "firc_records_all_own" on public.firc_records
   for all to authenticated
   using (user_id = (select auth.uid()))
@@ -131,6 +137,7 @@ create index if not exists firc_matches_entry_idx on public.firc_matches (income
 
 alter table public.firc_matches enable row level security;
 
+drop policy if exists "firc_matches_all_own" on public.firc_matches;
 create policy "firc_matches_all_own" on public.firc_matches
   for all to authenticated
   using (user_id = (select auth.uid()))
@@ -165,6 +172,7 @@ create index if not exists invoices_user_idx on public.invoices (user_id, create
 
 alter table public.invoices enable row level security;
 
+drop policy if exists "invoices_all_own" on public.invoices;
 create policy "invoices_all_own" on public.invoices
   for all to authenticated
   using (user_id = (select auth.uid()))
@@ -185,6 +193,7 @@ create index if not exists invoice_items_invoice_idx on public.invoice_items (in
 
 alter table public.invoice_items enable row level security;
 
+drop policy if exists "invoice_items_all_own" on public.invoice_items;
 create policy "invoice_items_all_own" on public.invoice_items
   for all to authenticated
   using (user_id = (select auth.uid()))

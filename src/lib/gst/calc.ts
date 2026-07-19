@@ -40,8 +40,7 @@ export function computeInvoiceTotals(
   if (items.length === 0) throw new Error("An invoice needs at least one line item");
   for (const item of items) {
     if (!(item.qty > 0)) throw new Error("Quantity must be positive");
-    if (!(item.unitPrice >= 0) || item.unitPrice < 0) throw new Error("Unit price cannot be negative");
-    if (item.unitPrice <= 0) throw new Error("Unit price must be positive");
+    if (!(item.unitPrice > 0)) throw new Error("Unit price must be positive");
   }
 
   const lineAmounts = items.map((item) => roundInr(item.qty * item.unitPrice));

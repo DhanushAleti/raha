@@ -238,7 +238,11 @@ export function AuditWizard() {
         </span>
         <span>~2 minutes</span>
       </div>
-      <Progress value={progress} className="mt-2 h-1.5" />
+      <Progress
+        value={progress}
+        aria-label={`Question ${step + 1} of ${QUESTIONS.length}`}
+        className="mt-2 h-1.5"
+      />
       <h1 className="font-display mt-8 text-2xl leading-snug text-raha-ink sm:text-3xl">
         {question.title}
       </h1>
