@@ -9,7 +9,8 @@ create table if not exists public.waitlist (
   platforms text[] not null default '{}'
 );
 
-create unique index if not exists waitlist_email_unique on public.waitlist (lower(email));
+-- Emails are normalised to lowercase by the server before insert.
+create unique index if not exists waitlist_email_unique on public.waitlist (email);
 
 alter table public.waitlist enable row level security;
 
@@ -30,7 +31,7 @@ create table if not exists public.audit_leads (
   verdict text not null check (verdict in ('green','amber','red'))
 );
 
-create unique index if not exists audit_leads_email_unique on public.audit_leads (lower(email));
+create unique index if not exists audit_leads_email_unique on public.audit_leads (email);
 
 alter table public.audit_leads enable row level security;
 

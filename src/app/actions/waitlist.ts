@@ -3,16 +3,18 @@
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 
-const waitlistSchema = z.object({
-  name: z.string().trim().min(1, "Please tell us your name").max(120),
-  email: z.string().trim().email("That email doesn't look right").max(320),
-  incomeRange: z.enum(["under_20l", "20l_50l", "50l_1cr", "1cr_2cr", "over_2cr"], {
-    message: "Pick your income range",
-  }),
-  platforms: z.array(z.string().max(60)).max(10).default([]),
-  // Honeypot: real users never fill this.
-  company: z.string().max(0).optional(),
-});
+const waitlistSchema = z
+  .object({
+    name: z.string().trim().min(1, "Please tell us your name").max(120),
+    email: z.string().trim().email("That email doesn't look right").max(320),
+    incomeRange: z.enum(["under_20l", "20l_50l", "50l_1cr", "1cr_2cr", "over_2cr"], {
+      message: "Pick your income range",
+    }),
+    platforms: z.array(z.string().max(60)).max(10).default([]),
+    // Honeypot: real users never fill this.
+    company: z.string().max(0).optional(),
+  })
+  .transform((data) => ({ ...data, email: data.email.toLowerCase() }));
 
 export type WaitlistResult =
   | { status: "ok"; alreadyJoined: boolean }
