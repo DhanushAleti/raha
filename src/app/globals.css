@@ -128,3 +128,32 @@
     @apply font-sans;
   }
 }
+/* ── Raha brand overrides ─────────────────────────────────────────────── */
+:root {
+  /* deep evergreen primary, warm paper surfaces, amber highlight */
+  --primary: oklch(0.32 0.06 165);
+  --primary-foreground: oklch(0.98 0.01 95);
+  --ring: oklch(0.32 0.06 165);
+  --raha-ink: oklch(0.22 0.02 165);
+  --raha-cream: oklch(0.975 0.012 90);
+  --raha-cream-deep: oklch(0.945 0.02 90);
+  --raha-amber: oklch(0.78 0.14 75);
+  --raha-green: oklch(0.32 0.06 165);
+  --raha-green-soft: oklch(0.94 0.025 165);
+  --raha-red: oklch(0.55 0.19 25);
+}
+
+@theme inline {
+  --color-raha-ink: var(--raha-ink);
+  --color-raha-cream: var(--raha-cream);
+  --color-raha-cream-deep: var(--raha-cream-deep);
+  --color-raha-amber: var(--raha-amber);
+  --color-raha-green: var(--raha-green);
+  --color-raha-green-soft: var(--raha-green-soft);
+  --color-raha-red: var(--raha-red);
+  --font-display: var(--font-fraunces);
+}
+
+.font-display {
+  font-family: var(--font-fraunces), Georgia, serif;
+}
