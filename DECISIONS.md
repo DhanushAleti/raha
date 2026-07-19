@@ -25,3 +25,15 @@ Running log of autonomous decisions. Format: date · decision · rationale.
 9. **No payments in-product.** Founding-seat conversion routes to WhatsApp/email (Phase 0 concierge; payments are a hard stop per operating rules).
 
 10. **Slack/Canva/Figma skipped** (Slack workspace empty; Figma seat is view-only; no stage benefits). See CAPABILITIES.md.
+
+11. **Stage 1 pages built inside the Next.js app** (routes `/` and `/audit`) instead of standalone HTML — one deploy, shared Supabase client, no later port. They still ship first.
+
+12. **Gmail drafts use `.example` placeholder addresses** — undeliverable by design until real contacts are swapped in (a ClickUp task tracks this). 15 drafts total: 5 primary + day-3 + day-8 per agency.
+
+13. **Quality gates (Stage 3):** silent-failure-hunter agent completed → 1 critical (unchecked allocations read in confirmMatch), 2 high (zero-row finalize/mutations reporting success), several medium — **all fixed** (commit fa93cb0). Code/security/database review agents died on a session limit; reviews done manually instead → same-owner composite FKs on firc_matches, missing indexes, idempotent policies (migration 0004), security headers in next.config.ts (commit 29e0562).
+
+14. **Rate limiting deliberately not hand-rolled.** Public forms carry honeypots; Supabase rate-limits auth emails natively. In-memory per-IP throttles are theatre on serverless. Documented recommendation: Vercel Firewall rules once traffic exists (docs/DEPLOY.md).
+
+15. **E2E auth via admin generateLink → real `/auth/confirm` route** (headless magic-link, no test-only backdoors in app code).
+
+16. **Blocked-on-credentials items** (the sanctioned stop): Supabase project keys (browser QA of authed loop, seed, e2e run), Vercel (deploy). Everything else shipped.
