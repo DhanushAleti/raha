@@ -12,3 +12,7 @@
 | Figma | ✅ live | starter plan, **View seat** — cannot edit designs; skipped |
 
 Fallback rule: if any connector dies mid-session, fall back to local files under `docs/` silently and note it here.
+
+**Fallbacks used:**
+- Drive handoff: repo **zip upload skipped** (340KB binary exceeds what the connector call can sensibly carry). Uploaded START-HERE, FINAL, DEPLOY, creator-guide, outreach-kit instead; durable code copy = `git push` to GitHub (step 3.1 of DEPLOY.md). Zip also at the session scratchpad if needed.
+- Stage 3 review agents: code/security/database reviewer subagents died on a session limit; reviews were done inline instead (findings + fixes logged in DECISIONS.md #13).
