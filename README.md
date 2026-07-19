@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Raha — creator taxes, handled
 
-## Getting Started
+Tax & GST compliance platform for Indian creators earning ₹20L–₹2Cr. Income tracking, FIRC matching (export-of-service proof), GST-compliant invoicing, live tax-liability estimates, and a document vault.
 
-First, run the development server:
+> Every figure Raha computes is an **estimate — verify with your CA before filing**. Raha does not file returns; filings are executed by qualified Chartered Accountants.
+
+## Stack
+
+Next.js 15 (App Router, Turbopack) · TypeScript · Tailwind 4 + shadcn/ui · Supabase (auth, Postgres + RLS, storage) · Zod · Vitest · Vercel.
+
+## Local setup
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repo> raha && cd raha
+npm install
+cp .env.example .env.local   # fill in Supabase project keys
+# Apply migrations: paste supabase/migrations/*.sql into the Supabase SQL editor
+# (or `supabase db push` if you use the Supabase CLI)
+npm run seed                 # optional: demo creator data (needs SUPABASE_SERVICE_ROLE_KEY)
+npm run dev                  # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Scripts
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Command | What it does |
+|---|---|
+| `npm run dev` | dev server (Turbopack) |
+| `npm run build` | production build |
+| `npm test` | unit tests (all tax/FX/matching math) |
+| `npm run typecheck` | `tsc --noEmit` |
+| `npm run lint` | ESLint |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Architecture (short)
 
-## Learn More
+- `src/app/` — routes. Public: `/` (landing), `/audit` (lead-magnet scanner), `/login`. Protected: `/app/*` (dashboard, income, FIRC, invoices, vault).
+- `src/lib/` — pure logic modules, all unit-tested, no I/O: `fx/` (RBI reference-rate conversion), `income/` (categorization, CSV), `firc/` (matching), `gst/` (invoice math), `tax/` (advance-tax + GST liability estimates), `format/` (INR lakh/crore + amount-in-words), `audit/` (risk scoring).
+- `src/lib/supabase/` — server/client Supabase helpers (`@supabase/ssr`).
+- `supabase/migrations/` — schema, RLS policies, storage policies. RLS on **every** table.
+- Docs: `docs/raha_prd.md` (ground truth) · `docs/SPEC.md` · `docs/PLAN.md` · `docs/TASKS.md` · `DECISIONS.md`.
 
-To learn more about Next.js, take a look at the following resources:
+## Deploy
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Vercel. Set the env vars from `.env.example` (service-role key server-side only). Apply migrations to the production Supabase project before first deploy.
