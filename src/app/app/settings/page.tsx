@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { ProfileForm } from "@/components/settings/profile-form";
 
@@ -9,11 +10,12 @@ export default async function SettingsPage() {
   const {
     data: { user },
   } = await supabase.auth.getUser();
+  if (!user) redirect("/login");
 
   const { data: profile, error } = await supabase
     .from("profiles")
     .select("display_name, state, address, pan, gstin, lut_arn, invoice_prefix")
-    .eq("id", user!.id)
+    .eq("id", user.id)
     .single();
 
   if (error || !profile) {

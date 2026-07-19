@@ -204,10 +204,17 @@ export async function deleteIncomeEntry(id: string): Promise<ActionResult> {
   if (!parsed.success) return { status: "error", message: "Invalid entry." };
 
   const supabase = await createClient();
-  const { error } = await supabase.from("income_entries").delete().eq("id", parsed.data);
+  const { data, error } = await supabase
+    .from("income_entries")
+    .delete()
+    .eq("id", parsed.data)
+    .select("id");
   if (error) {
     console.error("income delete failed", { code: error.code, message: error.message });
     return { status: "error", message: "Couldn't delete the entry." };
+  }
+  if (!data || data.length === 0) {
+    return { status: "error", message: "That entry was already deleted — refresh." };
   }
   revalidatePath("/app/income");
   revalidatePath("/app");

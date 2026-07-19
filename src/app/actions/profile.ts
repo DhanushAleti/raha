@@ -48,7 +48,7 @@ export async function updateProfile(input: unknown): Promise<ActionResult> {
   } = await supabase.auth.getUser();
   if (!user) return { status: "error", message: "Not signed in." };
 
-  const { error } = await supabase
+  const { data, error } = await supabase
     .from("profiles")
     .update({
       display_name: displayName,
@@ -59,11 +59,17 @@ export async function updateProfile(input: unknown): Promise<ActionResult> {
       lut_arn: lutArn,
       invoice_prefix: invoicePrefix,
     })
-    .eq("id", user.id);
+    .eq("id", user.id)
+    .select("id");
 
   if (error) {
     console.error("profile update failed", { code: error.code, message: error.message });
     return { status: "error", message: "Couldn't save your profile — try again." };
+  }
+  if (!data || data.length === 0) {
+    // Profile row missing (trigger raced?) — a "saved" toast here would lie.
+    console.error("profile update matched no row", { userId: user.id });
+    return { status: "error", message: "Profile not found — sign out and back in, then retry." };
   }
   revalidatePath("/app/settings");
   revalidatePath("/app/invoices");

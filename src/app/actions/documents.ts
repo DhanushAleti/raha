@@ -111,9 +111,16 @@ export async function deleteDocument(id: string): Promise<ActionResult> {
     return { status: "error", message: "Couldn't delete the file — try again." };
   }
 
-  const { error } = await supabase.from("documents").delete().eq("id", parsed.data);
-  if (error) {
-    console.error("document row delete failed", { code: error.code, message: error.message });
+  const { data, error } = await supabase
+    .from("documents")
+    .delete()
+    .eq("id", parsed.data)
+    .select("id");
+  if (error || !data || data.length === 0) {
+    console.error("document row delete failed", {
+      code: error?.code,
+      message: error?.message ?? "no row matched",
+    });
     return { status: "error", message: "File removed but the record lingered — refresh." };
   }
 

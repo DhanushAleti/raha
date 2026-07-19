@@ -62,10 +62,17 @@ export async function deleteFirc(id: string): Promise<ActionResult> {
   if (!parsed.success) return { status: "error", message: "Invalid FIRC." };
 
   const supabase = await createClient();
-  const { error } = await supabase.from("firc_records").delete().eq("id", parsed.data);
+  const { data, error } = await supabase
+    .from("firc_records")
+    .delete()
+    .eq("id", parsed.data)
+    .select("id");
   if (error) {
     console.error("firc delete failed", { code: error.code, message: error.message });
     return { status: "error", message: "Couldn't delete the FIRC." };
+  }
+  if (!data || data.length === 0) {
+    return { status: "error", message: "That FIRC was already deleted — refresh." };
   }
   revalidatePath("/app/firc");
   revalidatePath("/app/income");
@@ -89,7 +96,11 @@ export async function confirmMatch(input: unknown): Promise<ActionResult> {
 
   const supabase = await createClient();
 
-  const [{ data: firc }, { data: entry }, { data: matches }] = await Promise.all([
+  const [
+    { data: firc, error: fircErr },
+    { data: entry, error: entryErr },
+    { data: matches, error: matchesErr },
+  ] = await Promise.all([
     supabase
       .from("firc_records")
       .select("id, currency, amount_inr")
@@ -103,7 +114,18 @@ export async function confirmMatch(input: unknown): Promise<ActionResult> {
     supabase.from("firc_matches").select("firc_id, income_entry_id, allocated_inr"),
   ]);
 
-  if (!firc || !entry) return { status: "error", message: "FIRC or entry not found." };
+  // A failed allocations read MUST abort: computing against an empty baseline
+  // would silently over-allocate and mark at-risk income as zero-rated.
+  if (matchesErr) {
+    console.error("confirmMatch allocations read failed", {
+      code: matchesErr.code,
+      message: matchesErr.message,
+    });
+    return { status: "error", message: "Couldn't verify current allocations — try again." };
+  }
+  if (fircErr || entryErr || !firc || !entry) {
+    return { status: "error", message: "FIRC or entry not found." };
+  }
   if (firc.currency !== entry.currency) {
     return { status: "error", message: "Currency mismatch between FIRC and entry." };
   }
@@ -155,14 +177,18 @@ export async function removeMatch(input: unknown): Promise<ActionResult> {
   if (!parsed.success) return { status: "error", message: "Invalid match." };
 
   const supabase = await createClient();
-  const { error } = await supabase
+  const { data, error } = await supabase
     .from("firc_matches")
     .delete()
     .eq("firc_id", parsed.data.fircId)
-    .eq("income_entry_id", parsed.data.incomeEntryId);
+    .eq("income_entry_id", parsed.data.incomeEntryId)
+    .select("id");
   if (error) {
     console.error("match delete failed", { code: error.code, message: error.message });
     return { status: "error", message: "Couldn't remove the match." };
+  }
+  if (!data || data.length === 0) {
+    return { status: "error", message: "That match was already removed — refresh." };
   }
   revalidatePath("/app/firc");
   revalidatePath("/app/income");

@@ -20,7 +20,11 @@ export async function GET(
   if (!user) return NextResponse.json({ error: "Not signed in" }, { status: 401 });
 
   // RLS scopes all three queries to the signed-in user.
-  const [{ data: invoice }, { data: items }, { data: profile }] = await Promise.all([
+  const [
+    { data: invoice, error: invoiceErr },
+    { data: items, error: itemsErr },
+    { data: profile, error: profileErr },
+  ] = await Promise.all([
     supabase
       .from("invoices")
       .select(
@@ -40,6 +44,14 @@ export async function GET(
   ]);
 
   if (!invoice || !items || items.length === 0 || !profile) {
+    // Distinguish real 404s from transient query failures in the logs.
+    if (invoiceErr || itemsErr || profileErr) {
+      console.error("invoice pdf queries failed", {
+        invoice: invoiceErr?.message,
+        items: itemsErr?.message,
+        profile: profileErr?.message,
+      });
+    }
     return NextResponse.json({ error: "Invoice not found" }, { status: 404 });
   }
 

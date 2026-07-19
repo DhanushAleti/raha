@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { InvoiceForm } from "@/components/invoices/invoice-form";
 
@@ -10,12 +11,24 @@ export default async function NewInvoicePage() {
   const {
     data: { user },
   } = await supabase.auth.getUser();
+  if (!user) redirect("/login");
 
-  const { data: profile } = await supabase
+  const { data: profile, error: profileError } = await supabase
     .from("profiles")
     .select("state, lut_arn, gstin, display_name")
-    .eq("id", user!.id)
+    .eq("id", user.id)
     .single();
+
+  if (profileError) {
+    return (
+      <div className="rounded-2xl border border-red-200 bg-red-50 p-8">
+        <h1 className="font-display text-2xl text-raha-ink">New invoice</h1>
+        <p className="mt-2 text-sm text-red-700">
+          Couldn&apos;t load your profile — refresh to try again.
+        </p>
+      </div>
+    );
+  }
 
   const profileIncomplete = !profile?.display_name || !profile?.state;
 

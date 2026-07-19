@@ -75,7 +75,7 @@ export async function createInvoice(input: unknown): Promise<ActionResult> {
   // Sequential per-user-per-FY numbering; the unique constraint is the true
   // guarantee — on a rare concurrent clash we retry with the next number.
   for (let attempt = 0; attempt < MAX_SEQ_RETRIES; attempt++) {
-    const { data: maxRow } = await supabase
+    const { data: maxRow, error: seqError } = await supabase
       .from("invoices")
       .select("seq")
       .eq("user_id", user.id)
@@ -83,6 +83,11 @@ export async function createInvoice(input: unknown): Promise<ActionResult> {
       .order("seq", { ascending: false })
       .limit(1)
       .maybeSingle();
+    if (seqError) {
+      // A failed read would silently restart numbering at 1 — abort instead.
+      console.error("invoice seq lookup failed", { code: seqError.code, message: seqError.message });
+      return { status: "error", message: "Couldn't allocate an invoice number — try again." };
+    }
 
     const seq = (maxRow?.seq ?? 0) + 1;
 
@@ -145,14 +150,21 @@ export async function finalizeInvoice(id: string): Promise<ActionResult> {
   if (!parsed.success) return { status: "error", message: "Invalid invoice." };
 
   const supabase = await createClient();
-  const { error } = await supabase
+  const { data, error } = await supabase
     .from("invoices")
     .update({ status: "final", finalized_at: new Date().toISOString() })
     .eq("id", parsed.data)
-    .eq("status", "draft");
+    .eq("status", "draft")
+    .select("id");
   if (error) {
     console.error("invoice finalize failed", { code: error.code, message: error.message });
     return { status: "error", message: "Couldn't finalise the invoice." };
+  }
+  if (!data || data.length === 0) {
+    return {
+      status: "error",
+      message: "Invoice is no longer a draft — refresh and check its status.",
+    };
   }
   revalidatePath("/app/invoices");
   return { status: "ok" };
