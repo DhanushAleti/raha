@@ -18,6 +18,10 @@ export default defineConfig({
   testDir: "./e2e",
   timeout: 60_000,
   retries: 0,
+  // Serial: every signed-in test mints a magic link for the same seeded demo
+  // user, and Supabase invalidates the previous token each time one is issued.
+  // Parallel workers race and burn each other's tokens.
+  workers: 1,
   use: {
     baseURL: process.env.E2E_BASE_URL ?? "http://localhost:3000",
     trace: "retain-on-failure",

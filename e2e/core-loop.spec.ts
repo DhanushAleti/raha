@@ -31,8 +31,10 @@ async function signIn(page: Page) {
 test.describe("public funnel", () => {
   test("landing page renders hero, offer and waitlist", async ({ page }) => {
     await page.goto("/");
-    await expect(page.getByRole("heading", { name: /creator taxes/i })).toBeVisible();
-    await expect(page.getByText("₹20,000")).toBeVisible();
+    // Scoped to the h1: "Four ways creator taxes go wrong" also matches the text.
+    await expect(page.getByRole("heading", { level: 1, name: /creator taxes/i })).toBeVisible();
+    // exact: the FAQ answer also contains "₹20,000/year".
+    await expect(page.getByText("₹20,000", { exact: true })).toBeVisible();
     await expect(page.getByRole("button", { name: /join the waitlist/i })).toBeVisible();
   });
 
@@ -89,10 +91,12 @@ test.describe("core loop (needs seeded Supabase)", () => {
   test("invoices: seeded final invoice renders and PDF responds", async ({ page }) => {
     await page.goto("/app/invoices");
     await expect(page.getByText("DEMO/2026-27/001")).toBeVisible();
-    const [response] = await Promise.all([
-      page.waitForResponse((r) => r.url().includes("/pdf")),
-      page.getByRole("link", { name: "PDF" }).first().click(),
-    ]);
+    // The link is target="_blank", so the response lands on a popup page, not
+    // `page`. Fetch it through the page's request context instead — same cookie
+    // jar, so the authenticated route resolves exactly as a click would.
+    const href = await page.getByRole("link", { name: "PDF" }).first().getAttribute("href");
+    expect(href).toBeTruthy();
+    const response = await page.request.get(href!);
     expect(response.status()).toBe(200);
   });
 });
