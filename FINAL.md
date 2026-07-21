@@ -25,7 +25,8 @@ Built in one autonomous session, 2026-07-19. 16 commits, working state throughou
 - **Notion — Raha HQ**: https://app.notion.com/p/3a26f2ca879c81e28a0acb178dc671cc (seat tracker 0/10, daily-ops checklist, pipeline database with all 5 agencies seeded)
 - **ClickUp — Raha Launch**: https://app.clickup.com/90161706212/v/l/li/901615981424 (11 tasks, due-dated across 14 days)
 - **Calendar**: "Raha outreach" 10:00–11:00 daily ×14 from tomorrow + GSTR-1/3B monthly dates + advance-tax installments (Sep 15, Dec 15)
-- **Gmail**: 15 drafts ready for review
+- **Gmail**: 15 original drafts + **50 personalised drafts to real Clay-sourced leads** (2026-07-20) — sequencing in `docs/outreach/SEND_PLAN.md`, 3 address corrections noted there
+- **Leads**: `docs/outreach/raha-leads-2026-07-20.xlsx` (60 rows, 50 with verified emails; also in the Drive Handoff folder) · demand evidence: `docs/DEMAND_EVIDENCE.md`
 
 ## Deliberately NOT built (Phase 2 — PRD §5, out of scope by order)
 
