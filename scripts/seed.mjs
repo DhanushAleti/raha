@@ -99,6 +99,7 @@ async function main() {
       rate_used: usdRate,
       rate_source: "rbi_table",
       amount_inr: inr(adsenseUsd[i], usdRate),
+      tds_inr: 0,
       source: "manual",
     });
     const eurRate = RATES[month].EUR;
@@ -113,6 +114,7 @@ async function main() {
       rate_used: eurRate,
       rate_source: "rbi_table",
       amount_inr: inr(patreonEur[i], eurRate),
+      tds_inr: 0,
       source: "manual",
     });
   });
