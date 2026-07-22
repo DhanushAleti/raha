@@ -4,7 +4,20 @@ Built in one autonomous session, 2026-07-19. Deployed and verified live 2026-07-
 
 ## Live
 
-**https://raha-iota.vercel.app** — landing `/`, free audit `/audit`, signed-in app `/app/*`.
+**https://rahatax.vercel.app** — use this one in all outreach. Landing `/`, free audit `/audit`.
+
+Both hostnames serve the same production deployment and both auto-update on every deploy:
+
+| Hostname | Use for |
+|---|---|
+| `rahatax.vercel.app` | **All outreach, DMs, threads, email links.** Reads as deliberate. |
+| `raha-iota.vercel.app` | Auth and canonical. `NEXT_PUBLIC_SITE_URL` points here — leave it alone. |
+
+⚠️ **Do not repoint `NEXT_PUBLIC_SITE_URL` at `rahatax` without first adding that hostname to
+Supabase → Authentication → URL Configuration → Redirect URLs.** It feeds `emailRedirectTo` and the
+OAuth `redirectTo` ([src/app/actions/auth.ts:24](src/app/actions/auth.ts:24), [:42](src/app/actions/auth.ts:42));
+changing it alone breaks magic-link and Google sign-in. The audit is a public page with no auth, so
+outreach traffic on `rahatax` is unaffected either way.
 
 | | |
 |---|---|
@@ -59,7 +72,7 @@ Infra is no longer a blocker. What's left is distribution, revenue, and one conf
 1. Swap `NEXT_PUBLIC_WHATSAPP_NUMBER` to a business line in Vercel → redeploy. Do this before anything below reaches a stranger.
 2. Send the Day-1 wave — open `docs/outreach/SEND_TODAY.md` and work down the 12 rows; then Days 2–5 per `SEND_PLAN.md`.
 3. Start the daily 10:00 outreach hour: 15–20 DMs/day from the scripts; log every reply in Notion and mark the xlsx `Status` column.
-4. Post X-thread #1 with the live audit link (https://raha-iota.vercel.app/audit).
+4. Post X-thread #1 with the live audit link (https://rahatax.vercel.app/audit).
 5. Book 10 discovery calls; run the script; send the closing one-pager same day.
 6. Close 3 founding creators at ₹20,000 → tick seats in Notion. That's the validation gate.
 7. Line up the revenue-share CA (they review `src/lib/tax/` + `src/lib/gst/` before the first filing).

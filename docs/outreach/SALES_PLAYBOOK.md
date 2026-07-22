@@ -6,7 +6,7 @@ For calls, DMs, and email. Written to be used verbatim on your first ten calls, 
 
 ## 1. The decision you asked me to make: what do you send them?
 
-**You send the free audit. Always. `https://raha-iota.vercel.app/audit`**
+**You send the free audit. Always. `https://rahatax.vercel.app/audit`**
 
 Not the landing page. Not a waitlist. Here's why, and this is not close:
 
@@ -59,7 +59,7 @@ Creators live in DMs and ignore email. Keep it short enough to read in the notif
 
 > Hey [name] — quick one, not a pitch. Do you collect FIRCs from your bank for your AdSense
 > payouts? Most creators don't, and it's the thing that turns 0% GST into 18%. Built a free
-> 2-min check that tells you where you stand: raha-iota.vercel.app/audit
+> 2-min check that tells you where you stand: rahatax.vercel.app/audit
 
 **If they reply "what's a FIRC?"** — that's a buying signal, not ignorance. Answer plainly:
 

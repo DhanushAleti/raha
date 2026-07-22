@@ -29,7 +29,7 @@ The list below is re-cut to **12 different companies**. Deferred names move to D
 
 Put this immediately after the paragraph that offers the free snapshot, as its own line:
 
-> If it's easier to look first: https://raha-iota.vercel.app/audit — 8 questions, about 2 minutes,
+> If it's easier to look first: https://rahatax.vercel.app/audit — 8 questions, about 2 minutes,
 > same red/amber/green, no signup.
 
 ---
@@ -73,13 +73,22 @@ Afsheen (Chtrbox, same group as Raj), Keshav + Aastha (Whizco), Jag (IPLIX), Pre
 
 ---
 
-## One judgement call that is yours
+## About the link — resolved, no spend needed
 
-The link in the paste-line is `raha-iota.vercel.app`. That is a Vercel preview-style hostname, and
-it reads as a side project to the agency founders you're pitching for ₹20,000/yr. A real domain
-(`raha.in` / `raha.co.in`, roughly ₹1,000/yr) costs about an hour end to end: buy it, add it in
-Vercel → Domains, update `NEXT_PUBLIC_SITE_URL`, redeploy.
+The paste-line uses **`rahatax.vercel.app`**, claimed 2026-07-22. It replaces `raha-iota.vercel.app`,
+where the `-iota` was a random suffix Vercel appends when the clean name is taken — that reads as a
+throwaway deploy. `rahatax` keeps the brand, says what the product does, and looks chosen. It cost
+nothing and it auto-updates on every production deploy (verified by redeploying and confirming the
+alias followed).
 
-You get one first impression with each of these 50 people. My recommendation is to buy the domain
-before Day 1 rather than spend the list on a `vercel.app` URL. If you'd rather move today, the
-vercel.app link still works — the tool behind it is fully functional.
+A paid domain is still the better end state — a `.in` at roughly ₹1,000/yr, plus a matching inbox,
+is what makes cold email look like a company rather than a person. **Buy it out of the first ₹20,000
+you collect, not before.** It is not worth blocking Day 1 over.
+
+Two free credibility levers worth 60 seconds each, since the domain is deferred:
+
+- **Set your Gmail display name to `Sunny — Raha`**, not a bare username. It's the first thing in
+  the inbox row, and it's read before the address is.
+- **Keep the signature to two lines** — `— Sunny` / `Founder, Raha — creator taxes, handled`.
+  A long signature on a personal Gmail draws attention to the missing company domain; a short one
+  doesn't.
