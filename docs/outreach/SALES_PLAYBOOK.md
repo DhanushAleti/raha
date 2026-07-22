@@ -20,9 +20,29 @@ The audit is the whole strategy. A stranger will not buy from you, but they will
 minutes checking whether they have a problem. When the result says RED, the conversation stops
 being "why should I trust you" and becomes "how bad is this." That's the only conversion that matters.
 
-**The funnel:** DM or email → audit link → red/amber score → they book a call → you close at ₹20,000.
+**The funnel:** DM or email → audit link → red/amber score → they book a call → you close.
 
 Never send the pricing page before the audit. Never.
+
+### Sell the ₹2,000 diagnostic first, not the ₹20,000 seat
+
+Until somebody has paid you anything, ₹20,000 is not a price — it's a hypothesis. Lead with this:
+
+> "Before you commit to anything annual — let me do this properly for one financial year. ₹2,000,
+> I go through your actual payouts and bank statements, tell you exactly which FIRCs are missing
+> and what your real exposure is, in writing. If it comes back clean, you've spent ₹2,000 to stop
+> worrying. If it's bad, you'll know the number before the department does, and we can talk about
+> the annual plan then."
+
+Why this is the better first ask:
+- **₹2,000 is a decision, ₹20,000 is a deliberation.** One happens on the call; the other happens "next week" and then never.
+- **It needs no product.** You do it by hand in an evening. You are the product.
+- **Money is the only real signal.** "Sounds useful" is worth nothing. Someone paying ₹2,000 to a
+  stranger for a tax diagnostic tells you more than a hundred waitlist signups.
+- **It's the strongest possible lead-in to the annual plan** — you'll have seen their books.
+
+If nobody will pay ₹2,000, nobody was ever going to pay ₹20,000. Better to learn that this week
+than after three months of outreach.
 
 ---
 
@@ -191,6 +211,25 @@ objection; it's the wrapper around one.
 > "That's the one I'd push back on. Interest accrues monthly, and FIRCs get harder to obtain the
 > older the transaction is — banks are quick about last month and very slow about eighteen months
 > ago. Waiting doesn't hold the problem still, it grows it. Start now, file calmly later."
+
+**"Why wouldn't I just use Skydo / Karbon / Xflow? They give me FIRA automatically."**
+
+This is the objection that can end the call, and it is a fair one. Know it cold.
+
+> "You should use them, honestly — if your money can route through them, that's the cleanest way
+> to get FIRA going forward. But three things they don't do. One, they only cover money that flows
+> through *them*, from the day you switch. Every rupee that already landed in your bank over the
+> last two or three years has no FIRA, and that backlog is where your exposure actually sits —
+> a payment rail can't fix history. Two, they're payment companies, not tax software: they don't
+> compute your GST, generate compliant invoices, track whether your LUT is filed, or tell you what
+> to set aside. Three, they only see foreign money. Your brand deals in rupees are 18% domestic GST
+> with CGST/SGST or IGST depending on the state, and that's over half your liability.
+> Use them for the pipe. Use me for the compliance."
+
+*If they haven't switched to a payment rail yet, the backlog argument is your strongest card —
+it's the part nobody else can sell them out of. If they already use Karbon and have clean FIRA
+going forward and no backlog, **tell them they don't need you for FIRC** and sell on GST/invoicing
+or not at all. Overselling into that is how you get a refund and a bad story.*
 
 **"How do I know you're legit? You're new."**
 > "You don't yet, and you shouldn't take my word for it. That's exactly why the first ten are
