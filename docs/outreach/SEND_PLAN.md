@@ -1,5 +1,14 @@
 # Send plan — 50 lead drafts (2026-07-20 batch)
 
+> **Day 1 is spelled out click-by-click in [`SEND_TODAY.md`](SEND_TODAY.md) — start there.**
+> It supersedes the Day-1 row below (re-cut to avoid same-company clustering) and carries three
+> findings from the 2026-07-22 draft audit that apply to every wave:
+> 1. The drafts folder also contains ~15 dead `.example` placeholder drafts — never send those.
+> 2. **No draft contains a link to the site** (they predate the 2026-07-21 deploy). Paste the audit
+>    link into each one before sending.
+> 3. Day 1 as originally written put 3 emails into Whizco, 2 into IPLIX, 2 into Boomlet, and hit
+>    both QYOU and Chtrbox (same corporate group) in one morning.
+
 The 50 personalised drafts sit in Gmail/Superhuman. **Do not send all 50 in one day** — a personal Gmail blasting 50 cold emails in a burst gets flagged, and deliverability is the whole game. This plan spreads them safely and puts the highest-value targets first.
 
 ## Corrections before sending (3 drafts)
@@ -12,7 +21,7 @@ The 50 personalised drafts sit in Gmail/Superhuman. **Do not send all 50 in one 
 
 | Day | Send | Who |
 |---|---|---|
-| Day 1 | 12 | Tier A founders at the PRD-named agencies + closest: Viraj, Ranveer, Raj, Afsheen, Prerna, Keshav, Aastha, Neel, Jag, Danish, Preety, Vishal |
+| Day 1 | 12 | ~~Viraj, Ranveer, Raj, Afsheen, Prerna, Keshav, Aastha, Neel, Jag, Danish, Preety, Vishal~~ — **superseded, use [`SEND_TODAY.md`](SEND_TODAY.md)** (same 12 slots, re-cut to 12 distinct companies; Afsheen, Keshav, Aastha, Jag, Preety pushed to Day 2+) |
 | Day 2 | 12 | Tier A platforms + South wedge: Praanesh, Priya, Vikas, Shivam A, Vanshika, Sumit, Abhinav, Rahul T, Saideep, Shahir, Ashwin, Anirudh |
 | Day 3 | 12 | Remaining Tier A + strong B: Sahil, Sanjeeda, Mehul, Siddharth, Hari, Manish, Swati, Nishant (IIGC), Bhagyashree, Pratiek, Rohan, Farhan |
 | Day 4 | 10 | Tier B: Vrushti, Pranav, Anuradha, Arvind, P. Bhatia, Telson, Ranjeet, Arihant, Rahul M (fixed address), Rahul K (if email verified) |

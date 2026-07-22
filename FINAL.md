@@ -48,7 +48,7 @@ API imports (AdSense/Patreon/Stripe/Razorpay) · automated GSTR-1/3B filing · C
 
 Infra is no longer a blocker. What's left is distribution, revenue, and one config swap:
 
-1. **Send the 50 Gmail drafts** — they are written and sitting in drafts. Nothing sends itself. Follow `docs/outreach/SEND_PLAN.md`: 12/12/12/10/4 across 5 weekday mornings, one by one, 9:30–11:30 IST. Apply the 3 address corrections first (Rahul Mahato's domain is `barcodeent.com`; Rahul Khanna's Clay email is a third-party domain — find a better one or DM; **do not send** Shivam Sharma, wrong company).
+1. **Send the 50 Gmail drafts** — they are written and sitting in drafts. Nothing sends itself. **Start at `docs/outreach/SEND_TODAY.md`** (click-by-click Day-1 list, verified against the real drafts folder 2026-07-22); `docs/outreach/SEND_PLAN.md` has the full 5-wave schedule. Three things that bite before the first send: the drafts folder also holds ~15 dead `.example` placeholder drafts (never send those); **no draft contains a link to the site** because they predate the deploy — paste the audit link in; and 3 addresses need fixing or skipping (Rahul Mahato → `barcodeent.com`; Rahul Khanna → third-party PR domain; **do not send** Shivam Sharma, wrong company).
 2. **Book and run discovery calls** — reply → call the same day, run `docs/outreach/discovery-call-script.md`, send `founding-customer-closing-doc.md` within 2 hours of any yes/maybe.
 3. **Close 3 founding customers at ₹20,000** — the validation gate. The MVP is live and waiting for them.
 4. **Line up the revenue-share CA** — they review `src/lib/tax/` and `src/lib/gst/` before anyone's first filing. Every figure ships as an estimate until a CA has signed off.
@@ -57,7 +57,7 @@ Infra is no longer a blocker. What's left is distribution, revenue, and one conf
 ## Your next 7 actions (PRD §11, updated)
 
 1. Swap `NEXT_PUBLIC_WHATSAPP_NUMBER` to a business line in Vercel → redeploy. Do this before anything below reaches a stranger.
-2. Send the Day-1 wave (12 Tier-A drafts) per `docs/outreach/SEND_PLAN.md`, corrections applied; then Days 2–5 on schedule.
+2. Send the Day-1 wave — open `docs/outreach/SEND_TODAY.md` and work down the 12 rows; then Days 2–5 per `SEND_PLAN.md`.
 3. Start the daily 10:00 outreach hour: 15–20 DMs/day from the scripts; log every reply in Notion and mark the xlsx `Status` column.
 4. Post X-thread #1 with the live audit link (https://raha-iota.vercel.app/audit).
 5. Book 10 discovery calls; run the script; send the closing one-pager same day.
