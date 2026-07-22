@@ -1,6 +1,18 @@
 # FINAL.md — where Raha stands
 
-Built in one autonomous session, 2026-07-19. 16 commits, working state throughout.
+Built in one autonomous session, 2026-07-19. Deployed and verified live 2026-07-21.
+
+## Live
+
+**https://raha-iota.vercel.app** — landing `/`, free audit `/audit`, signed-in app `/app/*`.
+
+| | |
+|---|---|
+| Supabase | project ref `xhegzotakpbjltwqnffq`, region Mumbai |
+| Vercel | project `raha`, scope `dhanushs-projects-33bdf6aa` |
+| GitHub | `github.com/Dhanush9999279/raha` — push to `main` auto-deploys |
+
+Deploy runbook (env vars, migrations, seed): `docs/DEPLOY.md`.
 
 ## What exists and works
 
@@ -32,22 +44,30 @@ Built in one autonomous session, 2026-07-19. 16 commits, working state throughou
 
 API imports (AdSense/Patreon/Stripe/Razorpay) · automated GSTR-1/3B filing · CA portal / Tally-Zoho export · AI expense categorization · agency dashboard · in-product payments · ITC computation.
 
-## Blocked on you (the only stop-points allowed)
+## Gates that remain (all of them are yours — the build is done)
 
-1. **Supabase project** (region Mumbai) + keys into `.env.local` / Vercel — unlocks seed, browser QA of the signed-in loop, Playwright e2e, real waitlist storage. Steps: `docs/DEPLOY.md` §1–2.
-2. **Vercel** connect + env vars → live URLs. Steps: `docs/DEPLOY.md` §3.
-3. Your real **WhatsApp number** for the CTAs.
+Infra is no longer a blocker. What's left is distribution, revenue, and one config swap:
+
+1. **Send the 50 Gmail drafts** — they are written and sitting in drafts. Nothing sends itself. Follow `docs/outreach/SEND_PLAN.md`: 12/12/12/10/4 across 5 weekday mornings, one by one, 9:30–11:30 IST. Apply the 3 address corrections first (Rahul Mahato's domain is `barcodeent.com`; Rahul Khanna's Clay email is a third-party domain — find a better one or DM; **do not send** Shivam Sharma, wrong company).
+2. **Book and run discovery calls** — reply → call the same day, run `docs/outreach/discovery-call-script.md`, send `founding-customer-closing-doc.md` within 2 hours of any yes/maybe.
+3. **Close 3 founding customers at ₹20,000** — the validation gate. The MVP is live and waiting for them.
+4. **Line up the revenue-share CA** — they review `src/lib/tax/` and `src/lib/gst/` before anyone's first filing. Every figure ships as an estimate until a CA has signed off.
+5. **Swap `NEXT_PUBLIC_WHATSAPP_NUMBER`** — production still points at the personal number `919666641799`. Move it to a business line in Vercel env and redeploy **before real traffic arrives** (i.e. before the Day-1 wave lands).
 
 ## Your next 7 actions (PRD §11, updated)
 
-1. Do `docs/DEPLOY.md` end-to-end → live landing + audit URLs (~20 min).
-2. Paste the live `/audit` URL into the X-thread drafts and ClickUp tasks; set `NEXT_PUBLIC_WHATSAPP_NUMBER`.
-3. Verify the 5 real agency contact emails; fix the Gmail drafts; send them (ClickUp task, due tomorrow).
-4. Start the daily 10:00 outreach hour: 15–20 DMs/day from the scripts; log every reply in Notion.
-5. Post X-thread #1 with the live audit link.
-6. Line up the revenue-share CA (they review `src/lib/tax/` + `src/lib/gst/` before the first filing).
-7. Book 10 discovery calls → close 3 founding creators at ₹20,000 → tick seats in Notion. That's the validation gate; the MVP is already waiting for them.
+1. Swap `NEXT_PUBLIC_WHATSAPP_NUMBER` to a business line in Vercel → redeploy. Do this before anything below reaches a stranger.
+2. Send the Day-1 wave (12 Tier-A drafts) per `docs/outreach/SEND_PLAN.md`, corrections applied; then Days 2–5 on schedule.
+3. Start the daily 10:00 outreach hour: 15–20 DMs/day from the scripts; log every reply in Notion and mark the xlsx `Status` column.
+4. Post X-thread #1 with the live audit link (https://raha-iota.vercel.app/audit).
+5. Book 10 discovery calls; run the script; send the closing one-pager same day.
+6. Close 3 founding creators at ₹20,000 → tick seats in Notion. That's the validation gate.
+7. Line up the revenue-share CA (they review `src/lib/tax/` + `src/lib/gst/` before the first filing).
 
 ## For future dev sessions
 
-Ground truth docs: `docs/raha_prd.md`, `docs/SPEC.md`, `docs/PLAN.md`, `DECISIONS.md` (all 16 decisions), `docs/DEPLOY.md`, `docs/creator-guide.md`. Test suites: `npm test` (68 unit), `npx playwright test` (e2e, needs creds). The fresh-clone check and authed-loop QA remain to be run once Supabase credentials exist.
+Ground truth docs: `docs/raha_prd.md`, `docs/SPEC.md`, `docs/PLAN.md`, `DECISIONS.md` (all 16 decisions), `docs/DEPLOY.md`, `docs/creator-guide.md`.
+
+Test suites: `npm test` (68 unit) · `npx playwright test` (e2e, needs `.env.local` + `npm run seed`).
+
+**Playwright must run with `workers: 1`.** Every signed-in test mints a magic link for the same seeded demo user, and Supabase invalidates the previous token each time one is issued — parallel workers race and burn each other's tokens. This is pinned in `playwright.config.ts`; do not raise it to chase speed.
