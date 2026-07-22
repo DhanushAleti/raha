@@ -22,6 +22,7 @@ export default async function DashboardPage() {
     ]);
 
   if (entriesError || matchesError) {
+    console.error("Dashboard load failed", { entriesError, matchesError });
     return (
       <div className="rounded-2xl border border-red-200 bg-red-50 p-8">
         <h1 className="font-display text-2xl text-raha-ink">Dashboard</h1>
