@@ -90,11 +90,60 @@ Tells you red / amber / green on where you actually stand.
 - Do not delete and repost if it flops. Reach is a lottery; the same thread can be reposted with a
   different hook in 2–3 weeks.
 
+## LinkedIn post — post as-is
+
+**This is the priority channel.** You already have the account, and Indian agency founders — your
+₹20K buyer — live on LinkedIn far more than on X. Post this before the thread.
+
+The first two lines are everything; LinkedIn truncates the rest behind "see more".
+
+---
+
+Most Indian creators earning in dollars are carrying a tax bill nobody has told them about.
+
+I've spent the last few weeks asking creators how they handle tax. One question keeps producing the
+same blank look:
+
+"When AdSense pays you in dollars, does anyone collect the FIRC from your bank?"
+
+Almost nobody knows what that is. Neither do most of their CAs.
+
+Here's why it matters.
+
+Money that reaches you from abroad is an export of services under GST. Exports are zero-rated. 0%.
+
+But only if you can prove the money came from abroad. That proof is a FIRC — a Foreign Inward
+Remittance Certificate — issued by your bank.
+
+No FIRC, no proof of export. The department then reads that income as domestic, at 18%.
+
+If you were never registered, add a penalty equal to the tax, plus 18% annual interest, across
+every unregistered year.
+
+A creator earning ₹40 lakh a year in foreign income can be sitting on ₹17 lakh of exposure. For
+doing nothing wrong.
+
+The CAs aren't incompetent. Most have simply never had a client who gets paid by Singapore every
+month. Creator income is new, and the rules were not written with it in mind.
+
+Three things worth doing this week if this is you:
+
+→ Ask your bank for FIRCs covering every foreign remittance
+→ Ask your CA how your foreign income was treated for GST last year
+→ If the answer isn't immediate, you've found the gap
+
+I'm building Raha to close exactly this for Indian creators. Free 2-minute check in the comments —
+8 questions, no signup, tells you where you stand.
+
+---
+
+**Link goes in the first comment, not the post.** LinkedIn suppresses reach on posts containing
+external links. Post first, then immediately comment with `raha.software/audit`.
+
 ## Where else this goes
 
 | Place | Format | Notes |
 |---|---|---|
-| LinkedIn | Same content, one post, no thread splitting | Indian finance/creator LinkedIn is unusually active; agency founders live here |
 | r/IndiaTax | Text post, drop the product mention entirely | Reddit punishes promotion. Post the insight alone; put the link in a comment only if asked |
 | r/personalfinanceindia | Same | Same rule |
 | Instagram carousel | Posts 1–6 as slides | Your creator ICP lives here more than on X |
