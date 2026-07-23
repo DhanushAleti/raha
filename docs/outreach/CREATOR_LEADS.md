@@ -91,9 +91,21 @@ For each, capture: name, channel, niche, est. subscriber count, whether income i
 and the contact route (DM handle or About-page email). Add them to
 `raha-leads-2026-07-20.xlsx` as a second sheet so both lists live in one place.
 
-**Fix Clay before the next sourcing run.** The connector is authorised but publishing no tools —
-re-authorise it from claude.ai connector settings, and confirm its tools appear. Once they do, this
-whole list can be built and email-verified properly in one pass instead of by hand.
+**Handles confirmed 2026-07-23** (Tier A, verified against live profiles):
+- Ashwin Ganesh / C4ETech — IG `@c4etech` · X `@C4ETech`
+- Geeky Ranjit — IG `@geekyranjitofficial` · X `@geekyranjit`
+- Akshay Saini — IG + X `@akshaymarch7`
+- Gaurav Sen — X `@gkcs_` (no IG confirmed)
+- Anant Ladha — **dropped from Tier A.** CA/CFA/CFP, runs a registered company selling mutual
+  funds, Forbes Asia 30-under-30. Has real tax infrastructure; fails the ICP from the top.
+- Remaining names need a manual handle check — do not guess, common names return multiple people.
+
+**Clay is live as of 2026-07-23** (Personal Workspace, id 1286306), and Vibe Prospecting/Explorium
+is connected alongside it. Neither one solves *this* list, though: B2B databases index companies
+and job titles, and an individual creator is neither. Category autocomplete has no
+influencer-marketing or creator-economy option — the nearest are "marketing services" and
+"advertising services", far too broad to be useful. Point these tools at extending the **agency**
+list; source creators by hand from YouTube and Instagram.
 
 ---
 
