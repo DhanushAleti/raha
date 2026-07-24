@@ -19,20 +19,29 @@ Call window: **Mon 27 Jul, 11:00–13:00 or 15:00–17:00 IST.** Avoid the 1–2
 Phone number: grab it from each agency's website **Contact** page before you start (10 sec each). Do not
 guess. Fill the blanks below Sunday night so Monday is friction-free.
 
-| # | Person | Company | Their email was about | Phone |
+Numbers below are starting points from web search. **Confirm each on the agency's own website
+Contact page before dialing** — broker-sourced numbers (marked ⚠) go stale. Ones from the company's
+own contact page (marked ✓) are reliable.
+
+| # | Person | Company | Their email was about | Phone (verify before dialing) |
 |---|--------|---------|----------------------|-------|
-| 1 | Viraj | Monk-E | a GST gap under Monk-E's roster | __________ |
-| 2 | Neel | IPLIX | the 18% that hits careful creators | __________ |
-| 3 | Danish | Boomlet | the gap under most creator rosters | __________ |
-| 4 | Prerna | Whizco | do Whizco's creators collect FIRCs? | __________ |
-| 5 | Shivam | Cloutflow | creator-side risk in your programmes | __________ |
-| 6 | Praanesh | Qoruz | worth telling Qoruz's creators? | __________ |
-| 7 | Vishal | Hobo Video | the FIRC nobody asks for | __________ |
-| 8 | Vikas | Social Beat | a creator-compliance question | __________ |
-| 9 | Abhinav | ViralPitch | worth flagging to ViralPitch's creators? | __________ |
-| 10 | Shahir | Divo | Divo's creators and foreign-income GST | __________ |
-| 11 | Raj | QYOU / Represent | a compliance gap across the roster | __________ |
-| 12 | Sahil | iCubesWire | a question about iCubesWire's creators | __________ |
+| 1 | Viraj | Monk-E | a GST gap under Monk-E's roster | No main line found. Route-in: Tanya (Brand Partnerships) 7223046060, or monk-e.in/contact |
+| 2 | Neel | IPLIX | the 18% that hits careful creators | +91 98995 70199 ✓ (iplix.in/contact) |
+| 3 | Danish | Boomlet | the gap under most creator rosters | +91 97023 13412 ✓ (boomlet.co/contact) · business@boomlet.co |
+| 4 | Prerna | Whizco | do Whizco's creators collect FIRCs? | +91 88829 24178 ⚠ / +91 96259 41476 ⚠ — verify on whizco.in/contact |
+| 5 | Shivam | Cloutflow | creator-side risk in your programmes | +91 93199 45600 ✓ (Vatika Tower, Gurugram) |
+| 6 | Praanesh | Qoruz | worth telling Qoruz's creators? | No public voice line — contact form at qoruz.com/contact |
+| 7 | Vishal | Hobo Video | the FIRC nobody asks for | No voice line — WhatsApp +91 96259 58885 · partnership@hobo.video |
+| 8 | Vikas | Social Beat | a creator-compliance question | No public number found — team@socialbeat.in; check socialbeat.in for a line |
+| 9 | Abhinav | ViralPitch | worth flagging to ViralPitch's creators? | +91 99063 69938 ⚠ — verify on viralpitch.co · contact@viralpitch.co |
+| 10 | Shahir | Divo | Divo's creators and foreign-income GST | 080-69059700 ✓ (divo.in/contact) |
+| 11 | Raj | QYOU / Represent | a compliance gap across the roster | Via Chtrbox +91 98335 25825 ✓ (chtrbox.com) |
+| 12 | Sahil | iCubesWire | a question about iCubesWire's creators | No public number found — contact@icubeswire.com; check icubeswire.com/contact |
+
+**Reality check:** ~5 of the 12 have a callable number. The rest (Qoruz, Hobo, Social Beat,
+iCubesWire) are contact-form / WhatsApp / email only — for those, your email + a WhatsApp or
+LinkedIn message is the real channel, not a cold call. Don't burn time hunting for numbers that
+aren't public. Call the 5–6 who have lines; message the rest.
 
 (The 11 you emailed Thursday afternoon become Tuesday's call list. One day at a time.)
 
