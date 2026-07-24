@@ -105,6 +105,7 @@ Then stop talking. Whoever speaks first after the ask, loses.
 - **"They already have a CA."** → "Keep them — I'm not a replacement. I hand your CA clean, reconciled files. Ask them one thing first: how was that creator's AdSense treated for GST last year? If the answer isn't instant, that's the gap."
 - **"Send me some info."** → "Happy to — though info usually isn't the blocker. Can I ask what's making you hesitate?" (This is a soft no. Convert it or let it go.)
 - **"Not right now."** → "Understood. Can I send the free audit link so you have it when it's relevant? And if one creator comes to mind who's drowning in this, an intro's the best thing you could do for me."
+- **"How's this different from TaxTap / CreatorKhata?"** → "TaxTap files at season-end; CreatorKhata helps run the content business. Raha sits between and is creator-only — it tracks FIRCs continuously so foreign income is provably 0%, shows a live set-aside number, and every filing is CA-signed. The free 2-min check shows where you stand before committing." (Full brief: COMPETITIVE_BRIEF.md. Bonus: ask "what did TaxTap quote you?" — free pricing intel.)
 
 ---
 
