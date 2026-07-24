@@ -1,46 +1,45 @@
-# 5 creator emails — ready to send
+# 5 creator emails — status: 3 ready, 2 need the address
 
-**Two things to fill before sending each one:**
-1. **The address** — YouTube channel → About → "View email address" (click the captcha). Paste it in.
-   Do NOT guess an address; a bounce hurts every other email you send.
-2. **The [one specific recent video]** slot — name something they actually posted in the last week
-   or two, with one real detail. This single line is what stops it reading as a template. 30 seconds
-   on their channel. Don't fake it — a wrong reference is worse than none.
-
-No link in the body (protects deliverability on a first cold email). The whole point is to get a
-"yes, send it" reply — then you send the audit link in the reply. Send from your Gmail, one at a
-time, a few minutes apart.
+No link in any body (protects deliverability on a first cold email). Goal is a "yes, send it"
+reply — then the audit link goes in your reply, written at the bottom. Send one at a time, a few
+minutes apart, from your Gmail.
 
 ---
 
-## 1 — Ashwin Ganesh (C4ETech)
+## 1 — Ashwin Ganesh (C4ETech) — READY, send this
 
-**Angle:** English tech reviews, largely non-India audience → most income is USD AdSense.
+**To:** ash@c4etech.com
+**Personalization used:** his iQOO 15R review, posted 4 days ago — the "Goldilocks phone" framing and the 100W/7600mAh charging detail, both real and specific.
 
-**Subject:** the FIRC your bank never mentions
+**Subject:** the Goldilocks phone and one certificate
 
 Hi Ashwin,
 
-Been watching C4ETech for a while — [name one specific recent video + a real detail]. Quick question, and it's genuinely a question, not a pitch.
+Watched your iQOO 15R review. The "Goldilocks phone" framing was a good one, balanced instead of chasing one headline spec. That 0 to 100 charge in under an hour on a 7600mAh battery is wild too.
 
-When YouTube pays you in dollars, that's an export of services, so it should be 0% GST. But only if your bank issued a FIRC for each payment. No FIRC and the department can treat it as domestic income at 18%, with penalty and interest on top.
+Different question, and a genuine one. When YouTube pays you in dollars, that's an export of services, so it should be 0% GST. But only if your bank issued a FIRC for each payment. No FIRC and it can get treated as domestic income at 18%, with penalty and interest added on top.
 
-Almost every creator I've asked had never heard the term, and neither had their CA. I'm building Raha, tax stuff built only for creators, and I'm running free checks for a first batch. Want me to run yours?
+Almost every creator I've asked had never heard of a FIRC, and neither had their CA. I'm building Raha, tax stuff built only for creators, and running free checks for a first batch. Want me to run yours?
 
 Dhanush
 Founder, Raha
 
 ---
 
-## 2 — Geeky Ranjit
+## 2 — Geeky Ranjit — BLOCKED, missing the email
 
-**Angle:** Decade-plus of English tech reviews, long AdSense history, independent operator.
+What you pasted was the anti-scam disclaimer ("ignore emails from any non-@geekyranjit.com
+address"), not the address itself. That warning sits right below the actual email on his About
+page — go back and copy the address shown above it. Do not send to anything else; his own page
+tells you non-@geekyranjit.com senders get treated as scammers, so a wrong domain here is worse
+than a normal bounce.
+
+Body ready the moment you have it (same angle as before — no new video was given for him, so this
+uses his decade-plus AdSense history, still true and still specific):
 
 **Subject:** a decade of AdSense and one missing certificate
 
 Hi Ranjit,
-
-Long-time viewer — [name one specific recent video + a real detail].
 
 You've been earning from YouTube longer than almost anyone in Indian tech, which is exactly why this is worth two minutes. Dollar income from YouTube is a zero-rated export for GST, so 0%. But that only holds if your bank issued a FIRC for each remittance. Without it, years of foreign income can get reassessed as domestic at 18%, plus penalty and interest.
 
@@ -51,17 +50,21 @@ Founder, Raha
 
 ---
 
-## 3 — Akshay Saini (Namaste JavaScript / NamasteDev)
+## 3 — Akshay Saini (Namaste JavaScript / NamasteDev) — BLOCKED, missing the email
 
-**Angle:** Sells dev courses to a global audience → USD course revenue, not just AdSense.
+What came through was his channel bio, not an address. No email was captured at all this time,
+only his social handles (LinkedIn/Instagram/Twitter @akshaymarch7). Go to his YouTube channel →
+About → "View email address" and click through the captcha. If that's not available, namastedev.com
+may list a business contact — check there before guessing.
+
+Body ready the moment you have it (his bio gave real facts to use instead of a specific video —
+ex-Uber/Paytm engineer, 10+ years, left the job to teach full time, trained 100K+ students):
 
 **Subject:** course income from abroad and an 18% surprise
 
 Hi Akshay,
 
-Big fan of what you've built with Namaste JavaScript — [name one specific recent video/course drop + a real detail].
-
-Question that catches a lot of creators who sell courses globally: when payments come from outside India, that's an export of services, so 0% GST. But it depends on two bits of paper most people never file: a FIRC from your bank for each remittance, and an LUT once a year. Miss them and the department can treat that income as domestic at 18%, with penalty and interest.
+10+ years as an engineer at Uber and Paytm, then walking away to teach full time and reach 1.2M people, that's a rare call to make. Question that catches a lot of creators who sell courses globally: when payments come from outside India, that's an export of services, so 0% GST. But it depends on two things most people never file, a FIRC from your bank for each remittance, and an LUT once a year. Miss them and the department can treat that income as domestic at 18%, with penalty and interest.
 
 I'm building Raha, tax compliance built only for creators. Doing free checks for a first batch. Want yours run?
 
@@ -70,38 +73,41 @@ Founder, Raha
 
 ---
 
-## 4 — Gaurav Sen (InterviewReady)
+## 4 — Gaurav Sen (InterviewReady) — READY, send this
 
-**Angle:** Sells system-design courses worldwide → international payments through a platform.
+**To:** contact@interviewready.io
+**Note:** this is likely a shared company inbox, not Gaurav's personal address. Address him by name in the body anyway so whoever reads it routes it correctly.
+**Personalization used:** InterviewReady's own description — global reach, LLD/system design/behavioral courses, live Zoom sessions. No specific recent video was available, so this leans on the company's real positioning instead of inventing one.
 
-**Subject:** a GST gap under course income
+**Subject:** course income from abroad and an 18% surprise
 
 Hi Gaurav,
 
-Been following your work — [name one specific recent video + a real detail].
+InterviewReady's system design and LLD courses reach engineers everywhere, not just India, which is exactly where this question matters.
 
-You sell to engineers worldwide, so a good chunk of your revenue lands from abroad. That's an export of services under GST, taxed at 0%. But only if there's a FIRC from your bank proving it came from outside India, and an LUT filed for the year. Without them it can be reassessed as domestic income at 18%, plus penalty and interest.
+When a payment for your course comes from outside India, that's an export of services, so 0% GST. But it depends on two things almost nobody files, a FIRC from your bank for each remittance, and an LUT filed once a year. Miss them and that income can get reassessed as domestic at 18%, with penalty and interest on top.
 
-Most CAs never ask for either. I'm building Raha for creators and course-sellers and running free checks for a first cohort. Want me to run yours?
+I'm building Raha, tax compliance built only for creators and course sellers, and running free checks for a first cohort. Want me to run yours?
 
 Dhanush
 Founder, Raha
 
 ---
 
-## 5 — Bharat Nagpal (iGyaan)
+## 5 — Bharat Nagpal (iGyaan) — READY, send this
 
-**Angle:** English tech/unboxing with international viewership → USD AdSense.
+**To:** info@igyaan.in
+**Personalization used:** the AI+ Nova 2 / Nova 2 Ultra hands-on video, real details, the 4K30 front camera and the IP68 rating for the segment.
 
-**Subject:** the 0% vs 18% question for creators
+**Subject:** the FIRC iGyaan's foreign income needs
 
 Hi Bharat,
 
-Watched iGyaan for years — [name one specific recent video + a real detail].
+Caught your AI+ Nova 2 hands-on. The 4K30 front camera detail stood out, most brands don't get selfie video anywhere near that.
 
-Straight question about creator tax. When YouTube pays you in dollars, that's a zero-rated export, so 0% GST. But only if your bank issued a FIRC for each payment. No FIRC and it can be treated as domestic income at 18%, with penalty and interest layered on for the years it went unregistered.
+Different question though, nothing to do with phones. iGyaan's AdSense income from international viewers is a zero-rated export under GST, so 0%. But only if the bank issued a FIRC for each payment coming in. No FIRC and it can be reassessed as domestic income at 18%, plus penalty and interest for the years it went unregistered.
 
-Nearly every creator I've spoken to had never heard of it. I'm building Raha, tax handled specifically for creators, and doing free checks for a first batch. Want me to run yours?
+Nearly every creator I've spoken to had never heard of it. I'm building Raha, tax handled specifically for creators, doing free checks for a first batch. Want me to run yours?
 
 Dhanush
 Founder, Raha
@@ -110,9 +116,7 @@ Founder, Raha
 
 ## If they reply "yes" or "what's a FIRC?"
 
-Send the link then:
-
-> It's your bank's proof the money came from abroad — without it your dollar income can't be treated
+> It's your bank's proof the money came from abroad, without it your dollar income can't be treated
 > as a zero-rated export, so you either overpay GST or carry notice risk. Takes 2 minutes to see
-> where you stand: rahatax.vercel.app/audit — 8 questions, no signup. Happy to walk through your
+> where you stand: rahatax.vercel.app/audit, 8 questions, no signup. Happy to walk through your
 > result after.
