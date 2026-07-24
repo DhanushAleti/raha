@@ -1,9 +1,9 @@
-# 5 creator emails — status: 3 sitting in Gmail drafts, 2 need the address
+# 5 creator emails — all 5 now sitting in Gmail drafts
 
-**3 created as real Gmail drafts on 2026-07-24** — Ashwin/C4ETech, Gaurav/InterviewReady,
-Bharat/iGyaan. Open Gmail, they're there, just click send. Wording below is final (lightly
-human-edited from the first pass, one "Here's a" dropped from Akshay's body to match the
-no-AI-tell rule from earlier in the week).
+**All 5 created as real Gmail drafts on 2026-07-24** — Ashwin/C4ETech, Gaurav/InterviewReady,
+Bharat/iGyaan, Akshay Saini (akshaysaini.in@gmail.com), Geeky Ranjit (ranjit@geekyranjit.com,
+the verified address, not the anti-scam disclaimer text). Open Gmail, they're all there. Send one
+at a time, a few minutes apart. Wording below is final.
 
 No link in any body (protects deliverability on a first cold email). Goal is a "yes, send it"
 reply — then the audit link goes in your reply, written at the bottom. Send one at a time, a few
