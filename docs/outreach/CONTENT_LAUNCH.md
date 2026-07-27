@@ -23,6 +23,26 @@ account was the problem. Check `reddit.com/user/<you>` for karma before anything
 
 ---
 
+## Step 0 — find people already asking (this IS the karma step)
+
+Don't build karma on random comments. Build it by answering the exact question you're an expert in.
+These searches surface people publicly asking about your problem, right now. Open them, sort by new,
+and answer the ones you genuinely know:
+
+- [r/IndiaTax — "FIRC"](https://www.reddit.com/r/IndiaTax/search/?q=FIRC&restrict_sr=1&sort=new)
+- [r/IndiaTax — "export of services"](https://www.reddit.com/r/IndiaTax/search/?q=%22export+of+services%22&restrict_sr=1&sort=new)
+- [r/IndiaTax — "LUT"](https://www.reddit.com/r/IndiaTax/search/?q=LUT&restrict_sr=1&sort=new)
+- [r/personalfinanceindia — "foreign income"](https://www.reddit.com/r/personalfinanceindia/search/?q=foreign+income&restrict_sr=1&sort=new)
+- [r/freelance_india — "GST"](https://www.reddit.com/r/freelance_india/search/?q=GST&restrict_sr=1&sort=new)
+- [All Reddit — "FIRC GST freelancer"](https://www.reddit.com/search/?q=FIRC+GST+freelancer&sort=new)
+
+This does three jobs at once: builds the karma you need to post, puts you in front of people who
+have already self-identified as having your exact problem, and teaches you the real language they
+use to describe it — which is worth more than any script I can write for you.
+
+**Answer properly and never mention Raha.** A useful answer with no pitch is what earns the profile
+click. If someone then asks what you do, that's when you say it.
+
 ## Post 1 — r/IndiaTax
 
 Technical audience. They will fact-check you, which is fine — the FIRC point holds.
