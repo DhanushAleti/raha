@@ -84,6 +84,64 @@ even Hindi creators are exporting services. Language is a *weaker* disqualifier 
 
 ---
 
+---
+
+# Segment 2 — indie SaaS, digital products, paid newsletters
+
+**Better fit than YouTubers.** Stripe, Gumroad, AppSumo, Lemon Squeezy and Substack all pay in USD
+and none of them issue FIRCs. These founders are technical, they already know compliance is a
+problem, and several have publicly said so.
+
+## The single best lead in either segment
+
+**Abhinav Upadhyay** — "Confessions of a Code Addict", paid Substack, 7,000+ subs, 300k+ reads,
+India-based (stated).
+
+He wrote a post titled **"Substack has failed Indian creators"** about cross-border payment
+failures: [blog.codingconfessions.com/p/substack-has-failed-indian-creators](https://blog.codingconfessions.com/p/substack-has-failed-indian-creators)
+
+He has publicly articulated your exact problem, in his own words, unprompted. Read that post before
+writing to him and reference it specifically. Contact: "Contact Me" page linked from
+[the about page](https://blog.codingconfessions.com/about).
+
+## Tier A — verified India-resident, USD revenue
+
+| Name | Product | Foreign-revenue evidence | Contact |
+|---|---|---|---|
+| **Abhinav Upadhyay** | Paid Substack (systems programming) | 7,000+ subs, wrote publicly on Indian cross-border payment failure | Contact page via [about](https://blog.codingconfessions.com/about) |
+| **Sanat Hegde** | Hirevire (async screening SaaS) | ~$13k MRR Stripe-verified, ~$103k trailing 12mo, USD | X **@hsanat** — states "I reply to all my emails". Mumbai |
+| **Surjith S M** | Web3Templates / Web3Forms | Global template + form-API sales, USD | **mail@surjithctly.in** — published on his own site, not constructed. Kerala |
+| **Sundeep Agarwal** | 13 self-published dev ebooks | **Gumroad** + Leanpub, mostly Western buyers; has written about payouts "in India" | X **@learn_byexample** · [books page](https://learnbyexample.github.io/books/) |
+| **Shri Vatz** | Guidejar (interactive demos) | $4–5k MRR, 170+ subs, AppSumo LTD → 950+ customers (USD payouts). Chennai | Indie Hackers **@Shrivatz** |
+| **Utsav Patel & Deven Bhooshan** | Supergrow (AI LinkedIn tool) | ~$18–32k/mo, 693 paying + 500 LTD, USD. Bengaluru, unfunded | [company LinkedIn](https://in.linkedin.com/company/supergrowai); founder handles need lookup |
+| **Vivek Bansal** | "Curious Engineer" paid Substack | 10,000+ subs, global eng audience. Bangalore | X **@vivekbansal1011** ⚠️ has a full-time Uber job — may be under ₹20L |
+| **Sanskar Tiwari** | MagicSlides, SheetAI, BlurWeb | 2.3M+ users, ₹2.74 Cr FY25 ⚠️ above the band, but no finance team | [magicslides.app/about](https://www.magicslides.app/about) · X **@_magicslides** |
+
+## Verify residency before contacting
+
+Manu Arora (Aceternity UI), Preet Suthar (Ikiform), Akash Moradiya (Shadcn UI Blocks), Neel Patel
+(SyncSignature — city unverified), Bhanu Teja P (SiteGPT, $15k+ MRR — described as India-based but
+no primary source confirms current residence).
+
+## Do NOT contact — residency failures, segment 2
+
+All five look like perfect ICP on paper and are **not** India-resident:
+
+- **Rohan Venkat** (India Inside Out) — Cairo
+- **Rishi Mohan** (Pika.style, $4k MRR) — Berlin
+- **Sridhar Katakam** (paid WordPress membership) — Melbourne
+- **Devansh** (AI Made Simple, 100+ paid subs) — NYC
+- **Desi Crime Podcast** hosts — US
+
+That's eight residency exclusions across both segments. The check is worth doing every time.
+
+## Likely below ₹20L — deprioritise, don't delete
+
+Mahima Vashisht (Womaning in India), Learn Hindi On The Go (~$348/mo Patreon), Sundeep Agarwal
+(possibly higher now with 13 books — worth checking).
+
+---
+
 ## How to get the contact address
 
 For anyone marked "YouTube About": channel → About → "View email address" → captcha. Ten seconds.
