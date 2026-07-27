@@ -5,7 +5,6 @@
       "name": "raha-dev",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"],
-      "cwd": "/Users/aletidhanush/Desktop/obsedian/raha",
       "port": 3000
     }
   ]
