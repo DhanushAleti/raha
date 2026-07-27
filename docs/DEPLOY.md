@@ -8,6 +8,17 @@ Everything is built and verified except the two things only you can create: a Su
 2. SQL Editor → paste and run each file from `supabase/migrations/` **in order**: `0001…`, `0002…`, `0003…`, `0004…`. All are idempotent (safe to re-run).
 3. Authentication → Providers → enable **Google** (needs a Google OAuth client — Supabase docs walk through it) and keep **Email** on. Authentication → URL Configuration → set Site URL to your production URL and add `https://YOUR-DOMAIN/auth/confirm` + `/auth/callback` to redirect URLs.
 4. Project Settings → API → copy: Project URL, `anon` key, `service_role` key.
+5. **Authentication → Email Templates → Magic Link.** The token must sit in the URL *fragment*, not the query string. The link line has to read:
+
+   ```
+   <a href="{{ .SiteURL }}/auth/confirm#token_hash={{ .TokenHash }}&type=email">Sign in</a>
+   ```
+
+   The only character that matters is `#` where a `?` would normally go.
+
+   **Why:** Gmail and corporate mail filters pre-fetch links to scan them for malware. Magic-link tokens are single-use, so that automated fetch consumes the token and the real recipient lands on "link expired or was already used" — every time. Everything after `#` is never sent to a server, so a scanner physically cannot see or burn the token; only JavaScript in a real browser can read it. `/auth/confirm` is a client page that verifies it there.
+
+   Do the same for the **Confirm signup** template if you use it.
 
 ## 2. Local env + seed (~3 min)
 
