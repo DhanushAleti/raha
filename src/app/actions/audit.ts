@@ -43,6 +43,40 @@ export type AuditLeadResult =
   | { status: "ok" }
   | { status: "error"; message: string };
 
+/**
+ * Records an anonymous audit completion.
+ *
+ * The report is shown before the email ask, so most completions never become a
+ * lead. Without this the top of the funnel is invisible — no way to tell how
+ * many people finished the audit versus how many handed over an email. Stores
+ * no PII: answers and verdict only.
+ *
+ * Fire-and-forget: a measurement failure must never disrupt the report.
+ */
+export async function recordAuditCompletion(input: unknown): Promise<void> {
+  const parsed = answersSchema.safeParse(input);
+  if (!parsed.success) return;
+
+  const result = computeAuditResult(parsed.data as AuditAnswers);
+
+  try {
+    const supabase = await createClient();
+    const { error } = await supabase.from("audit_completions").insert({
+      answers: parsed.data,
+      score: result.score,
+      verdict: result.verdict,
+    });
+    if (error) {
+      console.error("audit completion insert failed", {
+        code: error.code,
+        message: error.message,
+      });
+    }
+  } catch (err) {
+    console.error("audit completion action crashed", err);
+  }
+}
+
 export async function saveAuditLead(input: unknown): Promise<AuditLeadResult> {
   const parsed = leadSchema.safeParse(input);
   if (!parsed.success) {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState, useTransition } from "react";
+import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -10,7 +10,7 @@ import {
   computeAuditResult,
   type AuditAnswers,
 } from "@/lib/audit/scoring";
-import { saveAuditLead } from "@/app/actions/audit";
+import { recordAuditCompletion, saveAuditLead } from "@/app/actions/audit";
 import { QUESTIONS } from "./questions";
 import { AuditReport } from "./audit-report";
 
@@ -83,6 +83,16 @@ export function AuditWizard() {
     if (!isComplete) return null;
     return computeAuditResult(answers as unknown as AuditAnswers);
   }, [answers, isComplete]);
+
+  // Most people never reach the email form, so the completion is logged here
+  // instead — otherwise the top of the funnel is invisible. Fires once, and a
+  // failure is swallowed server-side rather than disturbing the report.
+  const recordedRef = useRef(false);
+  useEffect(() => {
+    if (phase !== "report" || !isComplete || recordedRef.current) return;
+    recordedRef.current = true;
+    void recordAuditCompletion(answers);
+  }, [phase, isComplete, answers]);
 
   function selectSingle(value: string) {
     setAnswers((prev) => ({ ...prev, [question.id]: value }));
