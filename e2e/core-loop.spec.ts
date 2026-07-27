@@ -3,9 +3,13 @@ import { createClient } from "@supabase/supabase-js";
 
 /**
  * Core loop: sign in → add income → match FIRC → generate invoice → liability.
- * Sign-in uses the REAL magic-link route: the admin API mints a link for the
+ * Sign-in uses the REAL magic-link page: the admin API mints a link for the
  * seeded demo user (scripts/seed.mjs) and the browser visits /auth/confirm
  * exactly like a creator clicking the email. Needs SUPABASE_SERVICE_ROLE_KEY.
+ *
+ * The token goes in the URL fragment, matching the Supabase email template —
+ * fragments never reach the server, so mail scanners can't burn the one-time
+ * token before the recipient clicks.
  */
 const DEMO_EMAIL = "demo@raha-demo.in";
 
@@ -23,7 +27,7 @@ async function signIn(page: Page) {
     throw new Error(`Couldn't mint a sign-in link: ${error?.message}`);
   }
   await page.goto(
-    `/auth/confirm?token_hash=${data.properties.hashed_token}&type=magiclink&next=/app`,
+    `/auth/confirm#token_hash=${data.properties.hashed_token}&type=magiclink&next=/app`,
   );
   await page.waitForURL("**/app");
 }
