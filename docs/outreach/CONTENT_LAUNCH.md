@@ -1,176 +1,128 @@
-# Launch content — the FIRC thread and where to put it
+# Launch content — Reddit first
 
-Cold outreach is a 1-to-1 channel: 12 emails buys you 12 chances. Content is 1-to-many, and the
-FIRC insight is genuinely under-known in Indian creator circles. That asymmetry is the reason this
-file exists.
+Cold outreach is 1-to-1: 28 emails bought 28 chances. Content is 1-to-many, and the FIRC gap is
+genuinely under-known in Indian creator circles. That asymmetry is why this file exists.
 
-Post from **your personal handle**, not a brand account. See "Why not a Raha account" below.
-
----
-
-## X / Twitter thread — post as-is
-
-**1/**
-If you're an Indian creator paid in dollars — AdSense, Patreon, foreign brand deals — there's an
-18% GST bill you may be carrying without knowing.
-
-Not because you did anything wrong. Because of one certificate almost nobody collects.
-
-**2/**
-When money reaches you from abroad, GST treats it as an export of services.
-
-Export of services = zero-rated.
-Zero-rated = 0% GST.
-
-That's the law working in your favour.
-
-**3/**
-But it comes with a condition.
-
-You have to be able to *prove* the money came from abroad.
-
-That proof is a FIRC — Foreign Inward Remittance Certificate. Your bank issues it. Some banks call
-it a FIRA.
-
-**4/**
-No FIRC, no proof of export.
-
-No proof of export, and the department reads that income as domestic.
-
-Domestic means 18%.
-
-Same money. Same work. 18% instead of 0%.
-
-**5/**
-It compounds if you were never registered.
-
-A penalty equal to the tax.
-18% annual interest.
-Applied across every year it went unregistered.
-
-A creator on ₹40L a year of foreign income can be sitting on ₹17L+ of exposure.
-
-**6/**
-Here's the part that actually bothers me.
-
-Almost every creator I've spoken to had never heard the word FIRC. Neither had their CA.
-
-Not because the CA is bad. Because most CAs have never had a client who gets paid by Singapore
-every month.
-
-**7/**
-Three things worth doing this week:
-
-— Ask your bank for FIRCs covering every foreign remittance
-— Ask your CA: "how was my AdSense income treated for GST last year?"
-— If the answer isn't instant, you've found the gap
-
-**8/**
-One more most people miss: an LUT (Letter of Undertaking) lets you export without paying IGST
-upfront. It's free, filed once a year on the GST portal, and most creators have never filed one.
-
-**9/**
-I'm building Raha — tax compliance built only for Indian creators.
-
-Free check, 8 questions, about 2 minutes, no signup:
-raha.software/audit
-
-Tells you red / amber / green on where you actually stand.
+**Reddit is the channel.** It fits for three reasons: it's free, the audience is high-intent (people
+literally go there to ask tax questions), and it's **pseudonymous** — no real name, no IIT Madras
+tag, no one from your batch watching. The thing that has been stopping you doesn't apply here.
 
 ---
 
-## Rules for posting it
+## Before you post — the account check
 
-- **No hashtags.** They suppress reach on X now and read as marketing.
-- **Link only in the last post.** X throttles posts containing external links; keeping the link out
-  of post 1 protects the reach of the whole thread.
-- **Reply to every single comment**, especially "what's a FIRC?" — that reply is the conversation
-  where a customer actually appears.
-- Post **09:00–11:00 IST or 20:00–22:00 IST** on a weekday.
-- Do not delete and repost if it flops. Reach is a lottery; the same thread can be reposted with a
-  different hook in 2–3 weeks.
+Most large subs auto-remove posts from accounts with low karma or under ~30 days old. Check your
+Reddit account age and karma first. If it's new or empty:
 
-## LinkedIn post — post as-is
+1. Spend two days **only commenting** — answer tax questions you actually know the answer to. Ten
+   good comments builds enough karma to post.
+2. Then post.
 
-**This is the priority channel.** You already have the account, and Indian agency founders — your
-₹20K buyer — live on LinkedIn far more than on X. Post this before the thread.
-
-The first two lines are everything; LinkedIn truncates the rest behind "see more".
+Skipping this means your post gets silently removed and you'll think the idea failed when the
+account was the problem. Check `reddit.com/user/<you>` for karma before anything else.
 
 ---
 
-Most Indian creators earning in dollars are carrying a tax bill nobody has told them about.
+## Post 1 — r/IndiaTax
 
-I've spent the last few weeks asking creators how they handle tax. One question keeps producing the
-same blank look:
+Technical audience. They will fact-check you, which is fine — the FIRC point holds.
 
-"When AdSense pays you in dollars, does anyone collect the FIRC from your bank?"
+**Title:** `Most Indian creators earning in USD are missing the one document that makes it 0% GST`
 
-Almost nobody knows what that is. Neither do most of their CAs.
+**Body:**
 
-Here's why it matters.
+If you're freelancing or creating for foreign clients and getting paid in dollars, this is worth two minutes.
 
-Money that reaches you from abroad is an export of services under GST. Exports are zero-rated. 0%.
+Money that reaches you from outside India is an export of services under GST. Exports are zero-rated. 0%.
 
-But only if you can prove the money came from abroad. That proof is a FIRC — a Foreign Inward
-Remittance Certificate — issued by your bank.
+But zero-rating is conditional. You have to be able to prove the money came from abroad, and the proof the department wants is a FIRC — Foreign Inward Remittance Certificate — issued by your bank. Some banks call it a FIRA or an inward remittance advice.
 
-No FIRC, no proof of export. The department then reads that income as domestic, at 18%.
+No FIRC, no proof of export. That income then gets read as a domestic supply, at 18%.
 
-If you were never registered, add a penalty equal to the tax, plus 18% annual interest, across
-every unregistered year.
+If you were never registered on top of that, add a penalty equal to the tax and 18% annual interest, across every year it went unregistered.
 
-A creator earning ₹40 lakh a year in foreign income can be sitting on ₹17 lakh of exposure. For
-doing nothing wrong.
+There's a second piece almost nobody files: the LUT, a Letter of Undertaking, submitted once a year on the GST portal. It's free. Without it you're supposed to pay IGST upfront and claim a refund later, instead of simply not paying it.
 
-The CAs aren't incompetent. Most have simply never had a client who gets paid by Singapore every
-month. Creator income is new, and the rules were not written with it in mind.
+What I keep running into is that the CAs aren't being negligent. Most have never had a client who gets paid by Singapore or Delaware every month — creator and freelance income is new and the rules weren't drafted with it in mind.
 
-Three things worth doing this week if this is you:
+Three things worth doing if this is you:
 
-→ Ask your bank for FIRCs covering every foreign remittance
-→ Ask your CA how your foreign income was treated for GST last year
-→ If the answer isn't immediate, you've found the gap
+- Ask your bank for FIRCs covering every foreign remittance, going back as far as they'll issue
+- Check whether an LUT was filed for this financial year
+- Ask your CA how your foreign income was treated for GST last year. If the answer isn't immediate, that's the gap.
 
-I'm building Raha to close exactly this for Indian creators. Free 2-minute check in the comments —
-8 questions, no signup, tells you where you stand.
+Happy to answer questions if anyone's dealt with the FIRC process at a specific bank — the experience varies a lot between them.
 
 ---
 
-**Link goes in the first comment, not the post.** LinkedIn suppresses reach on posts containing
-external links. Post first, then immediately comment with `raha.software/audit`.
+## Post 2 — r/personalfinanceindia
 
-## Where else this goes
+Broader, less technical. Lead with the money, not the mechanism.
 
-| Place | Format | Notes |
-|---|---|---|
-| r/IndiaTax | Text post, drop the product mention entirely | Reddit punishes promotion. Post the insight alone; put the link in a comment only if asked |
-| r/personalfinanceindia | Same | Same rule |
-| Instagram carousel | Posts 1–6 as slides | Your creator ICP lives here more than on X |
-| YouTube comments | On videos where creators discuss earnings | Genuinely useful replies only — never paste the link cold |
+**Title:** `A creator I spoke to owed ₹0 GST and had been quietly paying 18% for three years`
 
-## Why not a Raha brand account
+**Body:**
 
-Don't create one yet.
+Sharing this because I've now had the same conversation enough times that it seems worth writing down.
 
-A new `@raha` account starts at zero followers with zero distribution — the thread above posted from
-it reaches nobody. The same thread from a personal account with even a small real network has a
-chance of being seen and reshared.
+If you earn from YouTube, Patreon, foreign brand deals, or overseas clients, that money is an export of services. Exports are zero-rated for GST — you owe 0%.
 
-Founder accounts materially outperform brand accounts at this stage, and you are the credible
-narrator here: you found the FIRC gap, you talked to the creators, you're building the fix. "I'm
-building this and here's what I learned" is a story. A brand account posting tax facts is an ad.
+The catch is you have to prove the money came from abroad, and the proof is a FIRC from your bank. A Foreign Inward Remittance Certificate. Without it, the department can treat that income as domestic and charge 18%.
 
-Create the brand account once there's something to maintain it with — customers, a changelog,
-a reason to post weekly. Not before.
+Nobody I've asked had heard of it. Neither had most of their CAs.
 
-## Why there is no DM automation tool, and why that's correct
+The numbers get ugly fast. On ₹40 lakh a year of foreign income, the difference between 0% and 18% is over ₹7 lakh a year before you add penalty and interest for unregistered years.
 
-The MCP registry has **no Instagram or X DM connector** — checked, returns empty. Nothing to connect.
+The people this catches aren't dodging anything. They just never knew which piece of paper to ask their bank for.
 
-That is the right outcome anyway. Instagram and X both treat automated DM sending as a ToS
-violation, and enforcement is aggressive: new accounts sending templated DMs at volume get
-rate-limited, shadowbanned, or removed. At 15–20 DMs a day, manual sending is both the compliant
-route and the effective one, because the personalised first line is the entire reason the DM works.
+If you're earning from abroad: ask your bank for FIRCs for every remittance, check whether an LUT was filed this year, and ask your CA how your foreign income was treated last year. If they have to go and look it up, you've found the gap.
 
-Automate the research, never the send.
+Not advice, just the pattern I keep seeing. Ask away if useful.
+
+---
+
+## Rules — these matter more than the posts
+
+**Do not put a link in the post.** Not in the body, not in a comment you add yourself, not in your
+signature. Reddit removes promotional posts and bans accounts that do this. The post has to work as
+a standalone useful thing or not at all.
+
+**The link only appears if someone asks for it.** And they do — the natural question is "how do I
+check where I stand?" Then, and only then:
+
+> I built a free check for this actually — 8 questions, about 2 minutes, no signup, gives you a
+> red/amber/green: raha.software/audit. Happy to look at your specifics either way.
+
+That's honest, it's answering a direct question, and it doesn't read as an ad.
+
+**Answer every single comment.** Especially the sceptical ones and the "what's a FIRC" ones. Reddit
+rewards someone who shows up in their own thread. That's where the conversations that turn into
+customers actually start.
+
+**Post 09:00–11:00 IST or 20:00–22:00 IST** on a weekday. One sub per day, not both at once —
+cross-posting the same content simultaneously reads as spam.
+
+**If it flops, that's normal.** Most Reddit posts get little traction. Reach is a lottery. The same
+content can be reposted with a different title in two to three weeks.
+
+---
+
+## The other free channels
+
+| Where | How |
+|---|---|
+| WhatsApp / Telegram creator groups | Massively underrated in India. One genuinely useful message in the right group beats fifty cold emails. Answer, don't pitch. |
+| YouTube comments | Under Indian creator-finance videos where earnings come up. Leave a real, useful comment about FIRCs. You're standing exactly where your buyers read. |
+| r/freelance_india, r/DigitalMarketingIndia | Same posts, same rules. Space them out by days. |
+
+## Why there is no Raha brand account, and no DM automation
+
+A new `@raha` account starts at zero followers — the same post from it reaches nobody. Create one
+when there's something to maintain it with: customers, a changelog, a reason to post weekly.
+
+The MCP registry has no Instagram or X DM connector — checked, returns empty. That's also the right
+outcome: both platforms treat automated DM sending as a ToS violation and enforce it. At 15–20 DMs
+a day, manual is both the compliant route and the effective one, because the personalised first
+line is the entire reason a DM works.
+
+Automate the research. Never automate the send.
