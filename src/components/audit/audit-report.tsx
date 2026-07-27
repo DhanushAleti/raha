@@ -36,7 +36,8 @@ interface AuditReportProps {
 
 export function AuditReport({ result, name }: AuditReportProps) {
   const meta = VERDICT_META[result.verdict];
-  const firstName = name.trim().split(/\s+/)[0] || "there";
+  // Empty until they opt into the email follow-up, so the greeting is optional.
+  const firstName = name.trim().split(/\s+/)[0];
 
   return (
     <div className="mx-auto max-w-xl px-5 py-14">
@@ -46,8 +47,15 @@ export function AuditReport({ result, name }: AuditReportProps) {
         >
           {meta.label}
         </span>
-        <h1 className="font-display mt-4 text-3xl leading-tight">
-          {firstName}, {meta.headline}
+        {firstName ? (
+          <p className="mt-4 text-sm font-medium opacity-70">Hi {firstName},</p>
+        ) : null}
+        <h1
+          className={`font-display text-3xl leading-tight ${
+            firstName ? "mt-1" : "mt-4"
+          }`}
+        >
+          {meta.headline}
         </h1>
         <p className="mt-3 text-sm opacity-80">
           Risk score {result.score} · based on your 8 answers

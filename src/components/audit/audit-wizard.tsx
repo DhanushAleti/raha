@@ -16,7 +16,7 @@ import { AuditReport } from "./audit-report";
 
 const STORAGE_KEY = "raha-audit-v1";
 
-type Phase = "quiz" | "gate" | "report";
+type Phase = "quiz" | "report";
 
 interface StoredState {
   step: number;
@@ -46,6 +46,7 @@ export function AuditWizard() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [handle, setHandle] = useState("");
+  const [savedLead, setSavedLead] = useState(false);
   const [pending, startTransition] = useTransition();
 
   useEffect(() => {
@@ -89,7 +90,7 @@ export function AuditWizard() {
     if (step < QUESTIONS.length - 1) {
       setTimeout(() => setStep((s) => Math.min(s + 1, QUESTIONS.length - 1)), 180);
     } else {
-      setTimeout(() => setPhase("gate"), 180);
+      setTimeout(() => setPhase("report"), 180);
     }
   }
 
@@ -118,7 +119,7 @@ export function AuditWizard() {
         company: typeof honeypot === "string" ? honeypot : undefined,
       });
       if (saved.status === "ok") {
-        setPhase("report");
+        setSavedLead(true);
         try {
           window.localStorage.removeItem(STORAGE_KEY);
         } catch {
@@ -139,89 +140,92 @@ export function AuditWizard() {
   }
 
   if (phase === "report" && result) {
-    return <AuditReport result={result} name={name} />;
-  }
-
-  if (phase === "gate" && result) {
     return (
-      <div className="mx-auto max-w-xl px-5 py-14">
-        <div
-          aria-hidden
-          className="pointer-events-none select-none rounded-2xl border border-raha-ink/10 bg-white p-6 blur-[6px]"
-        >
-          <div className="h-8 w-40 rounded bg-raha-ink/10" />
-          <div className="mt-4 h-4 w-full rounded bg-raha-ink/10" />
-          <div className="mt-2 h-4 w-5/6 rounded bg-raha-ink/10" />
-          <div className="mt-2 h-4 w-4/6 rounded bg-raha-ink/10" />
+      <>
+        <AuditReport result={result} name={name} />
+        <div className="mx-auto max-w-xl px-5 pb-16">
+          {savedLead ? (
+            <div className="rounded-2xl border border-raha-green/25 bg-raha-green-soft p-6 text-center">
+              <p className="font-medium text-raha-green">
+                Sent — check your inbox.
+              </p>
+              <p className="mt-1 text-sm text-raha-ink/65">
+                You&apos;ll get the written breakdown behind each flag, and what
+                to ask your CA. Nothing automated, no spam.
+              </p>
+            </div>
+          ) : (
+            <div className="rounded-2xl border border-raha-ink/10 bg-white p-7 shadow-sm">
+              <h2 className="font-display text-xl text-raha-ink">
+                Want this emailed to you?
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-raha-ink/60">
+                Optional — your report is already above, and it stays there.
+                Leave an email and I&apos;ll send the written breakdown behind
+                each flag, plus the exact questions to put to your CA.
+              </p>
+              <form onSubmit={submitGate} className="mt-6 space-y-4" noValidate>
+                <input
+                  type="text"
+                  name="company"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  className="absolute left-[-9999px] h-0 w-0 opacity-0"
+                />
+                <div className="space-y-2">
+                  <Label htmlFor="au-name">Name</Label>
+                  <Input
+                    id="au-name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                    maxLength={120}
+                    placeholder="Your name"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="au-email">Email</Label>
+                  <Input
+                    id="au-email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    maxLength={320}
+                    placeholder="you@example.com"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="au-handle">
+                    Channel / handle{" "}
+                    <span className="text-raha-ink/40">(optional)</span>
+                  </Label>
+                  <Input
+                    id="au-handle"
+                    value={handle}
+                    onChange={(e) => setHandle(e.target.value)}
+                    maxLength={120}
+                    placeholder="@yourchannel"
+                  />
+                </div>
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="h-12 w-full text-base"
+                  disabled={pending || !name || !email}
+                >
+                  {pending ? "Sending…" : "Email me the breakdown"}
+                </Button>
+                <p className="text-center text-xs text-raha-ink/45">
+                  Indicative self-assessment, not tax advice. We&apos;ll never
+                  spam you.
+                </p>
+              </form>
+            </div>
+          )}
         </div>
-        <div className="-mt-16 relative z-10 rounded-2xl border border-raha-green/20 bg-white p-7 shadow-xl">
-          <h2 className="font-display text-2xl text-raha-ink">
-            Your report is ready.
-          </h2>
-          <p className="mt-2 text-sm leading-relaxed text-raha-ink/60">
-            Tell us where to send the full breakdown — you&apos;ll see it right
-            here, instantly.
-          </p>
-          <form onSubmit={submitGate} className="mt-6 space-y-4" noValidate>
-            <input
-              type="text"
-              name="company"
-              tabIndex={-1}
-              autoComplete="off"
-              aria-hidden="true"
-              className="absolute left-[-9999px] h-0 w-0 opacity-0"
-            />
-            <div className="space-y-2">
-              <Label htmlFor="au-name">Name</Label>
-              <Input
-                id="au-name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-                maxLength={120}
-                placeholder="Your name"
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="au-email">Email</Label>
-              <Input
-                id="au-email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                maxLength={320}
-                placeholder="you@example.com"
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="au-handle">
-                Channel / handle{" "}
-                <span className="text-raha-ink/40">(optional)</span>
-              </Label>
-              <Input
-                id="au-handle"
-                value={handle}
-                onChange={(e) => setHandle(e.target.value)}
-                maxLength={120}
-                placeholder="@yourchannel"
-              />
-            </div>
-            <Button
-              type="submit"
-              size="lg"
-              className="h-12 w-full text-base"
-              disabled={pending || !name || !email}
-            >
-              {pending ? "Unlocking…" : "Show my report"}
-            </Button>
-            <p className="text-center text-xs text-raha-ink/45">
-              Indicative self-assessment, not tax advice. We&apos;ll never
-              spam you.
-            </p>
-          </form>
-        </div>
-      </div>
+      </>
     );
   }
 
@@ -300,7 +304,7 @@ export function AuditWizard() {
             onClick={() =>
               step < QUESTIONS.length - 1
                 ? setStep((s) => s + 1)
-                : setPhase("gate")
+                : setPhase("report")
             }
             disabled={selectedMulti.length === 0}
             className="px-6"
