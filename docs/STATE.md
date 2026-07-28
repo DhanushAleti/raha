@@ -5,10 +5,35 @@ This is the single file to upload as Project knowledge; everything else is detai
 
 ## What Raha is
 
-Tax/GST compliance for Indian creators earning foreign income (AdSense, Patreon, course sales).
-Wedge: foreign income is a zero-rated GST export (0%) **only** with a bank-issued FIRC and a filed
-LUT. Without them it can be assessed as domestic income at 18%, plus penalty, plus 18% annual
+Compliance for **Indians earning foreign currency** — creators, freelancers, consultants, indie SaaS
+founders. Wedge: foreign income is a zero-rated GST export (0%) **only** with a bank-issued FIRC and
+a filed LUT. Without them it can be assessed as domestic income at 18%, plus penalty, plus 18% annual
 interest. Live audit tool at raha.software/audit — 8 questions, no signup, red/amber/green verdict.
+
+**Target layer (decided 2026-07-28): Layer 2.**
+
+| Layer | Who | Rough TAM | Ceiling |
+|---|---|---|---|
+| 1 — creators only | ~100K | ₹150–450 Cr | ₹15–45 Cr ARR |
+| **2 — all foreign-income earners** | **2–3M** | **₹1,000–3,000 Cr** | **₹150–300 Cr ARR** |
+| 3 — embedded compliance infra | every cross-border rail | India takes $100B+ service exports | ₹1,000 Cr+ |
+
+Layer 1 was chosen against because the TAM ceiling caps it two orders of magnitude below the stated
+ambition. Layer 3 is the long thesis (rails move money but may not own compliance) and is being
+tested by research, not committed to.
+
+**What Layer 2 changes — and what it does not.**
+
+Changes: who to contact (freelancer and indie-hacker communities, not talent agencies); the
+language in outreach ("foreign income", not "creator"); pricing needs a lower tier for smaller
+earners, since ₹20K/yr does not fit someone billing ₹25L.
+
+Does NOT change: the wedge stays **narrow** — FIRC and foreign-income compliance specifically, never
+general tax filing. Broadening to "all tax for everyone" is verbatim TaxTap's positioning (30+
+professions, 10K+ users) and walking into it with no brand loses. Wide audience, narrow problem.
+
+Does NOT change yet: the brand. "Raha — creator taxes, handled" becomes limiting at Layer 2, but a
+rebrand before 3 paying customers is a distraction. Revisit after.
 
 Price: ₹2,000 paid diagnostic (the real entry point), ₹20,000/year founding seat.
 
