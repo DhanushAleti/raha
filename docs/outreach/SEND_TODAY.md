@@ -29,7 +29,7 @@ The list below is re-cut to **12 different companies**. Deferred names move to D
 
 Put this immediately after the paragraph that offers the free snapshot, as its own line:
 
-> If it's easier to look first: https://rahatax.vercel.app/audit — 8 questions, about 2 minutes,
+> If it's easier to look first: https://raha.software/audit — 8 questions, about 2 minutes,
 > same red/amber/green, no signup.
 
 ---
@@ -75,7 +75,7 @@ Afsheen (Chtrbox, same group as Raj), Keshav + Aastha (Whizco), Jag (IPLIX), Pre
 
 ## About the link — resolved, no spend needed
 
-The paste-line uses **`rahatax.vercel.app`**, claimed 2026-07-22. It replaces `raha-iota.vercel.app`,
+The paste-line uses **`raha.software`**, claimed 2026-07-22. It replaces `raha.software`,
 where the `-iota` was a random suffix Vercel appends when the clean name is taken — that reads as a
 throwaway deploy. `rahatax` keeps the brand, says what the product does, and looks chosen. It cost
 nothing and it auto-updates on every production deploy (verified by redeploying and confirming the
