@@ -2,22 +2,22 @@ const FAILURES = [
   {
     title: "Misclassified income",
     cost: "Notices + lost deductions",
-    body: "Creator revenue filed under the wrong SAC or business code. The tax department notices — and the deductions you were owed quietly disappear.",
+    body: "Foreign income filed under the wrong SAC or business code. The tax department notices — and the deductions you were owed quietly disappear.",
   },
   {
     title: "Mishandled foreign income",
     cost: "Up to 18% GST overpaid",
-    body: "AdSense and Patreon income is usually a zero-rated export of service — if FIRCs are tracked and matched. Most CAs don't, so you overpay or get flagged.",
+    body: "Income from abroad is usually a zero-rated export of service — if a FIRA is on file and matched. Most CAs never collect one, so you overpay or get flagged.",
   },
   {
     title: "Invoicing panic",
     cost: "Late payments, lost brands",
-    body: "Brands demand GST-compliant invoices at 18%. Creators improvise in Canva, look unprofessional, and wait months to get paid.",
+    body: "Clients and brands demand GST-compliant invoices. You improvise in Canva, look unprofessional, and wait months to get paid.",
   },
   {
     title: "Zero visibility",
     cost: "A terrifying year-end lump sum",
-    body: "Income scattered across 5–6 platforms means no idea what to set aside — until the bill lands all at once in March.",
+    body: "Income scattered across clients, rails and platforms means no idea what to set aside — until the bill lands all at once in March.",
   },
 ] as const;
 
@@ -26,13 +26,13 @@ export function FailureModes() {
     <section aria-labelledby="failures-heading" className="bg-white">
       <div className="mx-auto max-w-6xl px-5 py-16 sm:py-24">
         <p className="text-sm font-semibold uppercase tracking-widest text-raha-green">
-          Why generic CAs fail creators
+          Why generic CAs fail foreign-income earners
         </p>
         <h2
           id="failures-heading"
           className="font-display mt-3 max-w-2xl text-3xl tracking-tight text-raha-ink sm:text-5xl"
         >
-          Four ways creator taxes go wrong
+          Four ways foreign income goes wrong
         </h2>
         <div className="mt-10 grid gap-4 sm:mt-14 sm:grid-cols-2">
           {FAILURES.map((f, i) => (

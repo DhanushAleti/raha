@@ -29,7 +29,7 @@ export default function LandingPage() {
           </h2>
           <p className="mt-3 text-center text-raha-ink/60">
             We&apos;ll keep you posted as seats open — and send you what
-            actually matters under the Creator Bill.
+            actually matters for staying compliant on foreign income.
           </p>
           <div className="mt-10">
             <WaitlistForm />

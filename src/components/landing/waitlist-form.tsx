@@ -24,12 +24,12 @@ const INCOME_OPTIONS = [
 ] as const;
 
 const PLATFORM_OPTIONS = [
-  "YouTube / AdSense",
-  "Patreon",
-  "Twitch",
-  "Instagram / brand deals",
-  "Substack",
-  "Other",
+  "Direct bank transfer",
+  "Wise",
+  "PayPal",
+  "Payoneer",
+  "Stripe",
+  "AdSense / other platform",
 ] as const;
 
 export function WaitlistForm() {
@@ -75,7 +75,7 @@ export function WaitlistForm() {
       <div className="rounded-2xl border border-raha-green/25 bg-raha-green-soft p-8 text-center">
         <p className="font-display text-2xl text-raha-green">You&apos;re in.</p>
         <p className="mt-2 text-raha-ink/70">
-          We reach out to every creator personally — expect a message within a
+          We reach out to everyone personally — expect a message within a
           day.
         </p>
       </div>
@@ -119,7 +119,7 @@ export function WaitlistForm() {
         </div>
       </div>
       <div className="space-y-2">
-        <Label htmlFor="wl-income">Annual creator income</Label>
+        <Label htmlFor="wl-income">Annual foreign income</Label>
         <Select value={incomeRange} onValueChange={setIncomeRange}>
           <SelectTrigger id="wl-income" className="w-full">
             <SelectValue placeholder="Select a range" />
@@ -134,7 +134,7 @@ export function WaitlistForm() {
         </Select>
       </div>
       <fieldset className="space-y-3">
-        <legend className="text-sm font-medium">Where do you earn?</legend>
+        <legend className="text-sm font-medium">How are you paid?</legend>
         <div className="grid grid-cols-2 gap-3">
           {PLATFORM_OPTIONS.map((platform) => (
             <label

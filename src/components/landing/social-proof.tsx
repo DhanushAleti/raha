@@ -1,10 +1,10 @@
 const PLATFORMS = [
-  "YouTube",
-  "Patreon",
-  "Twitch",
-  "Instagram",
-  "Substack",
-  "Ko-fi",
+  "Wise",
+  "Stripe",
+  "PayPal",
+  "Payoneer",
+  "AdSense",
+  "Direct bank",
 ] as const;
 
 export function SocialProof() {
@@ -12,7 +12,7 @@ export function SocialProof() {
     <section aria-label="Who Raha is built for" className="bg-white">
       <div className="mx-auto max-w-6xl px-5 py-12 sm:py-16">
         <p className="text-center text-sm text-raha-ink/45">
-          Built for creators earning on
+          Built for foreign income arriving via
         </p>
         <ul className="mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
           {PLATFORMS.map((p) => (
@@ -25,7 +25,7 @@ export function SocialProof() {
           ))}
         </ul>
         <p className="mt-8 text-center text-sm italic text-raha-ink/40">
-          Founding Creator stories will appear here — the first 10 seats are
+          Founding member stories will appear here — the first 10 seats are
           filling now.
         </p>
       </div>

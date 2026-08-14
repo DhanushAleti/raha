@@ -1,10 +1,10 @@
 import { whatsappLink } from "@/lib/whatsapp";
 
 const INCLUDED = [
-  "Dedicated creator-fluent CA — filings reviewed and signed by qualified Chartered Accountants",
-  "FIRC tracking + export-of-service documentation for every foreign payout",
-  "GST-compliant invoices for every brand deal, done for you",
-  "A live 'set aside this much' number across all your platforms",
+  "A cross-border-fluent CA — filings reviewed and signed by qualified Chartered Accountants",
+  "FIRA tracking + export-of-service documentation for every foreign payment",
+  "GST-compliant invoices for every client and brand deal, done for you",
+  "A live 'set aside this much' number across every rail and client",
   "Year-round support on WhatsApp — not just in filing season",
 ] as const;
 
@@ -19,19 +19,18 @@ export function Offer() {
         <div className="grid items-start gap-10 lg:grid-cols-2">
           <div>
             <p className="text-sm font-semibold uppercase tracking-widest text-raha-green">
-              Founding Creator offer
+              Founding member offer
             </p>
             <h2
               id="offer-heading"
               className="font-display mt-3 text-3xl tracking-tight text-raha-ink sm:text-5xl"
             >
-              First 10 creators. Price locked for life.
+              First 10 seats. Price locked for life.
             </h2>
             <p className="mt-6 max-w-lg text-lg leading-relaxed text-raha-ink/70">
-              You&apos;re already paying ₹20K–₹50K a year for a CA who
-              doesn&apos;t know what a Superchat is. Founding Creators get the
-              full Raha service — at half the standard price, locked in
-              forever.
+              You&apos;re already paying ₹20K–₹50K a year for a CA who&apos;s
+              never asked you for a FIRA. Founding members get the full Raha
+              service — at half the standard price, locked in forever.
             </p>
             <ul className="mt-8 space-y-3">
               {INCLUDED.map((item) => (
@@ -46,7 +45,7 @@ export function Offer() {
           </div>
           <div className="rounded-3xl border border-raha-green/20 bg-white p-8 shadow-[0_20px_60px_-30px_rgba(11,59,46,0.35)] sm:p-10 lg:sticky lg:top-8">
             <p className="text-sm font-medium text-raha-ink/60">
-              Founding Creator plan
+              Founding member plan
             </p>
             <p className="mt-3 flex items-baseline gap-3">
               <span className="font-display text-5xl tracking-tight text-raha-ink">
@@ -65,7 +64,7 @@ export function Offer() {
             </div>
             <a
               href={whatsappLink(
-                "Hi! I'd like to reserve one of the 10 Founding Creator seats (₹20,000/yr).",
+                "Hi! I'd like to reserve one of the 10 founding seats (₹20,000/yr).",
               )}
               target="_blank"
               rel="noopener noreferrer"
@@ -74,7 +73,7 @@ export function Offer() {
               Reserve your seat on WhatsApp
             </a>
             <p className="mt-4 text-center text-xs leading-relaxed text-raha-ink/50">
-              No payment online — we onboard every Founding Creator personally
+              No payment online — we onboard every founding member personally
               over a call.
             </p>
           </div>

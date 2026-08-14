@@ -1,19 +1,19 @@
 const FAQS = [
   {
-    q: "Do I even need GST registration as a creator?",
-    a: "If your aggregate turnover crosses ₹20 lakh in a financial year (₹10 lakh in special-category states), GST registration is mandatory — and for many creators exporting services (AdSense, Patreon), registration is what unlocks zero-rated treatment. Your CA confirms your exact position.",
+    q: "Do I even need GST registration?",
+    a: "If your aggregate turnover crosses ₹20 lakh in a financial year (₹10 lakh in special-category states), GST registration is mandatory — and for anyone exporting services (freelancers, consultants, SaaS founders, creators on AdSense or Patreon), registration is what unlocks zero-rated treatment. Your CA confirms your exact position.",
   },
   {
-    q: "What is a FIRC and why does everyone keep saying it?",
-    a: "A Foreign Inward Remittance Certificate is your bank's proof that money arrived from abroad. It's the document that lets foreign platform income be treated as a zero-rated export of service — meaning no 18% GST on it. No FIRC trail, no proof, no zero-rating.",
+    q: "What's a FIRA — and isn't it called a FIRC?",
+    a: "A FIRA (Foreign Inward Remittance Advice) is your bank's proof that money arrived from abroad. It's what lets your foreign income be treated as a zero-rated export of service — meaning no 18% GST on it. Physical FIRCs were discontinued for exports back in 2016, so if someone still asks you for a FIRC, a FIRA is what you actually need. No FIRA trail, no proof, no zero-rating.",
   },
   {
-    q: "So my AdSense income doesn't need GST at all?",
-    a: "Usually foreign-platform income qualifies as an export of services (zero-rated under LUT), but only when the paper trail — LUT filing, FIRCs, matching invoices — is in place. That's exactly the trail Raha maintains. Final treatment is confirmed by your CA.",
+    q: "So my foreign income doesn't need GST at all?",
+    a: "Usually foreign income qualifies as an export of services (zero-rated under LUT), but only when the paper trail — LUT filing, FIRAs, matching invoices — is in place. That's exactly the trail Raha maintains. Final treatment is confirmed by your CA.",
   },
   {
     q: "Does Raha replace my CA?",
-    a: "No. Raha is the creator-fluent layer that keeps your income, FIRCs, and invoices perfectly reconciled — and every filing is reviewed and signed by a qualified Chartered Accountant. If you love your current CA, we hand them clean files.",
+    a: "No. Raha is the cross-border-fluent layer that keeps your income, FIRAs, and invoices perfectly reconciled — and every filing is reviewed and signed by a qualified Chartered Accountant. If you love your current CA, we hand them clean files.",
   },
   {
     q: "Does Raha file my returns automatically?",
@@ -25,11 +25,11 @@ const FAQS = [
   },
   {
     q: "What does it cost?",
-    a: "The Founding Creator plan is ₹20,000/year — 50% off the standard ₹40,000 — for the first 10 creators only, price-locked for life. Annual plans only: taxes don't stop after filing season, and neither do we.",
+    a: "The founding member plan is ₹20,000/year — 50% off the standard ₹40,000 — for the first 10 members only, price-locked for life. Annual plans only: taxes don't stop after filing season, and neither do we.",
   },
   {
     q: "I earn less than ₹20L. Is Raha for me?",
-    a: "Raha is built for creators past the GST threshold, where the stakes are real. If you're approaching ₹20L, run the free Audit Check — it will tell you what to put in place before you cross it.",
+    a: "Raha is built for people past the GST threshold, where the stakes are real. If you're approaching ₹20L, run the free 2-minute check — it will tell you what to put in place before you cross it.",
   },
 ] as const;
 
@@ -41,7 +41,7 @@ export function Faq() {
           id="faq-heading"
           className="font-display text-3xl tracking-tight text-raha-ink sm:text-4xl"
         >
-          Questions creators actually ask
+          Questions people actually ask
         </h2>
         <div className="mt-8 divide-y divide-raha-ink/8">
           {FAQS.map((f) => (

@@ -20,16 +20,16 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Raha — Creator taxes, handled",
+  title: "Raha — Prove your foreign income is a 0% export",
   description:
-    "Tax & GST compliance built for Indian creators earning ₹20L–₹2Cr. FIRC tracking, GST-compliant invoicing, and a live 'set aside this much' counter — reviewed and signed by qualified CAs.",
+    "Paid from abroad? Your foreign income is a zero-rated export at 0% GST — but only with a FIRA and an LUT. Raha checks if you're covered in 2 minutes and proves it across every rail. For Indian freelancers, consultants, indie founders and creators.",
   metadataBase: process.env.NEXT_PUBLIC_SITE_URL
     ? new URL(process.env.NEXT_PUBLIC_SITE_URL)
     : undefined,
   openGraph: {
-    title: "Raha — Creator taxes, handled",
+    title: "Raha — Prove your foreign income is a 0% export",
     description:
-      "The tax layer for Indian creators. Foreign income, FIRCs, GST invoices, and what to set aside — handled.",
+      "The compliance layer for Indians paid from abroad. FIRA, LUT and GST — proven across every rail, so your foreign income stays zero-rated.",
     locale: "en_IN",
     type: "website",
   },

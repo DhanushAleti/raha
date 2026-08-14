@@ -1,5 +1,5 @@
 const DEFAULT_MESSAGE =
-  "Hi! I'm a creator and I want to know more about Raha's Founding Creator plan.";
+  "Hi! I want to know more about Raha's founding member plan for foreign-income compliance.";
 
 /** Builds a wa.me deep link with a prefilled message. */
 export function whatsappLink(message: string = DEFAULT_MESSAGE): string {

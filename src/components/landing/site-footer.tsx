@@ -32,7 +32,7 @@ export function SiteFooter() {
             advice.
           </p>
           <p className="mt-4 text-xs text-raha-cream/40">
-            © {new Date().getFullYear()} Raha · Creator taxes, handled
+            © {new Date().getFullYear()} Raha · Foreign income, proven
           </p>
         </div>
       </div>
