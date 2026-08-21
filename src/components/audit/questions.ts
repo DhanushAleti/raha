@@ -24,8 +24,8 @@ export const QUESTIONS: Question[] = [
   {
     id: "incomeRange",
     kind: "single",
-    title: "How much do you earn as a creator each year?",
-    sub: "Across every platform and brand deal, before tax.",
+    title: "How much do you earn from abroad each year?",
+    sub: "Across every client, platform and payment route, before tax.",
     options: [
       { value: "under_20l", label: "Under ₹20 lakh" },
       { value: "20l_50l", label: "₹20–50 lakh" },

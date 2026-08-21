@@ -5,7 +5,7 @@ import { whatsappLink } from "@/lib/whatsapp";
 const VERDICT_META = {
   green: {
     label: "Low risk",
-    headline: "You're in better shape than most creators.",
+    headline: "You're in better shape than most people paid from abroad.",
     tone: "border-emerald-300 bg-emerald-50 text-emerald-900",
     chip: "bg-emerald-600",
   },
@@ -100,8 +100,9 @@ export function AuditReport({ result, name }: AuditReportProps) {
           Want this handled for you?
         </p>
         <p className="mx-auto mt-2 max-w-sm text-sm leading-relaxed text-raha-cream/70">
-          Founding Creators get FIRC tracking, GST invoicing, and a
-          creator-fluent CA — ₹20,000/yr, first 10 seats only.
+          Founding members get FIRA tracking, GST invoicing, and a
+          filing-ready pack for whoever files your returns — ₹20,000/yr,
+          first 10 seats only.
         </p>
         <a
           href={whatsappLink(
