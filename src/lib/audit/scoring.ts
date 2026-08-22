@@ -2,7 +2,7 @@
  * Audit Check risk scoring — pure logic, no I/O.
  * Rubric: each answer contributes 0–2 risk points (max 16).
  * Verdict bands: 0–4 green · 5–9 amber · ≥10 red.
- * Floor rule: foreign income + no FIRC habit + no GST registration is an
+ * Floor rule: foreign income + no FIRA habit + no GST registration is an
  * automatic red regardless of total score.
  */
 
@@ -160,10 +160,10 @@ function deriveFlags(answers: AuditAnswers): AuditFlag[] {
     flags.push({
       id: "firc_gap",
       severity: "high",
-      title: "Your foreign income has no FIRC trail",
-      body: "Without Foreign Inward Remittance Certificates, you can't prove your AdSense/Patreon income is a zero-rated export of service. That's up to 18% GST exposure on every foreign payout — plus notice risk.",
+      title: "Your foreign income has no FIRA trail",
+      body: "Without a Foreign Inward Remittance Advice (FIRA) from your bank, you can't prove your foreign income is a zero-rated export of service. That's up to 18% GST exposure on every foreign payment — plus notice risk.",
       action:
-        "Ask your bank for FIRCs/IRM advices for the last 12 months of foreign credits, and start collecting one for every payout.",
+        "Ask your bank for FIRAs for the last 12 months of foreign credits, and start collecting one for every payment.",
     });
   }
 
@@ -202,9 +202,9 @@ function deriveFlags(answers: AuditAnswers): AuditFlag[] {
     flags.push({
       id: "firc_partial",
       severity: "medium",
-      title: "Partial FIRC coverage leaves gaps",
-      body: "Every unmatched foreign credit is a payout the department can question. Partial trails often fail exactly when you need them.",
-      action: "Backfill missing FIRCs from your bank and track every remittance.",
+      title: "Partial FIRA coverage leaves gaps",
+      body: "Every unmatched foreign credit is a payment the department can question. Partial trails often fail exactly when you need them.",
+      action: "Backfill missing FIRAs from your bank and track every remittance.",
     });
   }
 
@@ -215,9 +215,9 @@ function deriveFlags(answers: AuditAnswers): AuditFlag[] {
         answers.invoicePractice === "none" ? "medium" : "low",
       title:
         answers.invoicePractice === "none"
-          ? "No invoices for brand deals"
+          ? "No invoices for your work"
           : "Ad-hoc invoices won't survive scrutiny",
-      body: "GST law requires sequentially numbered, compliant invoices. Ad-hoc PDFs slow down brand payments and create reconciliation gaps.",
+      body: "GST law requires sequentially numbered, compliant invoices. Ad-hoc PDFs slow down client payments and create reconciliation gaps.",
       action:
         "Move to sequential GST-compliant invoices with SAC codes for every deal.",
     });
@@ -239,9 +239,9 @@ function deriveFlags(answers: AuditAnswers): AuditFlag[] {
       id: "all_clear",
       severity: "low",
       title: "Your basics look solid",
-      body: "Registration, FIRCs, and invoicing hygiene are in place. The remaining risk is drift — rules change (the Creator Bill is new) and manual trails decay.",
+      body: "Registration, FIRAs, and invoicing hygiene are in place. The remaining risk is drift — the LUT resets every April, and manual trails decay.",
       action:
-        "Keep the trail current, and have a creator-fluent CA review your setup once a year.",
+        "Keep the trail current, and have a CA who handles cross-border income review your setup once a year.",
     });
   }
 

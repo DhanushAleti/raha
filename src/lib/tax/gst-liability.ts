@@ -1,6 +1,6 @@
 /**
  * GST liability estimate — pure, conservative.
- * Domestic creator services carry 18% GST. Foreign income WITH a matched FIRC
+ * Domestic services carry 18% GST. Foreign income WITH a matched FIRA
  * is a zero-rated export (0%); foreign income WITHOUT one is counted at the
  * full 18% as worst-case exposure. ITC is ignored (it can only lower the
  * bill — a CA applies it at filing time).
