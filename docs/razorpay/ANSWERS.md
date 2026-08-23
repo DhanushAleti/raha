@@ -11,7 +11,7 @@ Form: https://forms.gle/d9r2gvxp8cmoZhon9 · closes 5 September 2026
 | Full name | Aleti Dhanush |
 | College | Indian Institute of Technology Madras |
 | Graduation year | 2028 |
-| In-person from September | **YOUR CALL — decide by Aug 30** |
+| In-person from September | **Yes** — confirmed 23 Aug 2026 |
 | 6 or 12 months | 6 |
 | Resume | `resume.md` → PDF |
 | Track | 04 — AI Finance Controller |

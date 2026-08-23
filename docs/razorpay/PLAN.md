@@ -29,7 +29,7 @@ students only (you qualify — currently enrolled, no final-year requirement).
 
 ---
 
-## The one thing only you can decide
+## The Bangalore question — **decided: yes**
 
 The offer is **in-person Bangalore, 6–12 months, starting September**. That collides directly
 with:
@@ -41,10 +41,12 @@ with:
 You cannot do a 6-month in-person Bangalore internship and Sem 5 simultaneously. Realistically
 this needs a semester deferral, or it does not happen.
 
-**My read:** the CGPA is 5.12 with 5 backlogs after four semesters. The marginal semester is
-not obviously worth more than ₹4.5L and a Razorpay engineering credential that permanently
-resets how your resume reads. But that is a genuine life decision with family, degree-timeline,
-and IITM-policy inputs I do not have — so it is yours, not mine.
+**Decided 23 August 2026: yes to in-person Bangalore, 6 months, from September.**
+
+That closes the only blocking question. The remaining work is the build, the video, and the
+form. Outstanding logistics that are yours to handle, none of which block the submission:
+semester deferral or leave with the institute, and the Sem 6 backlog plan for CH2014 and
+EE1100 on the other side of the internship.
 
 **It does not block the build.** Everything below is a Raha feature you should ship anyway:
 it makes FIRA reconciliation actually work at batch scale, which is the thing paying customers
@@ -169,8 +171,7 @@ can reproduce your numbers in one command.
 | 12 | Sep 3 | Record and cut the 5-minute video |
 | 13 | Sep 4 | Buffer, then submit — **do not** use Sep 5 |
 
-**Decision gates:** Bangalore call by Aug 30. If the answer is no, stop after Day 10 and merge
-the work into Raha as a shipped feature.
+**Decision gates:** none outstanding — Bangalore is confirmed, so the build runs to submission.
 
 ---
 
@@ -181,7 +182,7 @@ the work into Raha as a shipped feature.
 | 1 | Full name | Aleti Dhanush |
 | 2 | College | Indian Institute of Technology Madras |
 | 3 | Graduation year | 2028 |
-| 4 | In-person from September | **pending your call** |
+| 4 | In-person from September | **Yes** |
 | 5 | 6 or 12 months | 6 — revisit at conversion |
 | 6 | Resume file | `docs/razorpay/resume.md` → export to PDF |
 | 7 | Track | 04 — AI Finance Controller |
