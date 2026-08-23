@@ -48,10 +48,9 @@ form. Outstanding logistics that are yours to handle, none of which block the su
 semester deferral or leave with the institute, and the Sem 6 backlog plan for CH2014 and
 EE1100 on the other side of the internship.
 
-**It does not block the build.** Everything below is a Raha feature you should ship anyway:
-it makes FIRA reconciliation actually work at batch scale, which is the thing paying customers
-have been asking about. Worst case you get a shipped Raha module and a portfolio piece. Decide
-the Bangalore question by ~30 August, before the video and form go in.
+The build compounds either way: it makes FIRA reconciliation work at batch scale, which is the
+thing paying Raha customers have been asking about, so the engine comes home regardless of how
+the application lands.
 
 ---
 
