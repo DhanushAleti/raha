@@ -33,9 +33,7 @@ export function Hero() {
         </p>
         <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
           <Button asChild size="lg" className="h-12 px-7 text-base">
-            <a href={whatsappLink()} target="_blank" rel="noopener noreferrer">
-              Reserve a founding seat
-            </a>
+            <Link href="/audit">Run the free 2-minute check</Link>
           </Button>
           <Button
             asChild
@@ -43,7 +41,9 @@ export function Hero() {
             variant="outline"
             className="h-12 border-raha-green/30 px-7 text-base text-raha-green hover:bg-raha-green-soft"
           >
-            <Link href="/audit">Run the free 2-minute check</Link>
+            <a href={whatsappLink()} target="_blank" rel="noopener noreferrer">
+              Reserve a founding seat
+            </a>
           </Button>
         </div>
         <p className="mt-5 text-sm text-raha-ink/50">
