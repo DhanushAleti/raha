@@ -28,8 +28,9 @@ export default function LandingPage() {
             Not ready to talk? Join the waitlist.
           </h2>
           <p className="mt-3 text-center text-raha-ink/60">
-            We&apos;ll keep you posted as seats open — and send you what
-            actually matters for staying compliant on foreign income.
+            We&apos;ll send you what actually matters for staying compliant on
+            foreign income — starting with what changed when FIRCs stopped in
+            2016.
           </p>
           <div className="mt-10">
             <WaitlistForm />

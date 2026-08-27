@@ -1,9 +1,13 @@
 /**
  * Audit Check risk scoring — pure logic, no I/O.
- * Rubric: each answer contributes 0–2 risk points (max 16).
+ * Rubric: each answer contributes 0–2 risk points (max 18).
  * Verdict bands: 0–4 green · 5–9 amber · ≥10 red.
  * Floor rule: foreign income + no FIRA habit + no GST registration is an
  * automatic red regardless of total score.
+ *
+ * paymentRail carries the most weight per point: since RBI A.P. (DIR) circular
+ * 74 of 2016 there is no physical FIRC for export remittances, and whether a
+ * FIRA can be produced at all depends entirely on how the money arrives.
  */
 
 export type IncomeRange =
@@ -23,6 +27,7 @@ export type Platform =
   | "other";
 
 export type YesNo = "yes" | "no";
+export type PaymentRail = "bank" | "aggregator" | "rail" | "not_sure";
 export type GstRegistered = "yes" | "no" | "not_sure";
 export type LutFiled = "yes" | "no" | "whats_that";
 export type FircCollection = "always" | "sometimes" | "never" | "whats_that";
@@ -33,6 +38,7 @@ export interface AuditAnswers {
   incomeRange: IncomeRange;
   platforms: Platform[];
   foreignIncome: YesNo;
+  paymentRail: PaymentRail;
   gstRegistered: GstRegistered;
   lutFiled: LutFiled;
   fircCollection: FircCollection;
@@ -71,6 +77,21 @@ const INCOME_POINTS: Record<IncomeRange, number> = {
   "50l_1cr": 1,
   "1cr_2cr": 2,
   over_2cr: 2,
+};
+
+/**
+ * Wise, PayPal and Stripe convert offshore, so the credit lands in the Indian
+ * account as an ordinary domestic transfer. The receiving bank legally cannot
+ * issue a FIRA against it — as far as it can see, no foreign remittance
+ * happened. That is the worst position and the least served.
+ * Skydo/Karbon/Payoneer/Winvesta issue FIRA automatically, so forward
+ * paperwork is already handled (history before switching is not).
+ */
+const RAIL_POINTS: Record<PaymentRail, number> = {
+  aggregator: 2,
+  bank: 1,
+  not_sure: 1,
+  rail: 0,
 };
 
 const GST_POINTS: Record<GstRegistered, number> = {
@@ -121,6 +142,7 @@ function scoreAnswers(answers: AuditAnswers): number {
     // LUT and FIRC hygiene only matter when foreign money actually flows in.
     (hasForeignIncome ? LUT_POINTS[answers.lutFiled] : 0) +
     (hasForeignIncome ? FIRC_POINTS[answers.fircCollection] : 0) +
+    (hasForeignIncome ? (RAIL_POINTS[answers.paymentRail] ?? 1) : 0) +
     INVOICE_POINTS[answers.invoicePractice] +
     SET_ASIDE_POINTS[answers.setAsideAwareness]
   );
@@ -164,6 +186,28 @@ function deriveFlags(answers: AuditAnswers): AuditFlag[] {
       body: "Without a Foreign Inward Remittance Advice (FIRA) from your bank, you can't prove your foreign income is a zero-rated export of service. That's up to 18% GST exposure on every foreign payment — plus notice risk.",
       action:
         "Ask your bank for FIRAs for the last 12 months of foreign credits, and start collecting one for every payment.",
+    });
+  }
+
+  if (hasForeignIncome && answers.paymentRail === "aggregator") {
+    flags.push({
+      id: "aggregator_no_fira",
+      severity: "high",
+      title: "Wise, PayPal and Stripe cannot produce a FIRA at all",
+      body: "These convert offshore, so the money lands in your account as an ordinary domestic transfer. Your bank legally cannot issue a FIRA against it — as far as it can see, no foreign remittance happened. Wise issues an NOC instead, which you then take to the bank. Almost nobody finds this out until they need the document.",
+      action:
+        "Download the NOC or remittance advice for every credit now, while the platform still has it, and ask your bank in writing what it will accept in place of a FIRA.",
+    });
+  }
+
+  if (hasForeignIncome && answers.paymentRail === "rail") {
+    flags.push({
+      id: "rail_backfill",
+      severity: "medium",
+      title: "Your forward paperwork is fine — the years before it are not",
+      body: "Skydo, Karbon, Payoneer and Winvesta issue a FIRA on every payment automatically, so from the day you joined you are covered. Rails only work forward: any remittance received before you switched still has nothing behind it, and that is the part no platform solves.",
+      action:
+        "List every foreign credit received before you moved onto the rail, and ask your bank to raise the IRM in EDPMS and issue FIRAs against them retroactively.",
     });
   }
 

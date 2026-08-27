@@ -14,7 +14,10 @@ import { recordAuditCompletion, saveAuditLead } from "@/app/actions/audit";
 import { QUESTIONS } from "./questions";
 import { AuditReport } from "./audit-report";
 
-const STORAGE_KEY = "raha-audit-v1";
+// Bumped when the question set changes. Stored progress from an older set is
+// unreachable — the wizard only advances, so a newly inserted question would
+// never be shown and isComplete would never go true. Discard instead.
+const STORAGE_KEY = "raha-audit-v2";
 
 type Phase = "quiz" | "report";
 

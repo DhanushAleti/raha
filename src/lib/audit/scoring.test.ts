@@ -8,6 +8,7 @@ const SAFE_BASELINE: AuditAnswers = {
   incomeRange: "under_20l",
   platforms: ["brand_deals"],
   foreignIncome: "no",
+  paymentRail: "rail",
   gstRegistered: "yes",
   lutFiled: "yes",
   fircCollection: "always",
@@ -19,6 +20,7 @@ const WORST_CASE: AuditAnswers = {
   incomeRange: "over_2cr",
   platforms: ["youtube", "patreon", "twitch", "substack"],
   foreignIncome: "yes",
+  paymentRail: "aggregator",
   gstRegistered: "no",
   lutFiled: "whats_that",
   fircCollection: "never",
@@ -33,9 +35,9 @@ describe("computeAuditResult — score", () => {
     expect(result.verdict).toBe("green");
   });
 
-  test("worst case scores the rubric maximum of 16 → red", () => {
+  test("worst case scores the rubric maximum of 18 → red", () => {
     const result = computeAuditResult(WORST_CASE);
-    expect(result.score).toBe(16);
+    expect(result.score).toBe(18);
     expect(result.verdict).toBe("red");
   });
 
@@ -87,11 +89,12 @@ describe("computeAuditResult — verdict bands", () => {
 
   test("score 9 is amber, score 10 is red", () => {
     // Build exactly 9: income over_2cr(+2), platforms 3 foreign(+2), foreign yes(+2),
-    // gst yes(0), lut no(+1), firc sometimes(+1), invoices adhoc(+1), exact(0) = 9
+    // rail(0), gst yes(0), lut no(+1), firc sometimes(+1), invoices adhoc(+1), exact(0) = 9
     const amber = computeAuditResult({
       incomeRange: "over_2cr",
       platforms: ["youtube", "patreon", "twitch"],
       foreignIncome: "yes",
+      paymentRail: "rail",
       gstRegistered: "yes",
       lutFiled: "no",
       fircCollection: "sometimes",
@@ -105,6 +108,7 @@ describe("computeAuditResult — verdict bands", () => {
       incomeRange: "over_2cr",
       platforms: ["youtube", "patreon", "twitch"],
       foreignIncome: "yes",
+      paymentRail: "rail",
       gstRegistered: "yes",
       lutFiled: "no",
       fircCollection: "sometimes",
@@ -162,5 +166,47 @@ describe("computeAuditResult — flags", () => {
   test("a fully compliant creator still gets encouraging flags (never empty)", () => {
     const result = computeAuditResult(SAFE_BASELINE);
     expect(result.flags.length).toBeGreaterThan(0);
+  });
+});
+
+describe("computeAuditResult — payment rail", () => {
+  const withForeign = {
+    ...SAFE_BASELINE,
+    foreignIncome: "yes",
+    platforms: ["youtube"],
+  } as AuditAnswers;
+
+  test("aggregators score worst — the bank legally cannot issue a FIRA", () => {
+    const viaWise = computeAuditResult({
+      ...withForeign,
+      paymentRail: "aggregator",
+    });
+    const viaRail = computeAuditResult({ ...withForeign, paymentRail: "rail" });
+    expect(viaWise.score).toBeGreaterThan(viaRail.score);
+  });
+
+  test("aggregators raise a high-severity flag naming the NOC workaround", () => {
+    const result = computeAuditResult({
+      ...withForeign,
+      paymentRail: "aggregator",
+    });
+    const flag = result.flags.find((f) => f.id === "aggregator_no_fira");
+    expect(flag?.severity).toBe("high");
+    expect(flag?.body).toContain("NOC");
+  });
+
+  test("a FIRA-issuing rail flags backfill, not a forward gap", () => {
+    const result = computeAuditResult({ ...withForeign, paymentRail: "rail" });
+    expect(result.flags.map((f) => f.id)).toContain("rail_backfill");
+    expect(result.flags.map((f) => f.id)).not.toContain("aggregator_no_fira");
+  });
+
+  test("rail adds no risk when no foreign money flows in", () => {
+    const domestic = computeAuditResult({
+      ...SAFE_BASELINE,
+      paymentRail: "aggregator",
+    });
+    expect(domestic.score).toBe(computeAuditResult(SAFE_BASELINE).score);
+    expect(domestic.flags.map((f) => f.id)).not.toContain("aggregator_no_fira");
   });
 });

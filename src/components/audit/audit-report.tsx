@@ -1,5 +1,7 @@
 import Link from "next/link";
+import { QUESTIONS } from "./questions";
 import type { AuditResult } from "@/lib/audit/scoring";
+import { EvidenceCheckOffer } from "@/components/evidence-check-offer";
 import { whatsappLink } from "@/lib/whatsapp";
 
 const VERDICT_META = {
@@ -58,7 +60,7 @@ export function AuditReport({ result, name }: AuditReportProps) {
           {meta.headline}
         </h1>
         <p className="mt-3 text-sm opacity-80">
-          Risk score {result.score} · based on your 8 answers
+          Risk score {result.score} · based on your {QUESTIONS.length} answers
         </p>
       </div>
 
@@ -95,31 +97,41 @@ export function AuditReport({ result, name }: AuditReportProps) {
         })}
       </div>
 
-      <div className="mt-10 rounded-2xl bg-raha-ink p-7 text-center">
-        <p className="font-display text-2xl text-raha-cream">
-          Want this handled for you?
-        </p>
-        <p className="mx-auto mt-2 max-w-sm text-sm leading-relaxed text-raha-cream/70">
-          Founding members get FIRA tracking, GST invoicing, and a
-          filing-ready pack for whoever files your returns — ₹20,000/yr,
-          first 10 seats only.
-        </p>
-        <a
-          href={whatsappLink(
-            "Hi! I just ran the Raha Audit Check and want help fixing my compliance gaps.",
-          )}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-5 inline-flex h-12 items-center rounded-lg bg-raha-amber px-7 text-base font-semibold text-raha-ink transition-opacity hover:opacity-90"
-        >
-          Talk to us on WhatsApp
-        </a>
-        <p className="mt-4 text-xs text-raha-cream/50">
-          <Link href="/" className="underline underline-offset-2">
-            Back to raha
-          </Link>
-        </p>
-      </div>
+      {result.verdict === "green" ? (
+        <div className="mt-10 rounded-2xl bg-raha-ink p-7 text-center">
+          <p className="font-display text-2xl text-raha-cream">
+            Nothing urgent here.
+          </p>
+          <p className="mx-auto mt-2 max-w-sm text-sm leading-relaxed text-raha-cream/70">
+            If you want the paperwork checked line by line anyway — every
+            foreign credit matched to the document behind it — that&apos;s
+            ₹2,000 and 48 hours.
+          </p>
+          <a
+            href={whatsappLink(
+              "Hi! I ran the Raha audit and came out green, but I'd like the evidence check anyway.",
+            )}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-5 inline-flex h-12 items-center rounded-lg bg-raha-amber px-7 text-base font-semibold text-raha-ink transition-opacity hover:opacity-90"
+          >
+            Ask about the evidence check
+          </a>
+        </div>
+      ) : (
+        <div className="mt-10">
+          <EvidenceCheckOffer
+            variant="dark"
+            context={`Hi! I ran the Raha audit — ${result.verdict} verdict, score ${result.score}. I want the Foreign Income Evidence Check.`}
+          />
+        </div>
+      )}
+
+      <p className="mt-6 text-center text-xs text-raha-ink/45">
+        <Link href="/" className="underline underline-offset-2">
+          Back to raha
+        </Link>
+      </p>
 
       <p className="mt-8 text-center text-xs leading-relaxed text-raha-ink/45">
         This is an indicative self-assessment based on your answers — not tax

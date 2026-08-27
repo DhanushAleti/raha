@@ -40,7 +40,14 @@ npx playwright install chromium && npx playwright test   # e2e on the core loop
    - `SUPABASE_SERVICE_ROLE_KEY` *(server-side only — never referenced by client code)*
    - `NEXT_PUBLIC_SITE_URL` = your production URL
    - `NEXT_PUBLIC_WHATSAPP_NUMBER` = e.g. `919876543210`
-   - `NEXT_PUBLIC_FOUNDING_SEATS_TAKEN` = `0` (bump as seats sell)
+   - `NEXT_PUBLIC_UPI_ID` = the VPA that collects the ₹2,000 diagnostic, e.g.
+     `yourname@okhdfcbank`. **Unset means nobody can pay** — every pay button
+     silently falls back to WhatsApp, which is the state the site was in until
+     2026-08-27. Set this before sending any outreach.
+   - `NEXT_PUBLIC_UPI_PAYEE_NAME` = name shown in the payer's UPI app (default `Raha`)
+   - ~~`NEXT_PUBLIC_FOUNDING_SEATS_TAKEN`~~ — no longer read. The ₹20,000 founding
+     seat and its counter were removed from the landing page (`docs/PAINKILLER_AUDIT.md`);
+     the variable is inert and can be deleted from Vercel.
 4. Deploy. Then set the Supabase Site URL (step 1.3) to the real domain.
 
 ## 4. Post-deploy checklist

@@ -1,5 +1,5 @@
 const DEFAULT_MESSAGE =
-  "Hi! I want to know more about Raha's founding member plan for foreign-income compliance.";
+  "Hi! I want to know more about the ₹2,000 Foreign Income Evidence Check.";
 
 /** Builds a wa.me deep link with a prefilled message. */
 export function whatsappLink(message: string = DEFAULT_MESSAGE): string {

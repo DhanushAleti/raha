@@ -42,7 +42,7 @@ export function Hero() {
             className="h-12 border-raha-green/30 px-7 text-base text-raha-green hover:bg-raha-green-soft"
           >
             <a href={whatsappLink()} target="_blank" rel="noopener noreferrer">
-              Reserve a founding seat
+              Get the ₹2,000 evidence check
             </a>
           </Button>
         </div>

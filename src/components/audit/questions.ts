@@ -60,6 +60,30 @@ export const QUESTIONS: Question[] = [
     ],
   },
   {
+    id: "paymentRail",
+    kind: "single",
+    title: "How does the money actually reach you?",
+    sub: "This changes the answer more than anything else here — whether a FIRA can be issued at all depends on the route.",
+    options: [
+      {
+        value: "bank",
+        label: "Straight into my bank account",
+        hint: "AdSense into SBI, a client wiring you directly",
+      },
+      {
+        value: "aggregator",
+        label: "Wise, PayPal or Stripe",
+        hint: "Converted abroad, then paid into your account",
+      },
+      {
+        value: "rail",
+        label: "Skydo, Karbon, Payoneer or Winvesta",
+        hint: "A platform built for export payments",
+      },
+      { value: "not_sure", label: "Honestly, not sure" },
+    ],
+  },
+  {
     id: "gstRegistered",
     kind: "single",
     title: "Are you GST registered?",
@@ -83,13 +107,13 @@ export const QUESTIONS: Question[] = [
   {
     id: "fircCollection",
     kind: "single",
-    title: "Do you collect FIRCs for your foreign payouts?",
-    sub: "The bank certificate that proves money came from abroad.",
+    title: "Do you collect a FIRA for your foreign payouts?",
+    sub: "The bank advice that proves the money came from abroad. Banks stopped issuing physical FIRCs for exports in 2016 — a FIRA (or e-FIRC/FIRS) is what replaced it.",
     options: [
       { value: "always", label: "Every single payout" },
       { value: "sometimes", label: "Some of them" },
       { value: "never", label: "Never" },
-      { value: "whats_that", label: "What's a FIRC?" },
+      { value: "whats_that", label: "What's a FIRA?" },
     ],
   },
   {

@@ -5,7 +5,7 @@ import { AuditWizard } from "@/components/audit/audit-wizard";
 export const metadata: Metadata = {
   title: "Free 2-Minute Check — Raha",
   description:
-    "8 questions, 2 minutes: find out if your foreign income is a provable 0% export — FIRA and LUT included. Instant red/amber/green compliance report. No signup.",
+    "9 questions, 2 minutes: find out if your foreign income is a provable 0% export — FIRA and LUT included. Instant red/amber/green compliance report. No signup.",
 };
 
 export default function AuditPage() {

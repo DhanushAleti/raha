@@ -26,6 +26,10 @@ DB_PATH = Path(__file__).resolve().parent.parent / "research" / "pipeline.db"
 
 # --- the 30-day window from research/decision.md -----------------------------
 START = date(2026, 8, 27)
+# The September gate: Nostro acceptance means Bangalore in person for six
+# months, so Raha and Nostro cannot both be primary in September. One paid
+# Rs 2,000 by 3 Sep decides it. docs/PAINKILLER_AUDIT.md.
+SEPT_GATE = date(2026, 9, 3)
 DAY_14 = START + timedelta(days=14)
 DAY_21 = START + timedelta(days=21)
 DAY_30 = START + timedelta(days=30)
@@ -274,6 +278,23 @@ def cmd_stats(conn: sqlite3.Connection, a: argparse.Namespace) -> int:
     print(f"  DMs sent        {dms:>3} / {WEEKLY_DM_FLOOR}   {'PASS' if dms >= WEEKLY_DM_FLOOR else 'BEHIND'}")
     print("  (missing the floor two weeks running is not a channel failure — it is a")
     print("   plan that was never run. Do not switch channel; cut scope elsewhere.)\n")
+
+    # --- the September gate --------------------------------------------------
+    paid_now = uniq("paid_2k")
+    gate_due = today >= SEPT_GATE
+    left = (SEPT_GATE - today).days
+    print(f"SEPT GATE  {SEPT_GATE}   {'DUE' if gate_due else f'in {left}d'}")
+    print(f"  paid Rs 2,000: {paid_now}   -> {'PASS' if paid_now >= 1 else 'not yet'}")
+    if paid_now >= 1:
+        print("  Raha earned September. Apply to the buildathon anyway (cheap, no resume")
+        print("  screen), but Raha stays primary and this plan runs to 26 Sep.")
+    elif gate_due:
+        print("  No payment. Nostro gets September. This is not a verdict on Raha --")
+        print("  one week from a standing start is a thin sample. The site stays live,")
+        print("  the audit keeps capturing, the queue is still here in January.")
+    else:
+        print("  Money received and a UPI reference logged. Not 'promising conversations'.")
+    print()
 
     # --- the three dated criteria -------------------------------------------
     a14, d14, c14 = counts["answered_public"], counts["dm_sent"], uniq("conversation")

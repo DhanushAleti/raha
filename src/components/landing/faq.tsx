@@ -25,7 +25,7 @@ const FAQS = [
   },
   {
     q: "What does it cost?",
-    a: "The founding member plan is ₹20,000/year — 50% off the standard ₹40,000 — for the first 10 members only, price-locked for life. Annual plans only: taxes don't stop after filing season, and neither do we.",
+    a: "₹2,000 for the Foreign Income Evidence Check — every foreign credit matched to the document behind it, written up in 48 hours. Money back if it doesn't tell you something your CA hasn't. That is the only thing we sell right now; ongoing work is something we discuss once you've seen the check.",
   },
   {
     q: "I earn less than ₹20L. Is Raha for me?",

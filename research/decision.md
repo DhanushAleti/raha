@@ -3,6 +3,19 @@
 **Written 2026-08-27. Window: Thu 27 Aug → Fri 26 Sep 2026.**
 Reasoning and the full tactic filter: `research/tactics-filter.md`. Raw source: `research/tactics-raw.md`.
 
+> **Corrected 2026-08-27, same day, by `docs/PAINKILLER_AUDIT.md`.** Two changes, both accepted:
+>
+> 1. **The riskiest assumption was misnamed.** It is not "will anyone pay ₹2,000" — they already pay
+>    CAs ₹20,000/yr for this scope, so willingness to pay is proven. It is **"will someone with this
+>    pain pay a *stranger* with no credential and no referral."** A warm intro deletes the word
+>    *stranger*; Reddit does not. Reddit has pain without trust, and `ACUTE_PAIN_TARGETS.md` requires
+>    2–3 weeks of public answers before a Tier-1 DM can land — so it **structurally cannot** produce a
+>    payment in seven days. **The 15 warm asks are the primary 7-day test, not a day-2 box-tick.**
+>    Reddit still runs, as the long game it actually is. The 30-day channel and kill criteria below
+>    are unchanged.
+> 2. **A day-7 money gate was added** (Wed 3 Sep) because the Razorpay conflict was ranked #2 in the
+>    risk list and then priced at zero in the schedule. See "The September gate" below.
+
 **Two assumptions I made rather than blocking on.** Correct them here if wrong; nothing below
 changes unless they're wildly off, because every item costs ₹0 and fits a single-digit hour budget.
 
@@ -65,13 +78,23 @@ confused about it. That is not a lead list, it is a queue.
    ₹20,000" — and that test has still never been run on one human.
 7. **Follow up 3–4 times over two weeks** (`YC`), then leave it.
 
-**One bounded exception, not a second channel.** `YC`'s single strongest finding is that customers
-1–3 come from the personal network, with "basically no counter-examples." `GTM_REVIEW.md` §4 names
-avoiding that channel as the clearest strategic error here. So: **one 30-minute block, Fri 28 Aug,
-15 messages asking for introductions — once.** Not a daily motion, not a share of the 30 days. If it
-produces an intro, that intro goes to the front of the pipeline and gets the full process
-(`HORMOZI`: "sell warm like cold" — run the whole thing even for a friend, or you get neither the
-sale nor the friendship).
+**The warm network is the primary 7-day test** (corrected — it was a bounded exception in the first
+draft). `YC`'s single strongest finding is that customers 1–3 come from the personal network, with
+"basically no counter-examples," and `GTM_REVIEW.md` §4 names avoiding it as the clearest strategic
+error here. The reason it is now primary rather than a box-tick:
+
+| | Pain | Trust |
+|---|---|---|
+| **Reddit** | yes — they typed it themselves | **no** — you are a stranger with no credential |
+| **Warm network** | not directly (a 2028 IITM batch has no ₹20L foreign income) | **yes** — and their *second degree* has the pain |
+
+The untested variable is trust, not pain. A referral supplies it in one message; Reddit needs 2–3
+weeks of public answers to manufacture it. **So: 15 intro asks on Fri 28 Aug, and every reply worked
+through the following week.** If an intro lands it goes straight to the front of the pipeline and
+gets the full process (`HORMOZI`: "sell warm like cold" — run the whole thing even for a friend, or
+you get neither the sale nor the friendship).
+
+Reddit is unchanged as the 30-day channel. It is the long game; the warm asks are the short one.
 
 ### What stops, explicitly
 
@@ -107,6 +130,29 @@ second one, and start asking "who else do you know who's dealing with this?" (`H
 
 ---
 
+## The September gate — Wed 3 Sep
+
+The first draft flagged the Razorpay conflict and then scheduled around it, which priced it at zero.
+Corrected: Nostro acceptance means Bangalore, in person, six months from September. **Raha and Nostro
+cannot both be primary in September**, and not deciding is itself a decision — made badly, late.
+
+- **One paid ₹2,000 by Wed 3 Sep** → Raha earned September. Apply to the buildathon anyway (it is
+  cheap and there is no resume screening), but Raha is primary and this plan runs to 26 Sep as
+  written.
+- **No payment by Wed 3 Sep** → after five weeks, plus one week of outbound that actually carried an
+  ask, the honest read is that this does not sell in your hands at this price this quarter. Nostro
+  gets September.
+
+**What this gate is not.** It is not a verdict on Raha. Seven days from a standing start, with zero
+prior asks ever made, is a thin sample, and the honest reading of a miss is "not in one week, by me,
+at this price" — not "the business is wrong." The site stays live, the audit keeps capturing, and
+the queue is still there in January. The gate exists to force the September allocation question,
+which has a real deadline on 5 Sep, not to settle the business.
+
+The failure case is arriving at 5 Sep having done neither properly.
+
+---
+
 ## The 7-day queue
 
 Every item is ≤90 minutes. Tick them in `docs/outreach/SEND_LOG.md` as they happen, not from plan.
@@ -117,66 +163,66 @@ site email captures. Reply to anything live within 2 hours of seeing it. Log eve
 
 ### Thu 27 Aug — day 1
 
-- **D1a · 30 min** — `python3 scripts/find-prospects.py --seed`. Loads all 15 researched threads
-  from `ACUTE_PAIN_TARGETS.md` into `research/pipeline.db` (already done — run
-  `python3 scripts/pipeline.py next` to see the queue). Then **either** spend 2 minutes creating a
-  Reddit script app at reddit.com/prefs/apps and `export REDDIT_CLIENT_ID/SECRET` so `--search`
-  works, **or** skip it and run the manual searches the script prints. Anonymous Reddit JSON search
-  has been blocked since 2024 — verified today, `www` returns 403 and `old` redirects to a login
-  wall — so this is a real 2-minute step, not an optional one. Either path is the day-1 test of
-  assumption 1 below.
-- **D1b · 60 min** — Post **2 substantive public answers** on Tier-3 FIRA-process threads
-  ("why does requesting FIRC feel like pulling teeth", "struggling to get FIRC issued"). Lead with
-  the 2016/FIRA correction. Zero mention of Raha. Log both.
+- **D1a · 30 min** — **UPI collect link or static QR saved to your phone.** Set `NEXT_PUBLIC_UPI_ID`
+  in Vercel env and redeploy. Until this exists nothing else in the plan is testable — the site
+  currently has no way for any human to give Raha money, and said so out loud until today.
+- **D1b · 20 min** — Seed the queue: `python3 scripts/find-prospects.py --seed` (done — 15 threads
+  loaded), then `python3 scripts/pipeline.py next`. Register a Reddit script app if you want
+  `--search` (2 min, free) — anonymous Reddit JSON search has been blocked since 2024.
+- **D1c · 40 min** — Draft the 15 names for tomorrow and pre-write the forward. The ask fails when
+  they have to compose it themselves.
 
-### Fri 28 Aug — day 2
+### Fri 28 Aug — day 2 · **the primary test**
 
-- **D2a · 30 min** — **The warm ask. 15 messages. Once.** Not "do you need this" — an intro ask, per
-  `YC`: name who you want to meet, why they specifically would care, and what to put in the
-  forwarded message. Template in `research/outreach-sequences.md` §4. This has been avoided for a
-  month; 30 minutes closes it either way.
-- **D2b · 60 min** — 3 more public answers, one of them a **teardown** (`HORMOZI`): take one
-  person's stated setup and lay out exactly what their paperwork has to prove and where it breaks.
+- **D2a · 60 min** — **15 warm intro asks. All of them. Forward pre-written.** Script in
+  `research/outreach-sequences.md` §4. **Not sent by Sat 29 Aug → delete the warm network from every
+  plan in this repo**, including the day-14 fallback. A fallback you won't execute is worse than
+  none, because it hides the real position.
+- **D2b · 30 min** — 2 public answers on Tier-3 FIRA-process threads, opening with the 2016/FIRA
+  correction. No mention of Raha.
 
 ### Sat 29 Aug — day 3
 
-- **D3a · 30 min** — Fix `src/components/audit/questions.ts`: change "FIRC" → "FIRC/FIRA", and add
-  the rail question — *"How does the money reach you?"* → direct bank transfer / Wise-PayPal-Stripe
-  / Skydo-Karbon-Payoneer / not sure. Ship it. This is the only product work in the 30 days, and it
-  is the question that decides whether a lead is worth anything.
-- **D3b · 60 min** — **DM Tier-1 threads #1 and #2** — the two people who asked to hire this scope
-  verbatim. Sequence in `research/outreach-sequences.md` §1. No link in the first message.
+- **D3a · 90 min** — **One full diagnostic, free, in public, as a teardown** on the AdSense+Patreon
+  thread. This is simultaneously your only proof, your only ad, and the thing that makes a Tier-1 DM
+  land. Do it once, properly.
 
 ### Sun 30 Aug — day 4
 
-- **D4a · 60 min** — 3 public answers, working down the Tier-2 list (₹40L freelancer thread,
-  AdSense+Patreon thread, Dodo Payments FIRA thread).
-- **D4b · 30 min** — **DM Tier-1 #3 and #4.**
+- **D4a · 60 min** — 3 public answers. Work down Tier 2.
+- **D4b · 30 min** — DM the two **already-burned** threads (filed exempt instead of export; eFIRA
+  since 2022). Scripts A and B in `docs/PAINKILLER_AUDIT.md`. These outrank the shoppers: a dated
+  problem already on record is the likeliest first payment in the whole list.
 
 ### Mon 31 Aug — day 5
 
-- **D5a · 45 min** — **DM Tier-1 #5**, plus the 3 highest-scoring new threads the finder surfaced.
-- **D5b · 45 min** — Dry-run the ₹2,000 deliverable once, timeboxed, against a synthetic case built
-  from the AdSense+Patreon thread. Purpose is one number: **how long does the diagnostic actually
-  take?** If it's over 3 hours, the price is wrong and you need to know that before someone pays.
+- **D5a · 60 min** — DM Tier-1 #1–#3 (script C). Every one ends in the ₹2,000 ask.
+- **D5b · 30 min** — Work every warm reply. Any intro goes to the front and gets the full process —
+  same rail question, same ask.
 
 ### Tue 1 Sep — day 6
 
-- **D6a · 60 min** — 3 public answers + clear every open reply.
-- **D6b · 20 min** — `python3 scripts/pipeline.py stats`. Read the floor line. If behind, the
-  shortfall carries into day 7 rather than being forgiven.
+- **D6a · 60 min** — DM Tier-1 #4–#5. Clear every open reply within 2 hours.
+- **D6b · 30 min** — Dry-run the deliverable once against a synthetic case. One number matters:
+  **how long does it actually take?** Over 3 hours and the price is wrong — better to know before
+  someone pays than after.
 
 ### Wed 2 Sep — day 7
 
-- **D7a · 60 min** — **Follow-up #1** on every DM with no reply (`YC`: 3–4 touches over two weeks).
-  Same thread, under 75 words, one CTA, nothing new to justify itself.
-- **D7b · 30 min** — 2 public answers to hit the weekly floor. Then stop and check `stats`.
+- **D7a · 60 min** — Follow-up #1 on every silent thread. Under 40 words, and it asks for money, not
+  a call.
+- **D7b · 20 min** — `python3 scripts/pipeline.py stats`. Read the SEPT GATE line.
+
+### Thu 3 Sep — **the gate**
+
+Money received and the UPI reference logged, or not. Not "promising conversations." Log it:
+`python3 scripts/pipeline.py log <id> paid_2k --note "<upi ref>"`.
 
 ### Wed 3 – Fri 5 Sep — Razorpay carve-out
 
 Standing 15-minute block only. Do not schedule sales work against the buildathon deadline; a
-half-done application and a half-done week is the worst of both. Week 2's queue restarts Sat 6 Sep
-and repeats the day-1–day-7 shape against the next tier of threads.
+half-done application and a half-done week is the worst of both. If the gate passed, week 2's queue
+restarts Sat 6 Sep and repeats the day-1–day-7 shape against the next tier of threads.
 
 ---
 
@@ -186,9 +232,9 @@ and repeats the day-1–day-7 shape against the next tier of threads.
 |---|---|---|---|---|
 | 1 | **There are enough live high-intent threads** to sustain 12 answers + 5 DMs/week for four weeks | `find-prospects.py --search` (needs a free Reddit script app, 2 min) or the manual search URLs it prints. Count distinct threads from the last 90 days not yet answered; the script prints the number. **Under 40 and the room is too thin** — widen to r/developersIndia, r/IndianFreelancers, r/IndiaInvestments and Indie Hackers before day 3, don't wait for day 14. The 15 seeded threads cover week 1 either way, so this tests week 2–4, not day 1's work. | 20 min | **Day 1** |
 | 2 | **A DM from an account with real answer history gets a reply** from someone who publicly asked to hire for this | The 5 Tier-1 DMs are the test. Measure replies, not opens. `ACUTE_PAIN_TARGETS.md` predicts 1–3 real conversations from 5 DMs plus a week of answers — that is the number to beat. | ₹0 | **Day 7** |
-| 3 | **Someone will pay ₹2,000 to a non-CA for a written diagnostic** | Ask. Five times. This is the one test that has never been run on a single human, and everything else — leads, positioning, competitive analysis — is downstream of it and cannot be resolved by more analysis. | ₹0 | **Day 21** |
+| 3 | **Someone with this pain will pay a stranger — no credential, no referral.** (Corrected: willingness to pay is *proven*, they pay CAs ₹20,000/yr. Trust in an unknown seller is the untested variable.) | Ask. Five times. Warm-sourced asks test it with trust supplied; Reddit asks test it without. **Track which kind converts** — that difference is the actual finding, not the raw count. | ₹0 | **Day 21** |
 | 4 | **The people reachable in this room actually have the problem** — i.e. they're on Wise/PayPal/Stripe or direct bank transfer, not already on a FIRA-issuing rail | The rail question, in every first reply. After 10 answers, count. **If most are already on Skydo/Karbon/Payoneer, the wedge is commoditised for this audience** and the target shifts to backfill (2+ years of history, which no rail solves) rather than forward paperwork. | one sentence | **Day 10** |
-| 5 | **He will actually send the warm asks** — the honest one. This channel has sat unused for a month by choice, not absence | Binary. 15 messages on Fri 28 Aug, or not. If not sent by Sat 29 Aug, **stop counting the warm network as available** and remove it from the day-14 fallback — a fallback you won't execute is worse than no fallback, because it hides the real position. | 30 min | **Day 3** |
+| 5 | **He will actually send the warm asks** — the honest one, and now the *primary* test rather than a side bet. This channel has sat unused for a month by choice, not absence | Binary. 15 messages on Fri 28 Aug, or not. If not sent by Sat 29 Aug, **stop counting the warm network as available** and remove it from the day-14 fallback — a fallback you won't execute is worse than no fallback, because it hides the real position. | 60 min | **Day 3** |
 
 ---
 

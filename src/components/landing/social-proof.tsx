@@ -25,8 +25,8 @@ export function SocialProof() {
           ))}
         </ul>
         <p className="mt-8 text-center text-sm italic text-raha-ink/40">
-          Founding member stories will appear here — the first 10 seats are
-          filling now.
+          No customer stories here yet — there are none. The first evidence
+          checks are being written now.
         </p>
       </div>
     </section>

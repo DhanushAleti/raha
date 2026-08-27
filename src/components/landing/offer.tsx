@@ -1,36 +1,39 @@
-import { whatsappLink } from "@/lib/whatsapp";
+import { EvidenceCheckOffer } from "@/components/evidence-check-offer";
 
 const INCLUDED = [
-  "A cross-border-fluent CA — filings reviewed and signed by qualified Chartered Accountants",
-  "FIRA tracking + export-of-service documentation for every foreign payment",
-  "GST-compliant invoices for every client and brand deal, done for you",
-  "A live 'set aside this much' number across every rail and client",
-  "Year-round support on WhatsApp — not just in filing season",
+  "Every foreign credit in the period, listed — no sampling",
+  "Each one matched to the document behind it: FIRA, NOC, bank advice, or nothing",
+  "Which ones stand up as zero-rated exports, and which do not",
+  "The rupee exposure on the ones that do not",
+  "Whether your LUT is filed and dated where it needs to be",
 ] as const;
 
-// Updated manually as seats fill (env override so no redeploy-per-sale is needed).
-const SEATS_TAKEN = Number(process.env.NEXT_PUBLIC_FOUNDING_SEATS_TAKEN ?? "0");
-
+/**
+ * The ₹20,000 founding seat and the 10-seat counter used to live here. Both are
+ * gone: at ₹20,000 the buyer compares Raha to a licensed CA doing more for the
+ * same money, and loses on the merits. The seat becomes something a satisfied
+ * ₹2,000 customer asks for, not the front door. docs/PAINKILLER_AUDIT.md.
+ */
 export function Offer() {
-  const seatsRemaining = Math.max(0, 10 - (Number.isFinite(SEATS_TAKEN) ? SEATS_TAKEN : 0));
   return (
     <section aria-labelledby="offer-heading" className="bg-raha-cream">
       <div className="mx-auto max-w-6xl px-5 py-16 sm:py-24">
         <div className="grid items-start gap-10 lg:grid-cols-2">
           <div>
             <p className="text-sm font-semibold uppercase tracking-widest text-raha-green">
-              Founding member offer
+              Find out where you actually stand
             </p>
             <h2
               id="offer-heading"
               className="font-display mt-3 text-3xl tracking-tight text-raha-ink sm:text-5xl"
             >
-              First 10 seats. Price locked for life.
+              Most people have the LUT and nothing underneath it.
             </h2>
             <p className="mt-6 max-w-lg text-lg leading-relaxed text-raha-ink/70">
-              You&apos;re already paying ₹20K–₹50K a year for a CA who&apos;s
-              never asked you for a FIRA. Founding members get the full Raha
-              service — at half the standard price, locked in forever.
+              Foreign income is a zero-rated export only if there&apos;s a FIRA
+              behind each remittance. That gap surfaces at LUT renewal or in a
+              notice — by which point it&apos;s 18% plus interest on money you
+              spent last year. This tells you, in writing, before then.
             </p>
             <ul className="mt-8 space-y-3">
               {INCLUDED.map((item) => (
@@ -42,40 +45,18 @@ export function Offer() {
                 </li>
               ))}
             </ul>
+            <p className="mt-8 max-w-lg text-sm leading-relaxed text-raha-ink/55">
+              Not a CA, and we don&apos;t file. What you get is the
+              reconciliation your CA doesn&apos;t have time to do in April —
+              every credit matched to a document, in writing, that you hand to
+              whoever files for you.
+            </p>
           </div>
-          <div className="rounded-3xl border border-raha-green/20 bg-white p-8 shadow-[0_20px_60px_-30px_rgba(11,59,46,0.35)] sm:p-10 lg:sticky lg:top-8">
-            <p className="text-sm font-medium text-raha-ink/60">
-              Founding member plan
-            </p>
-            <p className="mt-3 flex items-baseline gap-3">
-              <span className="font-display text-5xl tracking-tight text-raha-ink">
-                ₹20,000
-              </span>
-              <span className="text-lg text-raha-ink/40 line-through">
-                ₹40,000
-              </span>
-              <span className="text-sm text-raha-ink/60">/year</span>
-            </p>
-            <p className="mt-2 text-sm font-medium text-raha-green">
-              50% off — locked at this price for as long as you stay
-            </p>
-            <div className="mt-6 rounded-xl bg-raha-green-soft px-4 py-3 text-sm text-raha-green">
-              <strong>{seatsRemaining} of 10</strong> founding seats still open
-            </div>
-            <a
-              href={whatsappLink(
-                "Hi! I'd like to reserve one of the 10 founding seats (₹20,000/yr).",
-              )}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 flex h-12 w-full items-center justify-center rounded-lg bg-raha-green text-base font-semibold text-raha-cream transition-opacity hover:opacity-90"
-            >
-              Reserve your seat on WhatsApp
-            </a>
-            <p className="mt-4 text-center text-xs leading-relaxed text-raha-ink/50">
-              No payment online — we onboard every founding member personally
-              over a call.
-            </p>
+          <div className="lg:sticky lg:top-8">
+            <EvidenceCheckOffer
+              variant="light"
+              context="Hi! I want the ₹2,000 Foreign Income Evidence Check."
+            />
           </div>
         </div>
       </div>
