@@ -24,14 +24,21 @@ export function upiLink(note = DIAGNOSTIC_NAME): string | null {
   const vpa = process.env.NEXT_PUBLIC_UPI_ID?.trim();
   if (!vpa) return null;
   const payee = process.env.NEXT_PUBLIC_UPI_PAYEE_NAME?.trim() || "Raha";
-  const params = new URLSearchParams({
-    pa: vpa,
-    pn: payee,
-    am: String(DIAGNOSTIC_PRICE_INR),
-    cu: "INR",
-    tn: note,
-  });
-  return `upi://pay?${params.toString()}`;
+  // Deliberately not URLSearchParams: it encodes a space as "+", which is an
+  // HTML-form convention, not a URI one. UPI apps parse this as a plain URI and
+  // several render the "+" literally, so the payer sees "Foreign+Income+..." in
+  // the note field. encodeURIComponent gives %20, which every app decodes.
+  const params: [string, string][] = [
+    ["pa", vpa],
+    ["pn", payee],
+    ["am", String(DIAGNOSTIC_PRICE_INR)],
+    ["cu", "INR"],
+    ["tn", note],
+  ];
+  const query = params
+    .map(([k, v]) => `${k}=${encodeURIComponent(v)}`)
+    .join("&");
+  return `upi://pay?${query}`;
 }
 
 /** The raw VPA, shown alongside the link so desktop visitors can still pay. */

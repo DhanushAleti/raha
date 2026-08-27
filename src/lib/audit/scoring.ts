@@ -18,6 +18,11 @@ export type IncomeRange =
   | "over_2cr";
 
 export type Platform =
+  // Layer-2 sources — freelancers, consultants, indie SaaS, agencies.
+  | "freelance_clients"
+  | "own_product"
+  | "marketplace"
+  // Layer-1 creator sources, kept: they are still in scope and still stored.
   | "youtube"
   | "patreon"
   | "twitch"
@@ -64,7 +69,21 @@ export interface AuditResult {
 }
 
 /** Platforms that typically pay from abroad (FIRC-relevant). */
+/**
+ * Sources that pay in foreign currency by default. Membership drives
+ * `platformPoints`, so anything missing here scores a Layer-2 earner *softer*
+ * than a creator with identical exposure — which is exactly what happened
+ * between the Layer-2 repositioning and 2026-08-27: a freelancer billing a US
+ * client had to answer "Other", scored 0 platform points, and was pushed
+ * toward amber while a Twitch streamer with the same gaps read red.
+ *
+ * `instagram` and `brand_deals` stay out on purpose: both are ordinarily INR
+ * at the source, so they carry no export-evidence exposure of their own.
+ */
 const FOREIGN_PLATFORMS: ReadonlySet<Platform> = new Set([
+  "freelance_clients",
+  "own_product",
+  "marketplace",
   "youtube",
   "patreon",
   "twitch",
@@ -272,7 +291,7 @@ function deriveFlags(answers: AuditAnswers): AuditFlag[] {
       id: "no_set_aside",
       severity: "low",
       title: "You don't know your set-aside number",
-      body: "Without a running liability estimate, the year-end bill arrives as a lump-sum shock — the single most common creator cash-flow crisis.",
+      body: "Without a running liability estimate, the year-end bill arrives as a lump-sum shock — the single most common cash-flow crisis for people earning abroad.",
       action:
         "Track income as it lands and keep a live GST + advance-tax estimate.",
     });

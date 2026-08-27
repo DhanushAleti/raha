@@ -28,6 +28,53 @@ const WORST_CASE: AuditAnswers = {
   setAsideAwareness: "no",
 };
 
+/**
+ * Regression guard for the Layer-2 scoring gap closed on 2026-08-27.
+ *
+ * Between the Layer-2 repositioning and that date, `platforms` offered only
+ * creator sources. A freelancer or indie-SaaS founder had to answer "Other",
+ * which is not in FOREIGN_PLATFORMS, so they scored 0 platform points where a
+ * creator with identical exposure scored 1–2 — a systematically softer verdict
+ * for exactly the audience the outreach targets.
+ */
+describe("Layer-2 earners score the same as creators with identical exposure", () => {
+  const EXPOSED = {
+    incomeRange: "50l_1cr",
+    foreignIncome: "yes",
+    paymentRail: "aggregator",
+    gstRegistered: "no",
+    lutFiled: "no",
+    fircCollection: "never",
+    invoicePractice: "adhoc",
+    setAsideAwareness: "rough",
+  } as const;
+
+  test("a freelancer billing clients abroad is not scored softer than a YouTuber", () => {
+    const freelancer = computeAuditResult({
+      ...EXPOSED,
+      platforms: ["freelance_clients"],
+    });
+    const creator = computeAuditResult({ ...EXPOSED, platforms: ["youtube"] });
+
+    expect(freelancer.score).toBe(creator.score);
+    expect(freelancer.verdict).toBe(creator.verdict);
+  });
+
+  test("indie SaaS and marketplace income both count as foreign sources", () => {
+    for (const platform of ["own_product", "marketplace"] as const) {
+      const result = computeAuditResult({ ...EXPOSED, platforms: [platform] });
+      const other = computeAuditResult({ ...EXPOSED, platforms: ["other"] });
+      expect(result.score).toBeGreaterThan(other.score);
+    }
+  });
+
+  test("INR-at-source sources still carry no export-evidence points", () => {
+    const inr = computeAuditResult({ ...EXPOSED, platforms: ["brand_deals"] });
+    const none = computeAuditResult({ ...EXPOSED, platforms: [] });
+    expect(inr.score).toBe(none.score);
+  });
+});
+
 describe("computeAuditResult — score", () => {
   test("fully compliant low-income creator scores 0 → green", () => {
     const result = computeAuditResult(SAFE_BASELINE);

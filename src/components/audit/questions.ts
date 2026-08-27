@@ -37,23 +37,28 @@ export const QUESTIONS: Question[] = [
   {
     id: "platforms",
     kind: "multi",
-    title: "Where does your money come from?",
-    sub: "Pick everything that pays you.",
+    title: "What pays you?",
+    sub: "Pick everything that applies — clients, platforms, your own products.",
     options: [
+      // Layer-2 first: these are the people the outreach actually targets, and
+      // until 2026-08-27 every one of them had to answer "Other".
+      { value: "freelance_clients", label: "Freelance, consulting or agency clients abroad" },
+      { value: "own_product", label: "My own product, SaaS or app subscriptions" },
+      { value: "marketplace", label: "Upwork, Fiverr, Toptal or similar" },
       { value: "youtube", label: "YouTube / AdSense" },
       { value: "patreon", label: "Patreon" },
-      { value: "twitch", label: "Twitch" },
       { value: "substack", label: "Substack" },
+      { value: "twitch", label: "Twitch" },
       { value: "instagram", label: "Instagram" },
-      { value: "brand_deals", label: "Brand deals (INR)" },
-      { value: "other", label: "Other" },
+      { value: "brand_deals", label: "Indian brand deals (INR)" },
+      { value: "other", label: "Something else" },
     ],
   },
   {
     id: "foreignIncome",
     kind: "single",
     title: "Does any of it arrive in foreign currency?",
-    sub: "Dollars from AdSense, euros from Patreon — anything that isn't rupees at the source.",
+    sub: "Dollars from a US client, euros from Stripe, anything from AdSense — anything that isn't rupees at the source.",
     options: [
       { value: "yes", label: "Yes" },
       { value: "no", label: "No, everything is INR" },
@@ -119,13 +124,13 @@ export const QUESTIONS: Question[] = [
   {
     id: "invoicePractice",
     kind: "single",
-    title: "How do you invoice brand deals?",
+    title: "How do you invoice your clients?",
     options: [
       {
         value: "gst_sequence",
         label: "GST-compliant invoices, numbered in sequence",
       },
-      { value: "adhoc", label: "Ad-hoc PDFs when a brand asks" },
+      { value: "adhoc", label: "Ad-hoc PDFs when someone asks" },
       { value: "none", label: "I don't send invoices" },
     ],
   },
