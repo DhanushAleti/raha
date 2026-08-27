@@ -1,5 +1,12 @@
 # Raha — state as of 2026-07-28
 
+> **⚠️ A month stale as of 2026-08-27. Read [`NOW.md`](NOW.md) first.**
+> Superseded below: the "gated behind 3 paying customers before Phase 1 build starts" framing
+> (Phase 1 shipped in July and is live), the ₹20,000/year seat as current pricing (off the front
+> door — it returns in April at LUT-renewal time), and the "Current priority order" list
+> (replaced by the 7-day queue in `research/decision.md`).
+> The wedge, the Layer-2 decision, and the hard rules on voice and disclaimers all still hold.
+
 One page, kept current. Update this after every significant work session — replace, don't append.
 This is the single file to upload as Project knowledge; everything else is detail behind it.
 

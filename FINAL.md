@@ -1,23 +1,25 @@
 # FINAL.md — where Raha stands
 
+> **⚠️ Stale as of 2026-08-27. Read [`docs/NOW.md`](docs/NOW.md) first.**
+> Three things below were countermanded and are wrong to act on: the validation gate is **one paid
+> ₹2,000 by 3 Sep**, not 3 customers at ₹20,000; the ₹20,000 seat is off the front door; and cold
+> email to agencies is **stopped** — do not send the 50 drafts or start at `SEND_TODAY.md`.
+> Everything about *what was built* is still accurate.
+
 Built in one autonomous session, 2026-07-19. Deployed and verified live 2026-07-21.
 
 ## Live
 
 **https://raha.software** — use this one in all outreach. Landing `/`, free audit `/audit`.
 
-Both hostnames serve the same production deployment and both auto-update on every deploy:
+One hostname, used for everything: outreach links, auth, and canonical.
+(An earlier version of this file listed a second host; it no longer exists.)
 
-| Hostname | Use for |
-|---|---|
-| `raha.software` | **All outreach, DMs, threads, email links.** Reads as deliberate. |
-| `raha.software` | Auth and canonical. `NEXT_PUBLIC_SITE_URL` points here — leave it alone. |
-
-⚠️ **Do not repoint `NEXT_PUBLIC_SITE_URL` at `rahatax` without first adding that hostname to
+⚠️ **Do not repoint `NEXT_PUBLIC_SITE_URL` at any new hostname without first adding that hostname to
 Supabase → Authentication → URL Configuration → Redirect URLs.** It feeds `emailRedirectTo` and the
 OAuth `redirectTo` ([src/app/actions/auth.ts:24](src/app/actions/auth.ts:24), [:42](src/app/actions/auth.ts:42));
 changing it alone breaks magic-link and Google sign-in. The audit is a public page with no auth, so
-outreach traffic on `rahatax` is unaffected either way.
+outreach traffic is unaffected either way.
 
 | | |
 |---|---|
