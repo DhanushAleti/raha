@@ -45,3 +45,6 @@ next-env.d.ts
 # local env
 .env.local
 .env*.local
+
+# outreach pipeline — holds prospect names and contact history
+research/pipeline.db
