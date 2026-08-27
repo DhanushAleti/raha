@@ -28,16 +28,31 @@ Verified 2026-08-27 by curl against production, `vercel ls/env ls`, `git log`, a
 | Pipeline | 15 threads seeded, **0 answered, 0 DMs, 0 asks, 0 paid** — day 0 of 30 |
 | Tests | 68 unit + audit scoring, green at last run |
 
-**Two gaps that are live right now, not planned work:**
+**Closed since this page was written (all deployed and verified live):**
 
-1. **4 commits are ahead of `origin/main`.** Production was deployed from the working tree with the
-   Vercel CLI, so the site is correct but GitHub is not. Push-to-`main` is the auto-deploy trigger:
-   **any git-triggered rebuild from GitHub's current HEAD reverts production to the ₹20,000 landing
-   page and drops the rail question.** This is the single highest-consequence item in the repo and
-   it takes one command.
-2. **The live WhatsApp CTA is still the personal number `919666641799`.** Flagged in `FINAL.md` on
-   21 Jul as "swap before real traffic arrives." Traffic arrives tomorrow, and this number is now
-   the contact channel on a *paid* offer, not a waitlist.
+- **GitHub drift — fixed.** `main` was 4 commits behind production because the ₹2,000 offer was
+  deployed from the working tree with the Vercel CLI. Pushed. A git-triggered rebuild can no longer
+  revert the paid offer.
+- **The Layer-2 correction was never finished — now it is.** The repositioning commits fixed the
+  copy and stopped there. `Where does your money come from?` still offered only YouTube, Patreon,
+  Twitch, Substack, Instagram and brand deals, so **every freelancer, consultant, indie-SaaS founder
+  and agency — the exact audience tomorrow's 15 asks point at — had to answer "Other."** "Other" is
+  not in `FOREIGN_PLATFORMS`, so they scored **0 platform points where an identical creator scored
+  1–2**: the audience being pitched read one to two points *softer* than the audience being dropped,
+  which moves borderline cases from red to amber. Fixed, with three regression tests.
+- **UPI note encoding — fixed.** `URLSearchParams` writes a space as `+`, an HTML-form convention
+  rather than a URI one, and several UPI apps render it literally. The payer was going to see
+  `Foreign+Income+Evidence+Check`.
+- **Funnel verified end to end**, desktop and 375px: 9 questions → red verdict, score 14 → the
+  Tier-2 finding ("Wise, PayPal and Stripe cannot produce a FIRA at all") → ₹2,000 offer → a UPI
+  deep link that now reads `tn=Foreign%20Income%20Evidence%20Check`.
+
+**The one gap still open, and it is yours:**
+
+**The live WhatsApp CTA and the UPI VPA are both the personal number** — `919666641799` and
+`9666641799@ybl`. Flagged in `FINAL.md` on 21 Jul as "swap before real traffic arrives." Traffic
+arrives tomorrow, and it is now the contact *and* payment identity on a paid offer. Receiving ₹2,000
+personally is fine and not worth blocking on; the WhatsApp line is the one that follows you forever.
 
 Also unresolved: **no Reddit script app is registered** (`REDDIT_CLIENT_ID` unset), so
 `find-prospects.py --search` cannot run and **assumption 1 in `research/decision.md` — "is the room
@@ -111,9 +126,7 @@ Ordered by consequence. Everything above the line happens before the first warm 
 
 ### Tonight — 20 minutes, non-negotiable
 
-1. **`git push origin main`.** Local tree already equals production, so the redeploy is a no-op —
-   it just stops GitHub from being able to revert the paid offer. *(Not done for you: it is an
-   outward-facing deploy trigger. Say the word and it goes.)*
+1. ~~`git push origin main`~~ — **done.** GitHub and production are in sync.
 2. **Swap `NEXT_PUBLIC_WHATSAPP_NUMBER` to a business line in Vercel → redeploy.** Open since 21 Jul.
    Tomorrow it becomes the contact number on a paid offer.
 3. **Fill the 15 names** into `docs/outreach/WARM_15.md`. The drafts in `WARM_15_DRAFTS.md` are
@@ -156,15 +169,25 @@ Ordered by consequence. Everything above the line happens before the first warm 
 
 ### The one hole with no script yet
 
-`PAINKILLER_AUDIT.md` names it and does not solve it: **"let me ask my CA first"** → the CA says
-"I've got it," free → the deal dies silently. The counter is to hand over the four questions to put
-to the CA, then follow up in three days with *"what did they say?"* — **the non-answer is the
-conversion event.** That sequence still does not exist. Write it the first time someone says it,
-not before.
+**Written — `docs/outreach/CA_OBJECTION.md`.** `PAINKILLER_AUDIT.md` named "let me ask my CA first"
+as the likeliest silent death and listed no counter. The counter is not to argue with the CA: send
+four checkable questions and let the answer do the work. A CA who has it covered answers all four in
+a paragraph and you have lost nothing; one who has not will hedge, and **the hedge is the conversion
+event.** The file carries the four questions, the day-3 and day-7 follow-ups, and the four answers
+you actually get — including the clean disqualification, said honestly, which is the cheapest
+referral available.
+
+**And the thing that had no template at all:** if someone pays tomorrow, the 48-hour clock starts
+against a blank page. `docs/delivery/EVIDENCE_CHECK_SOP.md` makes every decision once instead of per
+customer — intake list, the three-tier rail matrix from the FIRA research, the LUT check, and how to
+state an exposure number without pretending it is a ruling. `REPORT_TEMPLATE.md` is the deliverable.
+Budget **90–110 minutes**, which answers D6b's "how long does it actually take?" *before* someone
+pays rather than after.
 
 ---
 
 ## Related
 `research/decision.md` (the 30 days) · `docs/PAINKILLER_AUDIT.md` (scripts, offer, holes) ·
 `research/tactics-filter.md` + `-addendum.md` (what the corpus survives to) ·
-`docs/outreach/WARM_15_DRAFTS.md` (tomorrow) · `scripts/pipeline.py` (the only scoreboard)
+`docs/outreach/WARM_15_DRAFTS.md` (tomorrow) · `docs/outreach/CA_OBJECTION.md` (the objection) ·
+`docs/delivery/` (how to actually deliver) · `scripts/pipeline.py` (the only scoreboard)
