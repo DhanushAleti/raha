@@ -152,8 +152,9 @@ Both run inside the 30-day window and both are entangled with the 3 Sep allocati
   (operating as an individual below the ₹20L services threshold, personal UPI — the eligibility
   answer). The solo-founder / no-CA gap is named as the first thing Pratham would fix. `[D]`
 - **History behind it:** shortlisted and pitched at the **VentureArch IITM idea sprint, 22 Aug (Team
-  A38)** — the first externally-initiated evaluation on record. Froze on the monetization question
-  three times. The answer now exists and is the spine of the application: *the LUT re-files every FY
+  A38)** — the first externally-initiated evaluation on record. The monetization question came up
+  three times there and went unanswered; the answer now exists and is the spine of the application:
+  *the LUT re-files every FY
   and a FIRA is needed per payment, so ₹2,000 buys the evidence check and April is when the ₹20,000
   annual seat becomes the obvious buy — the statute makes it repeat, not a subscription trick.* `[D docs/NOW.md, ivm memory]`
 - **The 20–30 accepted LinkedIn connections** (incl. the four named programme people): a real asset —
