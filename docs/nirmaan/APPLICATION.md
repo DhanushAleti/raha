@@ -239,3 +239,40 @@ on p.9.
 - [ ] Registration answer says **none** (this is the eligibility answer, p.9)
 - [ ] Link included: **https://raha.software** — and the free audit at /audit works, so let them try it
 - [ ] Draft saved, then submitted. Saving is not submitting.
+
+---
+
+## The 20–30 accepted LinkedIn connections — how to use them, and when
+
+Every request accepted, including all four named on p.14 of the guidebook: Prof. Satyanarayanan
+Seshadri (SIE Head), Prof. Murugaiyan Amirthalingam (Faculty Advisor), Ms. Nandhini (Manager), and
+Bala Saimani Voonna (Student Executive Head). That is a real asset. It also has a conflict attached
+today, so the sequencing matters more than the access.
+
+**Today — one legitimate use, and only one.** The portal says 31st, the group says EOD today, and
+Mahati's 19:04 question was never answered. One short message to **Bala Saimani Voonna** settles it,
+and it reads as diligence rather than a favour:
+
+> Quick one — the portal shows 31 Aug but the group said EOD today. Which should I work to?
+
+**Submit today regardless of the reply.** The message is for certainty, not for permission.
+
+**Today — what not to do.** Do not ask any Nirmaan person for a customer introduction before the
+cohort decision. Seshadri, Amirthalingam, Nandhini and Voonna sit on or beside the side that reviews
+you; a sales ask from an applicant, hours before submitting, reads as transactional at exactly the
+moment you are being judged on character. **The ask is small and the cost is the whole
+relationship.** None of them belong in today's fifteen.
+
+**Keep them out of the application too.** An accepted connection is not an endorsement, and naming
+them implies you think it is. The people reading the form are the people you connected with — they
+already know. Naming them turns a quiet advantage into a conspicuous one.
+
+**After the decision — this is worth more than fifteen DMs.** Nirmaan runs 269 active teams, has
+supported 250+, and those startups have generated ₹80 Cr+ in revenue. That alumni base is dense with
+exactly the customer: small software and services companies billing clients abroad.
+`WARM_15.md` slot #4 reads *"E-Cell staff see every founder on campus — highest-leverage single
+message on this page."* **You now have twenty of those.** Used at the right moment — as a
+pre-incubatee with a live product, not as an applicant — one message to a programme manager reaches
+more qualified foreign-income earners than the entire Reddit queue.
+
+Bank it. Spend it in October.
