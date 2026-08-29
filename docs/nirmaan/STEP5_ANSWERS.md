@@ -36,22 +36,22 @@ Same person, solo team.
 
 ## Brief description of that experience — links to demos, websites, or reports
 
-> I build and ship independently. Raha is the current and only focused venture: I designed, built and
-> deployed it end to end — a production Next.js and Postgres application with row-level security,
-> automated tests and a live free-audit tool — and put a paid offer in front of real people on
-> 27 August 2026.
+> I build and ship on my own. Raha is the one I am trying to turn into a business.
 >
-> Alongside the product I ran 28 direct outreach conversations with Indian creators and freelancers
-> between June and August 2026, and wrote the research that came out of them: *FIRC to FIRA:
-> Documentary Evidence Infrastructure and the Uneven Compliance Burden on India's Independent
-> Digital Exporters* — a ~4,300-word paper with 20+ cited sources, attached below.
+> I wrote and deployed it myself: Next.js and Postgres, row-level security on every table, a test
+> suite, and a free audit anyone can run without signing up. It went live in July. The paid offer
+> went up on 27 August 2026.
 >
-> Product: **https://raha.software** · Free audit, no signup: **https://raha.software/audit**
+> Between June and August I ran 28 outreach conversations with Indian creators and freelancers.
+> Those turned into a paper — *FIRC to FIRA: Documentary Evidence Infrastructure and the Uneven
+> Compliance Burden on India's Independent Digital Exporters*, about 4,300 words and 20-odd cited
+> sources. It is attached below.
 >
-> Prior to Raha I have built and shipped several independent software projects, which is where the
-> engineering came from. Raha is the first one I have tried to sell.
+> Product: **https://raha.software**
+> Free audit, no signup: **https://raha.software/audit**
 >
-> Revenue to date: **₹0. Paying customers: 0.** The product is live; the selling has just started.
+> I have shipped software before this. Raha is the first thing I have tried to sell, and so far
+> nobody has bought it. **Revenue ₹0. Customers 0.**
 
 ## Is the startup registered with MCA? → **No**
 
@@ -68,39 +68,36 @@ cohort decision.**
 
 ## I believe Nirmaan can help me with ...
 
-> Three things, in the order they block me.
+> **A CA who stays involved.** Raha puts rupee figures in front of people who may act on them, and
+> until a practising chartered accountant has been through the computation logic and the
+> export-evidence rules, every number ships marked "estimate". I can live with that on a free audit.
+> I cannot live with it once somebody has paid me. The panel on 22 August told me the same thing and
+> they were right. It is the first line of how I would spend the seed fund.
 >
-> **A chartered accountant on the team, not just on an invoice.** Raha outputs rupee figures a
-> person may act on. Until a practising CA has reviewed the computation logic and the export-evidence
-> rules, every number ships as an estimate and I cannot responsibly move past that. This was said to
-> me directly at the 22 August review and I agree with it. It is line item one of how I would use
-> the seed fund.
+> **A co-founder.** I am solo, and a student. I do not know where else I would find people at the
+> same stage with the skills I do not have.
 >
-> **A co-founder.** I am solo, and a student. A cohort is the only room I have ever been in that is
-> full of people at the same stage with complementary skills, and this is the honest reason a
-> programme beats a grant for me right now.
+> **A deadline somebody else sets.** The product is live; my problem is that I keep building when I
+> should be selling. A mentor, a six-month clock and a review committee at the end of it is the kind
+> of pressure I have never managed to create on my own.
 >
-> **The discipline of a review committee with a date on it.** My hardest problem is not the product
-> — it is live — it is that I keep building instead of selling. Pratham's structure, mentor and
-> six-month review is an external deadline of exactly the kind that has worked on me before and that
-> I cannot manufacture alone.
->
-> What I am not asking Nirmaan for is customer acquisition spend. Guidebook p.11 is right that
-> market research means approaching people directly myself, and that is my job, not the fund's.
+> I am not asking for money to find customers. The guidebook says to go and do that myself, and that
+> is fair — it is my job, not the fund's.
 
 ## At this stage, I am applying for pre-incubation instead of incubation because...
 
 > Because I have a product and no proof, and incubation is for the other way round.
 >
-> Concretely: **₹0 revenue, 0 paying customers, no incorporation, no team.** The software is built,
-> deployed and tested, and the free audit works — but not one person has yet paid for the thing I am
-> selling, and until someone does I have a hypothesis with a website attached, not a business.
+> ₹0 revenue. No customers. Not incorporated. No team. The software works — deployed, tested, the
+> free audit running — but nobody has paid me yet, and until somebody does I have a hypothesis with a
+> website attached.
 >
-> Incubation would be asking for resources to scale something unvalidated. Pre-incubation is asking
-> for exactly what I lack: a CA to make the numbers defensible, a co-founder, and six months of
-> structure pointed at the first ten customers rather than the next ten features.
+> Asking for incubation would mean asking you to help me scale something I have not validated. What I
+> need is smaller and more boring than that: a CA who will check my numbers, someone to build with,
+> and six months where the pressure is on finding ten customers instead of shipping ten more
+> features.
 >
-> I would rather be admitted on an honest zero than on a decorated one.
+> I would rather get in on an honest zero than a dressed-up one.
 
 ## Technologies used → tick **App Development** + **Other**
 
@@ -136,8 +133,6 @@ IITM, licensed back to you exclusively at nil or mutually agreed cost when you i
 
 ## Do you have a proof of concept to validate your idea? → **Yes**
 
-> Yes, on three levels.
->
 > **The product works.** raha.software is live: a 9-question audit returning a scored red/amber/green
 > verdict with named findings, plus the paid Evidence Check. Free to try, no signup.
 >
@@ -193,10 +188,9 @@ says "research paper, whitepaper, or other", so the honest word is the expected 
 > them, because the intake is where the product is still wrong. Trips to be pre-approved
 > case-by-case.
 >
-> **In one line:** it turns a manual service one person delivers in two hours into a reviewed,
-> correct product — and removes the two things a reviewer should reasonably worry about, which are
-> that the numbers have never been checked by a CA and the disclaimer has never been checked by a
-> lawyer.
+> Together this turns a manual service one person delivers in two hours into a product whose numbers
+> a chartered accountant has checked and whose disclaimer a lawyer has checked. Those are the two
+> things I would worry about if I were reading this application.
 >
 > I understand the seed fund is reimbursement-based against proper invoices, not a grant, and that
 > marketing and promotion are not claimable. Distribution is my bottleneck and I will solve it the

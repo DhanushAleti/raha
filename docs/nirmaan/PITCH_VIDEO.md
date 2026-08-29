@@ -32,8 +32,8 @@ a word, keep going — panels forgive a fumble and do not forgive a recital.
 
 > **[0:35 — the insight; this is the part they'll remember]**
 >
-> When I spoke to twenty-eight creators and freelancers this summer, I found the problem isn't a
-> property of the person. It's a property of the payment rail.
+> When I spoke to twenty-eight creators and freelancers this summer, one thing came out of it:
+> whether you have this problem at all comes down to how the money reaches you.
 >
 > If you're on Skydo or Payoneer, you get a FIRA automatically, free — you have no problem, and I
 > tell you that. If you're on Wise, PayPal or Stripe, your bank *legally cannot* issue you one,
@@ -57,9 +57,8 @@ a word, keep going — panels forgive a fumble and do not forgive a recital.
 > **[1:25 — the honest close]**
 >
 > Where I actually am: the product is live, the research is written, and revenue is zero. Nobody has
-> paid me yet. I'm applying for pre-incubation and not incubation because what I'm missing isn't
-> engineering — it's a CA to make the numbers defensible, a co-founder, and six months of structure
-> pointed at the first ten customers instead of the next ten features.
+> paid me yet. I can build. What I don't have is a CA to check my numbers, anyone to build with, or a
+> reason to stop adding features and go get ten customers. That is what I am asking for.
 
 **Ends around 1:35. Anything under two minutes is fine.**
 
