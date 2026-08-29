@@ -127,9 +127,14 @@ Guidebook p.9: government registration may disqualify you from Pratham. You are 
 > pressure I have not managed to create on my own.
 >
 > **The workshops on customer discovery specifically.** Everything I know about talking to customers
-> I worked out by getting it wrong across 28 conversations and one cold email campaign that returned
-> a single reply out of 28. I would rather be taught that properly than keep paying for it in
-> months.
+> I worked out by getting it wrong — 28 conversations, and one cold email campaign that returned a
+> single reply out of 28. I would rather be taught that properly than keep paying for it in months.
+>
+> **Worth being precise about why revenue is zero**, because it is the fair question to ask me.
+> Until 27 August there was no way for anyone to pay me. The site said, in as many words, that we
+> onboarded every customer personally over a call. I removed the ₹20,000 annual seat, shipped a
+> ₹2,000 diagnostic and a payment link, and the first version of this product a stranger can
+> actually buy is two days old.
 >
 > **What I would use the eight weeks for, concretely.** Twenty diagnostic conversations with people
 > who bill foreign clients, split across the three payment routes, to answer the one question I
