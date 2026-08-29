@@ -1,837 +1,536 @@
 # Raha — Project Master Document
 
-> Single source of truth. Written for a new engineer, a new AI session, or an investor to reach
-> working understanding in under fifteen minutes.
+> **The single source of truth for Raha.** One place. If you read only one file, read this one.
+> Written for a new engineer, a new AI session, or an investor to reach a correct, current
+> understanding in fifteen minutes — and to end the "which document do I trust?" problem for good.
 >
-> **Generated:** 2026-07-28 · **Commit:** `b289f77` · **Branch:** `main`
+> **Current as of:** 2026-08-29 · **Repo:** `github.com/DhanushAleti/raha` (private) · **Branch:** `main`
+> **Live:** https://raha.software (verified 200) · **Audit:** https://raha.software/audit (verified 200)
 >
-> **Evidence legend — applied throughout:**
-> `[D]` Documented — verifiable in a file or the running system.
-> `[I]` Inferred — deduced from code or context, not explicitly stated anywhere.
-> `[U]` Unknown — genuinely undetermined. Not guessed at.
+> **Evidence legend:** `[D]` Documented — verifiable in a file or the running system ·
+> `[I]` Inferred — deduced from code or context · `[U]` Unknown — genuinely undetermined, not guessed.
 
 ---
 
-## Table of contents
+## Document map — what is canonical, what is history
 
-[Project Overview](#project-overview) · [Executive Summary](#executive-summary) ·
-[Product Overview](#product-overview) · [User Personas](#user-personas) ·
-[Feature Inventory](#feature-inventory) · [Architecture Summary](#architecture-summary) ·
-[Technology Stack](#technology-stack) · [Folder Structure](#folder-structure) ·
-[Source Code Overview](#source-code-overview) · [Database](#database) · [APIs](#apis) ·
-[AI System](#ai-system) · [Integrations](#integrations) · [Business Model](#business-model) ·
-[Research Summary](#research-summary) · [Roadmap](#roadmap) · [Design System](#design-system) ·
-[Security](#security) · [Deployment](#deployment) · [Configuration](#configuration) ·
-[Risks](#risks) · [Open Questions](#open-questions) · [Missing Documentation](#missing-documentation) ·
-[AI Collaboration Guide](#ai-collaboration-guide) · [Knowledge Graph](#knowledge-graph) ·
-[Glossary](#glossary) · [Decision Log](#decision-log) ·
-[Project Health Assessment](#project-health-assessment) ·
-[Recommended Next Steps](#recommended-next-steps) · [Appendices](#appendices)
+This project accumulated planning documents faster than it retired them, and several now contradict
+each other. That is the exact problem this file exists to end. **When any document disagrees with
+this one, this one wins.** The others are either detail behind it, or dated logs, or history.
+
+| Layer | File(s) | Role |
+|---|---|---|
+| **Canonical context** | **`PROJECT_MASTER_DOCUMENT.md`** (this file) | The whole picture, kept current. Start here. |
+| **Dated tactical truth** | `docs/NOW.md` (2026-08-27) | What was true and what to do, as of its date. Verified against live systems. Still current. |
+| **The 30-day plan** | `research/decision.md` | The channel decision, kill criteria, and 7-day queue for 27 Aug → 26 Sep. |
+| **The live scoreboard** | `research/pipeline.db` via `scripts/pipeline.py` | The only source for revenue/pipeline numbers. No prose, no judgement. |
+| **Ground-truth PRD** | `docs/raha_prd.md` | Product scope. Where strategy has moved past it, this file and NOW.md say so. |
+| **Engineering decisions** | `DECISIONS.md` | 16 build-time decisions, all still active. |
+| **History — do not act on** | `FINAL.md` (21 Jul), `docs/STATE.md` (28 Jul), `docs/outreach/SEND_LOG.md`, `SEND_TODAY.md`, `SEND_PLAN.md` | Accurate when written, superseded now. They carry banners pointing here. See "The seven contradictions" below. |
+| **Vault mirror** | `Dhanush OS/Raha/00 Home/raha-home.md` | The Obsidian knowledge base. Browsable, cross-linked; defers to this file for current status. |
+
+**The seven contradictions, resolved** (full detail in `docs/NOW.md` §3):
+
+1. **The gate is one paid ₹2,000, not three customers at ₹20,000.** The 3-customer gate closed unmet on 27 Aug.
+2. **Cold email to agencies is stopped.** Do not send the 50 old drafts or start at `SEND_TODAY.md`.
+3. **Phase 1 already shipped** (July) — the "gated behind 3 customers before building" framing is dead. Delivery of the ₹2,000 check is still manual, which is separate and correct.
+4. **The ₹20,000 seat is off the front door now** and returns in April at LUT-renewal time. Never quoted as an opener.
+5. **The plan of record is `decision.md`'s 7-day queue**, not `STATE.md`'s old priority list.
+6. **The scoreboard is `pipeline.db`**, not `SEND_LOG.md` (a July archive).
+7. **One hostname: `raha.software`.**
 
 ---
 
-## Project Overview
+## What Raha is
 
-| | |
-|---|---|
-| **Name** | Raha `[D]` |
-| **One sentence** | Compliance for Indians earning foreign currency, proving that income qualifies as a zero-rated GST export. `[D]` |
-| **Current stage** | Pre-revenue. Product live, zero paying customers. `[D docs/STATE.md]` |
+**One sentence.** Raha proves that money Indians earn from foreign clients is a zero-rated GST
+export — the paperwork that makes it **0% instead of 18%**, on whatever payment route it arrived by,
+including the routes that cannot produce that paperwork at all. `[D docs/nirmaan/APPLICATION.md]`
 
-**Elevator pitch.** When an Indian freelancer, creator or indie founder is paid from abroad, that
-money is an export of services — zero-rated at 0% GST. But only if they can prove it came from
-abroad. That proof requires a FIRA from the bank plus a Letter of Undertaking filed for the year.
-Without both, the same income is assessed as domestic at 18%, plus a penalty equal to the tax, plus
-18% annual interest. On ₹40L of foreign income that is roughly ₹7L of avoidable exposure. Raha
-produces the proof. `[D docs/raha_prd.md §1]`
+**The problem.** An Indian who bills a foreign client is, in law, an exporter. Export of services is
+zero-rated under §2(6) of the IGST Act — but only with two things: a **FIRA** from the bank proving
+the money came from abroad in convertible foreign exchange, and a **Letter of Undertaking (LUT)**
+filed before that year's first export invoice. Miss either and the same income can be assessed as a
+domestic supply at **18% IGST, plus 18%/yr interest, plus penalty** — on money already earned and
+spent. On ₹40L of foreign income that is roughly ₹7L of avoidable exposure. `[D docs/raha_prd.md §1]`
+
+**Why it bites harder than it should.**
+1. **Physical FIRCs stopped existing in 2016** for export remittances (RBI A.P. (DIR Series) Circular 74). Banks now raise an IRM in EDPMS and issue a **FIRA**. Nine years on, "FIRC" is still the word used by advisors, platform help pages, and even GST officers at LUT renewal. Someone who asks their bank for a FIRC is turned away and blames the bank. `[D research/decision.md]`
+2. **The LUT resets every financial year.** Solving it once does not solve it.
 
 **Mission.** Remove the financial anxiety of cross-border income for people who earn it alone,
 without a finance function. `[D PRD §4 — "Raha sells relief"]`
 
-**Vision.** Become the compliance layer sitting above every cross-border payment rail in India.
-`[D docs/STATE.md — Layer 3 thesis, explicitly not yet committed]`
-
-**Core problem.** Foreign-income compliance is conditional on paperwork most earners have never
-heard of, and their CAs have rarely encountered. `[D PRD §1]`
-
-**Proposed solution.** A ₹2,000 written diagnostic establishing FIRA coverage, LUT status and real
-exposure, escalating to ₹20,000/year ongoing compliance. Delivery is concierge today; productised
-after the first cohort. `[D docs/outreach/DIAGNOSTIC_DELIVERY.md]`
-
-**Why it matters.** India receives over $100B in annual service exports. The compliance layer under
-that flow is unowned. `[I — TAM reasoning in docs/STATE.md]`
+**Vision (long thesis, under test — not committed).** Become the embedded compliance/evidence layer
+sitting above every cross-border payment rail in India. `[D docs/nirmaan/APPLICATION.md — "third layer, later and unproven"]`
 
 ---
 
-## Executive Summary
+## Current status — 2026-08-29
 
-**What it does.** Establishes and documents that a person's foreign income legally qualifies for 0%
-GST rather than 18%, across whichever payment rails they used, including historical years.
+Verified against live systems (curl on production, `git log`, `python3 scripts/pipeline.py stats`),
+not copied from any planning doc.
 
-**Who it serves.** Solo Indian operators with recurring foreign-currency income and no finance
-function — freelancers, consultants, indie SaaS founders, creators. Roughly 2–3M people.
-`[D docs/STATE.md, Layer 2 decision 2026-07-28]`
+| | Status |
+|---|---|
+| **Stage** | Pre-revenue. Product live, paid offer live, **zero paying customers.** |
+| **Revenue** | **₹0.** Customers **0**. Paid asks ever made **0**. |
+| **Live offer** | **₹2,000 Foreign Income Evidence Check**, UPI payment, live on `raha.software` since 27 Aug. |
+| **₹20,000 seat** | **Off the front door.** Returns in April as the LUT-renewal product, never as an opener. |
+| **Free audit** | `/audit` — 9 questions, no signup, red/amber/green verdict. Rail question ("how does the money reach you?") live. Evidence Check offer on the result. |
+| **Payment** | UPI only (`NEXT_PUBLIC_UPI_ID` set in Vercel prod). No gateway. Correct for now. |
+| **Pipeline** | **Day 2 of 30** (window 27 Aug → 26 Sep). 15 threads seeded; **0 answered, 0 DMs, 0 asks, 0 paid.** |
+| **Tests** | 68 unit + audit scoring, green at last run. |
+| **Product build** | Complete. Distribution and revenue are the entire remaining problem. |
 
-**Why it exists.** The rules were not written with cross-border solo earners in mind, and the
-professionals they hire were trained for domestic businesses.
+**The scoreboard (run it; don't trust prose):**
+```bash
+python3 scripts/pipeline.py stats
+```
+It prints PASS/FAIL against every kill date. As of 2026-08-29 every line reads BEHIND or FAIL because
+the plan has not been run yet — day 2 of 30, nothing sent.
 
-**Biggest differentiator.** Modern payment rails (Skydo, Karbon, Payoneer) now issue FIRA
-automatically — but only for money flowing through them, and only forward. Nobody covers
-offshore-converting rails (Wise, Stripe, PayPal) where money lands as a domestic IMPS transfer no
-bank can certify, direct bank transfers, historical backfill, or reconciliation across multiple
-rails at once. `[D docs/outreach/WEDGE_REALITY_CHECK.md]`
+**The one gap that is the founder's, still open since 21 Jul:** the live WhatsApp CTA and the UPI VPA
+are both the **personal** number (`919666641799` / `9666641799@ybl`). Receiving ₹2,000 personally is
+fine; the WhatsApp line is the contact identity on a paid offer and follows him forever. `[D docs/NOW.md]`
 
-**Current maturity.** Product is live, deployed, tested (68 passing unit tests plus an E2E core
-loop) and correct. Commercially it is at zero: 28 cold emails sent, one reply, which was a
-disqualification. No human has yet been asked to pay. `[D docs/outreach/SEND_LOG.md]`
-
-**Long-term ambition.** Layer 2 (₹150–300 Cr ARR ceiling) is committed. Layer 3 (embedded
-compliance infrastructure) is the thesis under test, not a commitment. `[D docs/STATE.md]`
+**Also open:** no Reddit script app registered (`REDDIT_CLIENT_ID` unset), so `find-prospects.py
+--search` cannot run and the "is the room deep enough for weeks 2–4?" assumption is untested. The 15
+seeded threads cover week 1 regardless. `[D docs/NOW.md]`
 
 ---
 
-## Product Overview
+## The 30-day plan and the gates
 
-Two distinct surfaces sharing one deployment.
+**Window: Thu 27 Aug → Fri 26 Sep 2026.** Full reasoning in `research/decision.md`; corpus behind it
+in `research/tactics-filter.md` (+ `-addendum.md`).
 
-**Surface 1 — public funnel (unauthenticated).**
+**The one channel.** Answer live threads on r/IndiaTax and adjacent Indian freelancer/indie-hacker
+forums in public, lead with the FIRC→FIRA correction, qualify on the payment rail, then DM the people
+who already asked in public to hire for exactly this scope. Give bespoke value before asking. Ask for
+₹2,000 every time. Follow up 3–4 times, then leave it. `[D research/decision.md]`
 
-```
-Landing (/) ──▶ Free Audit (/audit) ──▶ Report shown ──▶ optional email capture
-     │                                                          │
-     └──────────▶ Waitlist form                                 └──▶ audit_leads
-```
+**The primary 7-day test is the warm network, not Reddit.** YC's strongest finding is that customers
+1–3 come from the personal network; Reddit supplies pain without trust and structurally needs 2–3
+weeks of public answering before a DM lands. So: **15 warm intro asks** (drafts pre-written in
+`docs/outreach/WARM_15_DRAFTS.md`, one per slot, forward pre-composed). Reddit is the long game.
+`[D research/decision.md — corrected by docs/PAINKILLER_AUDIT.md]`
 
-The audit is 8 questions, no signup, returning a red/amber/green verdict scored server-side.
-The report renders **before** any email is requested — deliberately, to honour the "no signup"
-promise made in outreach. `[D commit 633ca9f]`
+**What is explicitly stopped:** cold email to agencies and any new agency sourcing; building more lead
+lists and research docs; content (X threads, video scripts, SEO); product feature work (one exception,
+already done: the audit rail question); new strategy documents. `[D research/decision.md]`
+
+**The gates:**
+
+| Date | Test | If it fails |
+|---|---|---|
+| **Wed 3 Sep** — the September allocation gate | One paid ₹2,000 with a logged UPI ref, **or Nostro (Razorpay) takes September.** | Not a verdict on Raha — it forces the September allocation decision that has a real deadline (Razorpay closes 5 Sep). |
+| **Wed 10 Sep** (day 14) | ≥24 public answers **and** ≥10 DMs → **≥3 two-way conversations** | Channel is wrong → switch primary to the warm network for days 15–30. |
+| **Wed 17 Sep** (day 21) | ≥3 people explicitly asked for ₹2,000 | The ask is missing, not the channel. Ask on the next 5 without exception. Most likely failure mode. |
+| **Fri 26 Sep** (day 30) | ≥5 ₹2,000 asks made **and ≥1 paid** | Price/offer wrong, not channel. This is the pivot signal the July gate was waiting for — and it is an answer. |
+
+**The stop-planning rule:** one paid ₹2,000 before day 30 validates the channel. Keep running it. Do
+not re-plan, do not write another strategy document, do not rebuild the product. Go get the second one.
+`[D research/decision.md]`
+
+---
+
+## The two parallel external bets
+
+Both run inside the 30-day window and both are entangled with the 3 Sep allocation gate. **Neither is
+"Raha the product"** — they are how the founder is trying to fund and de-risk it.
+
+### 1 · Nirmaan / Pratham preincubation (IIT Madras IVM) — application submitted 2026-08-29
+
+- **What:** IIT Madras Nirmaan (VentureArch/IVM) preincubation programme. Application + Part-5 pitch
+  video due **today, Sat 29 Aug, EOD** (portal said 31 Aug; organiser said EOD today — do not gamble
+  on the portal date). Paste-ready answers in `docs/nirmaan/APPLICATION.md`. `[D]`
+- **Ask:** **₹2,00,000**, every line product-correctness or delivery, **zero marketing spend** (p.13
+  excludes it): CA review of the tax/GST logic ₹60k · statement→ledger processing ₹40k · product
+  infra ₹45k · legal review of scope/disclaimer ₹30k · first-customer visits ₹25k. `[D]`
+- **Posture:** revenue stated as ₹0 (not softened); no automated-filing claim; registration "none"
+  (operating as an individual below the ₹20L services threshold, personal UPI — the eligibility
+  answer). The solo-founder / no-CA gap is named as the first thing Pratham would fix. `[D]`
+- **History behind it:** shortlisted and pitched at the **VentureArch IITM idea sprint, 22 Aug (Team
+  A38)** — the first externally-initiated evaluation on record. Froze on the monetization question
+  three times. The answer now exists and is the spine of the application: *the LUT re-files every FY
+  and a FIRA is needed per payment, so ₹2,000 buys the evidence check and April is when the ₹20,000
+  annual seat becomes the obvious buy — the statute makes it repeat, not a subscription trick.* `[D docs/NOW.md, ivm memory]`
+- **The 20–30 accepted LinkedIn connections** (incl. the four named programme people): a real asset —
+  **not** to be spent on customer intros before the cohort decision (reads transactional while being
+  judged). Bank it; spend it in October as a pre-incubatee. `[D docs/nirmaan/APPLICATION.md]`
+
+### 2 · Razorpay AI Buildathon — "Nostro" — closes 2026-09-05
+
+- **What:** Razorpay AI Buildathon, **Track 04 (AI Finance Controller)**. No resume screening (which
+  matters — 5.12 CGPA, 5 backlogs, graduating 2028 would not clear the normal SDE funnel). Terms:
+  ₹75,000/mo, 6 or 12 months, **in-person Bangalore from September**. `[D docs/razorpay/PLAN.md]`
+- **Decided 23 Aug: yes** to in-person Bangalore, 6 months. This is why the 3 Sep gate exists — Raha
+  and Nostro cannot both be primary in September. `[D docs/razorpay/PLAN.md]`
+- **The build, "Nostro":** reuses Raha's tested `src/lib/` as a **deterministic, no-LLM core**
+  (`firc/match.ts`, `fx/convert.ts`, `tax/*`, `gst/*`), a narrow **Zod-validated LLM layer** only
+  where the deterministic layer structurally cannot work (bank-narration parsing, entity resolution,
+  FIRA-PDF extraction, ambiguous ranking), and an **exception queue** with reason codes. The winning
+  piece is the **evaluation harness**: 250 synthetic records with known ground truth and 8 noise
+  classes, reporting match rate, precision/recall, **false-positive cost in ₹**, throughput, and LLM
+  cost per 1,000 records — reproducible with one `npm run evaluate`. `[D docs/razorpay/PLAN.md]`
+- **Why it compounds regardless:** it makes FIRA reconciliation work at batch scale — the thing paying
+  Raha customers would ask for next — so the engine comes home whether or not the application lands.
+
+**The failure case both plans name:** arriving at 5 Sep having done neither Raha nor Nostro properly.
+
+---
+
+## How we got here — the session arc
+
+The full commit history is in `git log`; this is the shape of it, so a cold reader knows what each
+pile of docs was for. `[D git log]`
+
+1. **19–22 Jul — the build.** Entire MVP in one autonomous push: landing + free-audit funnel, income
+   tracker (CSV import, FX), FIRC tracker (suggest-then-confirm matching), GST-compliant invoicing +
+   PDF, live liability dashboard, document vault, auth (magic link + Google OAuth), 10-table schema
+   with RLS on every table, 68 unit tests + Playwright E2E. Deployed to `raha.software`. Command
+   center seeded (Notion, ClickUp, Calendar, Gmail drafts, a 50-lead Clay list).
+2. **23–28 Jul — first contact with the market.** 28 cold emails (23 agencies, 5 creators) → 1 reply,
+   out of scope. Magic-link fix (mail scanners were burning tokens → verify client-side from URL
+   fragment). Audit report shown before the email gate. Anonymous completions recorded. Competitor
+   brief (TaxTap, CreatorKhata). **Hard GTM review found the CA price-parity problem.** Committed to
+   **Layer 2** (all foreign-income earners, not creators alone). Wedge reality check (rails already
+   solve half). AdSense/Singapore finding. Acute-pain target list. ₹2,000 diagnostic designed. SEO
+   audit (not winnable). First `PROJECT_MASTER_DOCUMENT.md`.
+3. **14–22 Aug — reposition and evidence.** Landing + audit rewritten to the Layer-2 foreign-income
+   wedge, FIRC→FIRA corrected across the public site. Formal customer/market-discovery write-up (a
+   practising CA interview suggested the pain may sit *upstream* of FIRA matching). First investor
+   pitch deck. Original research paper *FIRC to FIRA: Documentary Evidence Infrastructure and the
+   Uneven Compliance Burden on India's Independent Digital Exporters*. IITM idea-sprint pitch (22 Aug).
+4. **23 Aug — the Razorpay bet.** Nostro / Track 04 plan; Bangalore confirmed.
+5. **27 Aug — the pivot.** ₹2,000 Evidence Check + UPI live; ₹20,000 seat off the front door; rail
+   question shipped into the audit; the Layer-2 correction finished in the audit scoring (with
+   regression tests); 30-day channel decision + `pipeline.py` tracker; painkiller audit; tactics
+   research; 15 warm slots + drafts; delivery SOPs (Evidence Check SOP, report template, CA-objection
+   sequence); `NOW.md` reconciliation of six threads and the seven contradictions.
+6. **28–29 Aug — Nirmaan.** Guidebook findings; paste-ready Pratham application; Step-5 funding answer
+   field by field; pitch-video script; LinkedIn-connections strategy; research paper exported to PDF;
+   submitted answers rewritten against the AI-tells catalog. **This consolidation (29 Aug).**
+
+---
+
+## Product overview
+
+Two surfaces, one deployment.
+
+**Surface 1 — public funnel (unauthenticated).** Landing (`/`) → Free Audit (`/audit`) → report shown
+→ optional email capture → ₹2,000 Evidence Check offer + UPI. The audit is 9 questions (rail question
+included), no signup, scored server-side into red/amber/green. The report renders **before** any email
+ask, honouring the "no signup" promise. `[D]`
 
 **Surface 2 — authenticated app (`/app/*`).**
 
-```
-Income entry ──▶ FX conversion ──▶ Income ledger
-                                        │
-FIRC record ──▶ suggest match ──────────┤──▶ confirm ──▶ export proof
-                                        │
-                                        └──▶ GST liability + advance tax
-                                        └──▶ Invoice generation ──▶ PDF
-Document vault (FIRC, contracts, PAN, GST cert, LUT)
-```
-
-**Core workflows** `[D — from src/app/app/*]`
-
 | Workflow | Route | What it does |
 |---|---|---|
-| Income tracking | `/app/income` | Manual entry + CSV upload, multi-currency, FX-converted to INR |
-| FIRC matching | `/app/firc` | Suggest-then-confirm matching of remittances to income entries |
+| Income tracking | `/app/income` | Manual + CSV, multi-currency, FX-converted to INR with stored rate + source |
+| FIRC/FIRA matching | `/app/firc` | Suggest-then-confirm matching of remittances to income (±2% / +45−7d) |
 | Invoicing | `/app/invoices` | GST-compliant sequential invoices, PDF export |
-| Liability | `/app` | Live GST + advance-tax "set aside this much" figure |
+| Liability | `/app` | Live "set aside ₹X" (GST + advance tax − TDS) |
 | Vault | `/app/vault` | Categorised document storage |
 | Settings | `/app/settings` | Profile, GSTIN, LUT ARN, invoice prefix |
 
-**Critical dependency.** Every computed figure carries "estimate — verify with your CA before
-filing." No automated-filing claim appears anywhere. This is a hard rule, not a preference.
+**Hard rule, everywhere:** every computed figure carries *"estimate — verify with your CA before
+filing."* No automated-filing claim appears anywhere. Not a preference — a licensing boundary.
 `[D CLAUDE.md, PRD §10, DECISIONS.md #4]`
 
 ---
 
-## User Personas
+## Personas
 
-**1. The solo foreign-income earner (primary buyer)** `[D PRD §3, revised by STATE.md]`
-- *Goals*: not get a notice; not overpay; stop thinking about it
-- *Pain*: doesn't know FIRA exists; CA has never handled cross-border income
-- *Workflow*: paid monthly from abroad → does nothing → panics at filing season
-- *Permissions*: full owner of their own data, RLS-scoped
-- *Value*: a written answer, and someone who understands the question
-
-**2. The Chartered Accountant (channel, not competitor)** `[D PRD §3 Persona 3]`
-- *Goals*: file correctly without becoming a cross-border specialist
-- *Pain*: client brings foreign income they aren't equipped to assess
-- *Value*: receives reconciled files rather than a shoebox
-- *Status*: `[U]` — no CA is currently partnered. This is a plan, not a fact. See [Risks](#risks).
-
-**3. The talent agency (deprioritised wedge)** `[D PRD §3 Persona 2 — cut by GTM review]`
-- Originally the primary GTM. 23 emails produced zero replies. Retained as a slow-burn channel
-  only. `[D docs/outreach/GTM_REVIEW.md]`
+1. **Solo foreign-income earner (primary buyer)** — freelancer, consultant, indie-SaaS founder,
+   creator with recurring foreign income and no finance function. Doesn't know FIRA exists; CA has
+   rarely handled cross-border income. Wants: no notice, not to overpay, to stop thinking about it.
+2. **Chartered Accountant (channel, not competitor)** — receives a reconciled file rather than a
+   shoebox. **Status `[U]`: no CA is partnered.** This is the critical dependency and the named gap.
+3. **Talent agency (deprioritised)** — was the original GTM; 23 emails → 0 replies; retained only as a
+   slow-burn channel. `[D docs/outreach/GTM_REVIEW.md]`
 
 ---
 
-## Feature Inventory
+## Feature inventory
 
-### Current — shipped and live
+**Shipped and live:** landing · free audit + server-side scoring · rail question · Evidence Check
+offer + UPI · audit lead capture · anonymous completion tracking · magic-link auth · Google OAuth ·
+income tracker + CSV + FX · FIRC/FIRA tracker + matching · GST liability · advance tax · invoice
+generator + PDF · document vault · waitlist. `[D]`
 
-| Feature | Status | Priority | Dependencies | Notes |
-|---|---|---|---|---|
-| Landing page | Live | P0 | — | 8 sections, Fraunces/OKLCH design system |
-| Free audit + scoring | Live | P0 | `lib/audit/scoring.ts` | Server-side scored; client never sets verdict |
-| Audit lead capture | Live | P0 | `audit_leads` | Optional, post-report |
-| Anonymous completion tracking | Live | P1 | `audit_completions` | Migration 0005 — **not yet applied to prod DB** `[D]` |
-| Magic-link auth | Live | P0 | Supabase Auth | Fragment-based; needs email-template change `[D]` |
-| Google OAuth | Live | P1 | Supabase Auth | `/auth/callback` |
-| Income tracker | Live | P0 | `income_entries` | Manual + CSV, 4 currencies |
-| FX conversion | Live | P0 | `lib/fx/convert.ts` | Bundled RBI table + manual override |
-| FIRC tracker + matching | Live | P0 | `firc_records`, `firc_matches` | ±2% / +45−7d suggest-then-confirm |
-| GST liability | Live | P0 | `lib/tax/gst-liability.ts` | CGST/SGST vs IGST by state |
-| Advance tax | Live | P1 | `lib/tax/advance.ts` | New-regime slabs, annualised YTD |
-| Invoice generator + PDF | Live | P0 | `@react-pdf/renderer` | Sequential numbering |
-| Document vault | Live | P1 | Supabase Storage | 7 categories, 10MB cap |
-| Waitlist | Live | P2 | `waitlist` | Honeypot-protected |
+**Planned — Phase 1 (productise after first paying customers):** statement→ledger auto-processing ·
+lower pricing tier for sub-₹20L earners · rail-aware qualification deepened · multi-rail reconciliation
+· historical backfill workflow. `[D PRD §5, docs/nirmaan milestones]`
 
-### Planned — Phase 1, gated behind 3 paying customers `[D PRD §5]`
+**Future — Phase 2:** income auto-import (AdSense/Stripe/Patreon APIs) · CA portal with Tally/Zoho
+export · AI expense categorisation · agency roster dashboard. `[D PRD §5]`
 
-| Feature | Priority | Notes |
-|---|---|---|
-| Lower pricing tier for sub-₹20L earners | P0 | Layer 2 requires it; ₹20K/yr misfits a ₹25L freelancer |
-| Rail-aware qualification | P0 | "How are you paid?" decides whether a problem exists at all |
-| Multi-rail reconciliation | P1 | The actual unserved wedge |
-| Historical backfill workflow | P1 | Also unserved |
+**Cut / never in scope:** agency wedge as primary GTM · automated filing · in-product payments · SEO ·
+LinkedIn/X content as a primary channel.
 
-### Future — Phase 2 `[D PRD §5]`
+---
 
-Income auto-import (AdSense/Stripe/Patreon APIs) · CA portal with Tally/Zoho export ·
-AI expense categorisation · Agency roster dashboard
+## Architecture, stack, and code
 
-### Deprecated / cut
-
-| Item | Why |
+| Layer | Choice |
 |---|---|
-| Agency wedge as primary GTM | 23 emails → 0 replies `[D GTM_REVIEW.md]` |
-| Automated filing | Never in scope. Legal and licensing boundary `[D PRD §10]` |
-| In-product payments | Hard stop; concierge routes to WhatsApp `[D DECISIONS.md #9]` |
-| SEO as a growth channel | 12 funded competitors own the SERP `[D SEO_AUDIT.md]` |
-| LinkedIn / X content | Declined by founder `[D]` |
+| Frontend | Next.js 15 App Router, React 19, TypeScript (Server Components default) |
+| Backend | Next.js Server Actions — 8 actions are the entire write layer; no separate API tier |
+| Database | Supabase Postgres — **RLS on all 10 tables** |
+| Product AI | **None.** Raha ships no AI. (Nostro is a separate build.) |
+| Infra | Vercel, auto-deploy from `main` |
+| Auth | Supabase Auth — magic link (fragment-verified) + Google OAuth |
+| Storage | Supabase Storage — private bucket, RLS-scoped by user folder, 10MB cap, MIME allow-list |
+| Messaging | WhatsApp deep link only |
+| Observability | `console.error` only — **genuine gap**, no Sentry/APM |
+
+**Request flow:** `middleware.ts` (session refresh + `/app` gate) → RSC render or Server Action → Zod
+parse → Supabase client (RLS) → Postgres → typed result → UI. Failures return `{status:"error",
+message}` rather than throwing. `[D]`
+
+**`src/lib/` — the pure, unit-tested core** (this is also Nostro's deterministic engine):
+`audit/scoring.ts` · `firc/match.ts` · `fx/convert.ts` · `gst/calc.ts` · `tax/gst-liability.ts` ·
+`tax/advance.ts` · `income/csv.ts` + `categorize.ts` · `invoice/number.ts` + `pdf.tsx` ·
+`format/inr.ts`. Ten of eleven modules have a co-located `.test.ts`; 68 tests run in ~250ms with no
+mocking. **Money math is never probabilistic — every rupee-affecting decision is a pure function with
+a test.** `[D]`
+
+**Four Supabase clients, deliberately distinct:** `client.ts` (browser) · `server.ts` (RSC/actions) ·
+`middleware.ts` (session refresh) · `admin.ts` (service-role, RLS-bypassing, server-only, guarded).
+
+**Database — 10 tables, all RLS, 16 policies, 10 indexes, 5 idempotent migrations.** `profiles`,
+`income_entries`, `firc_records`, `firc_matches` (same-owner composite FKs — prevents cross-user match
+forgery), `invoices` / `invoice_items`, `documents`, `waitlist`, `audit_leads`, `audit_completions`.
+Lead tables have **no SELECT policy** (read from the dashboard only). `income_entries` stores
+`rate_used` **and** `rate_source`, so every INR figure is auditable back to its basis. **Caveat `[U]`:
+migration `0005_audit_completions` may not be applied to production — analytics silently no-op until
+it is; not verifiable from the repo alone.** `[D migrations, docs/NOW.md]`
 
 ---
 
-## Architecture Summary
-
-| Layer | Choice | Notes |
-|---|---|---|
-| **Frontend** | Next.js 15 App Router, React 19, TypeScript | Server Components default; `"use client"` only where needed |
-| **Backend** | Next.js Server Actions | No separate API tier `[I — no server framework in deps]` |
-| **Database** | Supabase Postgres | RLS on all 10 tables |
-| **AI** | **None in product** | See [AI System](#ai-system) |
-| **Infrastructure** | Vercel | Auto-deploy from `main` |
-| **Auth** | Supabase Auth | Magic link (fragment-verified) + Google OAuth |
-| **Storage** | Supabase Storage | Private bucket, RLS-scoped by user folder |
-| **Messaging** | WhatsApp deep link | `lib/whatsapp.ts` — no messaging infra |
-| **Caching** | Next.js defaults only | No Redis, no explicit cache layer `[D]` |
-| **Security** | RLS + security headers + Zod | See [Security](#security) |
-| **Observability** | `console.error` only | **Genuine gap** — no Sentry, no APM `[D]` |
-| **Integrations** | Supabase only | No third-party APIs in the product `[D package.json]` |
-
-**Request flow**
-
-```
-Browser ──▶ middleware.ts (session refresh + /app gate)
-              │
-              ├─ public route ──▶ RSC render ──▶ HTML
-              │
-              └─ /app/* ──▶ authed? ──no──▶ 307 /login
-                              │yes
-                              ▼
-                     RSC + Server Action ──▶ supabase/server.ts ──▶ Postgres (RLS)
-```
-
-**Single points of failure:** Supabase (auth + data + storage), Vercel (hosting), and — for
-delivery, not software — the unpartnered CA. `[I]`
-
-**Rollback:** `git revert` + redeploy. Migrations are additive and idempotent, so no down-migration
-path exists. `[I — from migration structure]`
-
----
-
-## Technology Stack
-
-| Technology | Purpose | Reason chosen | Alternatives |
-|---|---|---|---|
-| Next.js 15 (Turbopack) | App framework | RSC + Server Actions remove a whole API tier `[I]` | Remix, SvelteKit |
-| React 19 | UI | Next default | — |
-| TypeScript | Type safety | Repo-wide, `tsc --noEmit` gate `[D]` | — |
-| Tailwind v4 | Styling | Utility-first, OKLCH tokens `[D globals.css]` | CSS Modules |
-| shadcn/ui + Radix | Components | Accessible primitives, owned source `[D]` | MUI, Chakra |
-| Supabase | DB + auth + storage | One vendor for three needs; RLS is the security model `[I]` | Firebase, Neon+Clerk |
-| `@supabase/ssr` | Cookie-based sessions | Required for RSC auth | — |
-| Zod | Boundary validation | Mandated by CLAUDE.md `[D]` | Yup, Valibot |
-| `@react-pdf/renderer` | Invoice PDFs | React-native PDF generation | Puppeteer |
-| PapaParse | CSV import | Battle-tested | Hand-rolled |
-| Vitest | Unit tests | 68 tests, ~250ms `[D]` | Jest |
-| Playwright | E2E | Real magic-link flow, no test backdoors `[D DECISIONS.md #15]` | Cypress |
-| Vercel | Hosting | Zero-config Next deploys | Netlify, Fly |
-
----
-
-## Folder Structure
-
-```
-raha/
-├── src/
-│   ├── app/              Next App Router — routes, layouts, server actions
-│   │   ├── actions/      8 server actions: the entire write layer
-│   │   ├── app/          Authenticated product (gated by middleware)
-│   │   ├── audit/        Public funnel: the free check
-│   │   ├── auth/         confirm (magic link) + callback (OAuth)
-│   │   └── login/        Sign-in
-│   ├── components/
-│   │   ├── ui/           19 shadcn primitives — owned, not imported
-│   │   ├── landing/      8 marketing sections
-│   │   ├── audit/        Wizard + report + question bank
-│   │   └── {app,firc,income,invoices,settings,vault,auth}/  feature components
-│   ├── lib/              Pure business logic — the testable core
-│   │   ├── audit/        Risk scoring
-│   │   ├── firc/         Matching algorithm
-│   │   ├── fx/           Currency conversion
-│   │   ├── gst/ tax/     GST calc, liability, advance tax
-│   │   ├── income/       Categorisation, CSV parsing
-│   │   ├── invoice/      Numbering, PDF
-│   │   └── supabase/     4 clients: browser, server, admin, middleware
-│   └── middleware.ts     Session refresh + route gate
-├── supabase/migrations/  5 idempotent SQL migrations
-├── e2e/                  Playwright core-loop spec
-├── scripts/seed.mjs      Demo data seeding
-└── docs/                 29 files, 3,102 lines
-    └── outreach/         Sales assets, research, reviews
-```
-
-**Why `lib/` is separate from `components/`:** every file in `lib/` is pure and unit-tested. Ten of
-eleven logic modules have a co-located `.test.ts`. This is the deliberate seam that makes 68 tests
-run in 250ms with no mocking. `[I — inferred from consistent structure]`
-
----
-
-## Source Code Overview
-
-**Entry points:** `src/app/layout.tsx` (root shell) · `src/middleware.ts` (every request) ·
-`src/app/page.tsx` (landing).
-
-**Core business logic — `src/lib/`, all unit-tested:**
-
-| Module | Responsibility |
-|---|---|
-| `audit/scoring.ts` | Risk score → red/amber/green + flags. Server-authoritative. |
-| `firc/match.ts` | Candidate matching: ±2% amount, +45/−7 day window |
-| `fx/convert.ts` | RBI reference table + manual override; records `rate_source` |
-| `gst/calc.ts` | CGST/SGST vs IGST by state |
-| `tax/gst-liability.ts` | Aggregate GST position |
-| `tax/advance.ts` | New-regime slabs, annualised YTD, minus TDS |
-| `income/csv.ts` · `categorize.ts` | Import parsing and classification |
-| `invoice/number.ts` · `pdf.tsx` | Sequential numbering, PDF render |
-| `format/inr.ts` | Indian numbering (lakh/crore) |
-
-**Write layer — `src/app/actions/` (8 server actions):** `audit`, `auth`, `documents`, `firc`,
-`income`, `invoice`, `profile`, `waitlist`. Each validates with Zod before touching the database.
-
-**Supabase clients — four, deliberately distinct:**
-`client.ts` (browser) · `server.ts` (RSC/actions) · `middleware.ts` (session refresh) ·
-`admin.ts` (**service-role, RLS-bypassing, server-only, guarded with an explicit warning comment**).
-
----
-
-## Database
-
-Postgres via Supabase. **10 tables, all with RLS enabled.** 16 policies, 10 indexes across 5
-idempotent migrations. `[D — verified by scan]`
-
-| Table | Purpose | Access model |
-|---|---|---|
-| `profiles` | GSTIN, PAN, state, LUT ARN, invoice prefix | Self only; auto-created by `handle_new_user` trigger |
-| `income_entries` | Multi-currency ledger with FX provenance | Owner only |
-| `firc_records` | Foreign inward remittances | Owner only |
-| `firc_matches` | Join table — one FIRC covers many entries | Owner only, same-owner composite FKs |
-| `invoices` / `invoice_items` | GST invoices | Owner only |
-| `documents` | Vault metadata | Owner only |
-| `waitlist` | Public capture | Anon INSERT only, no read |
-| `audit_leads` | Audit lead capture | Anon INSERT only, no read |
-| `audit_completions` | Anonymous funnel measurement, **no PII** | Anon INSERT only, no read |
-
-**Design notes** `[D migrations]`
-- Lead tables have **no SELECT policy** — read from the Supabase dashboard only. Deliberate.
-- `firc_matches` uses same-owner composite foreign keys, preventing cross-user match forgery.
-- `income_entries` stores `rate_used` **and** `rate_source`, so every INR figure is auditable back
-  to its conversion basis. This is the schema's best decision.
-- Storage: private bucket, 10MB cap, MIME allow-list, RLS scoped by user-id folder prefix.
-
-**⚠ Migration `0005_audit_completions.sql` has not been applied to the production database.**
-Analytics silently no-op until it is. `[D]`
-
----
-
-## APIs
-
-**No public API exists.** `[D]`
-
-| Type | Present? | Detail |
-|---|---|---|
-| REST | Partial | Two Route Handlers only: `/auth/callback` (OAuth code exchange), `/app/invoices/[id]/pdf` (PDF stream) |
-| GraphQL | No | — |
-| RPC | No | — |
-| Internal | Yes | 8 Server Actions — the real write layer |
-| External consumed | Supabase only | No third-party API calls in product code |
-
-**Request flow (action):** client form → Server Action → Zod parse → Supabase client (RLS) →
-Postgres → typed result → UI. Failures return `{status:"error", message}` rather than throwing.
-`[D — pattern consistent across actions]`
-
----
-
-## AI System
-
-**Raha ships no AI.** `[D — no AI SDK in package.json]`
-
-This is the most commonly mis-assumed thing about the project, so it is stated plainly. The PRD
-mentions AI in Phase 0 delivery ("spreadsheets + AI + a partnered CA") and Phase 2 ("AI expense
-categorisation") — both refer to the **founder using AI tools manually**, not to product features.
-`[D PRD §5]`
-
-**Where AI does appear:**
-
-| Use | Detail |
-|---|---|
-| Development | Built with Claude Code. See [AI Collaboration Guide](#ai-collaboration-guide). |
-| Diagnostic delivery | Founder uses AI while producing the ₹2,000 report by hand `[D DIAGNOSTIC_DELIVERY.md]` |
-| Research | Subagents used for lead research, GTM review, competitive analysis `[D]` |
-
-**If AI is added later**, the guardrail already exists and is non-negotiable: every computed tax
-figure carries the estimate disclaimer, and no automated-filing claim is permitted. An LLM
-generating tax figures without those constraints would violate the project's core safety rule.
-
----
-
-## Integrations
-
-| Integration | Purpose | Data exchanged | Auth | Failure handling |
-|---|---|---|---|---|
-| Supabase Auth | Sign-in | Email, OAuth identity | Anon key + JWT | Redirect to `/login?error=` |
-| Supabase Postgres | All data | Financial records | RLS via JWT | Error logged, user-safe message |
-| Supabase Storage | Vault | Documents ≤10MB | RLS by path | Upload rejected on type/size |
-| WhatsApp | Concierge conversion | Deep link only | None | N/A — plain link |
-| Vercel | Hosting | — | CLI/Git | Platform-managed |
-
-**Operational connectors (not product):** Gmail, Google Calendar, Drive, Notion, ClickUp are live
-for founder workflow. Slack (empty), Canva and Figma (view-only seat) were assessed and skipped.
-`[D CAPABILITIES.md]`
-
----
-
-## Business Model
+## Business model
 
 | | |
 |---|---|
-| **Customer** | Solo Indian operator, recurring foreign income, no finance function |
-| **Entry price** | ₹2,000 — written diagnostic (not a filing, not signed advice) |
-| **Core price** | ₹20,000/year founding seat (₹40,000 standard) |
-| **Revenue today** | **₹0** `[D]` |
-| **Delivery** | Concierge: spreadsheets + partnered CA. No software leverage yet. |
-| **Distribution** | Direct outreach → Reddit acute-pain targeting → warm intros |
-| **Positioning** | Wide audience, narrow wedge. Never general tax filing. |
+| Customer | Solo Indian operator, recurring foreign income, no finance function |
+| **Entry price** | **₹2,000 — Foreign Income Evidence Check** (a written reconciliation, not a filing, not signed advice) |
+| Renewal | **₹20,000/year compliance seat — this is what April is**, not the front door. The LUT re-files every FY and a FIRA is needed per payment, so the statute makes revenue repeat. |
+| Revenue today | **₹0** |
+| Delivery | Concierge: by hand to a documented SOP, 90–110 min/customer. Software leverage comes with Phase 1. |
+| Distribution | Warm intros (primary 7-day test) → r/IndiaTax acute-pain (long game) |
+| Positioning | **Wide audience, one narrow problem.** Never general tax filing (that is TaxTap's ground). |
 
-**Unit economics as modelled** `[D PRD §7]`: 10 customers × ₹20K ≈ ₹2L against near-zero fixed
-cost. 100 × ₹30K = ₹30L ARR before software leverage. CAC target < ₹2,000.
+**Why ₹2,000 and not ₹20,000:** at ₹20,000 Raha is compared to a licensed CA who does more and carries
+liability, and loses that comparison. At ₹2,000 there is no comparison set — no CA sells a forensic
+reconciliation at a price uneconomic at their hourly rate. **The price is the positioning.** `[D docs/nirmaan/APPLICATION.md]`
 
-**Known pricing problem** `[D GTM_REVIEW.md §1]`: a licensed CA publicly sells the same scope
-(ITR + GST + LUT + FIRC) at the same ₹20,000, discoverable in a five-minute search. Since Phase 0
-delivery *is* a partnered CA, Raha currently offers more risk at equal price. The strategic answer
-is to target people whose CA has already missed the FIRA, and to lead with ₹2,000.
-
-**Market sizing** `[I — order of magnitude, not researched precision]`
-
-| Layer | Audience | TAM | ARR ceiling |
-|---|---|---|---|
-| 1 — creators only | ~100K | ₹150–450 Cr | ₹15–45 Cr |
-| **2 — all foreign-income earners (committed)** | **2–3M** | **₹1,000–3,000 Cr** | **₹150–300 Cr** |
-| 3 — embedded infrastructure | every rail | $100B+ flow | ₹1,000 Cr+ |
+**Market (order of magnitude):** 2–3M Indians earn in foreign currency; India exports $100B+ of
+services a year (services exports $421.3B FY25-26 per PIB); reachable market ≈ ₹1,000–3,000 Cr at the
+₹2,000 + ₹20,000 ladder. `[I / partly D]`
 
 ---
 
-## Research Summary
+## Delivery — the ₹2,000 Evidence Check
 
-**Competitors** `[D COMPETITIVE_BRIEF.md]`
-- **TaxTap** — real overlap. Filing service, 10K+ users, handles FIRC. Generalist across 30+
-  professions, season-time rather than continuous.
-- **CreatorKhata** — broad creator business app; tax is one feature. No CA-signed filing. Closer to
-  complementary than competitive.
-- **Payment rails** (Skydo, Karbon, Winvesta, Payoneer, BriskPE) — not product competitors, but they
-  own the education and half the problem.
+Manual today, to a fixed SOP so every decision is made once, not per customer.
+`docs/delivery/EVIDENCE_CHECK_SOP.md` + `docs/delivery/REPORT_TEMPLATE.md`.
 
-**The AdSense finding** `[D — verified at Google's own support page]`: AdSense pays Indian creators
-from Google Asia Pacific Pte. Ltd., **Singapore**, in foreign currency. Every monetised Indian
-creator is therefore exporting a service, regardless of audience geography.
+- **What it is:** every foreign credit in a period reconciled line by line against the document behind
+  it — FIRA, NOC, bank advice, or nothing — with a written statement of which stand up as zero-rated
+  exports, the rupee exposure on those that do not, and the LUT position. 48 hours. **Money back if it
+  tells them nothing their CA hasn't.**
+- **The three-tier rail matrix** (the core IP): Skydo/Karbon/Winvesta/Payoneer users already get FIRA
+  free — told so, and sent away (that disqualification is why the other two believe you);
+  Wise/PayPal/Stripe users **structurally cannot** get a FIRA (money lands as a domestic transfer);
+  direct-bank + anyone with 2+ years to backfill = the unserved wedge no rail solves.
+- **Time budget:** 90–110 minutes. Over 3 hours and the price is wrong — the dry-run against a
+  synthetic case exists to learn this *before* someone pays. `[D docs/NOW.md, research/decision.md D6b]`
+- **The objection with a script:** "let me ask my CA first" — don't argue the CA; send four checkable
+  questions and let the answer convert. `docs/outreach/CA_OBJECTION.md`.
 
-**The wedge correction** `[D WEDGE_REALITY_CHECK.md]` — the single most important research finding:
-1. Physical FIRCs were **discontinued for exports in 2016**. Banks issue FIRA. Saying "FIRC" alone
-   marks the speaker as half-informed to any CA. This terminology error is present in all 28 sent
-   emails and in current site copy.
-2. Modern rails already issue FIRA free and automatically. That half is commoditised.
-3. The unserved half: offshore-converting rails (Wise/Stripe/PayPal land as domestic IMPS —
-   uncertifiable), direct bank transfers, historical backfill, cross-rail reconciliation.
+---
 
-**Demand evidence** `[D ACUTE_PAIN_TARGETS.md]`: 12 months of r/IndiaTax threads. Five people
-publicly asking to *hire* someone for exactly this scope. One top comment naming ₹20,000/year for
-the same work — third-party price validation.
+## Research summary
 
-**SEO** `[D SEO_AUDIT.md]`: not winnable. Twelve funded companies own the SERP and monetise payments,
-so they can give the content away permanently.
+- **The wedge correction (most important finding):** FIRCs discontinued 2016 → FIRA; modern rails
+  already issue FIRA free and automatically (that half is commoditised); the live wedge is
+  Wise/PayPal/Stripe (structurally can't), direct bank transfer, and historical backfill. `[D docs/outreach/WEDGE_REALITY_CHECK.md]`
+- **AdSense/Singapore:** AdSense pays Indian creators from Google Asia Pacific Pte. Ltd., Singapore, in
+  foreign currency — every monetised Indian creator is exporting a service. `[D]`
+- **Demand evidence:** 15 live public threads (queued in `pipeline.db`) where someone asked, in public,
+  to hire for exactly this scope before hearing of Raha; a top comment naming ₹20,000/yr for the same
+  work (third-party price validation). `[D docs/outreach/ACUTE_PAIN_TARGETS.md]`
+- **Original research paper:** *FIRC to FIRA…* — the three-tier rail stratification is, as far as we
+  can find, not documented anywhere else. PDF in `docs/nirmaan/`. `[D]`
+- **SEO:** not winnable — 12 funded companies own the SERP and monetise payments, so they give content
+  away permanently. `[D docs/outreach/SEO_AUDIT.md]`
+- **Where the research is thin (stated plainly):** the outreach corpus is US consumer/B2B, not India
+  GST — the mechanics transfer, the rates do not; and no source has ever sold to someone who already
+  has a CA doing the job, which is the largest obstacle here. `[D research/decision.md]`
 
 ---
 
 ## Roadmap
 
-**Completed** — landing, audit funnel, full authenticated app, auth (magic link + OAuth), 10-table
-schema with RLS, 68 unit tests + E2E, deployed to `raha.software`, sales machine documented.
-
-**Current (this week)** — apply migration 0005; change the Supabase magic-link email template;
-verify sign-in end-to-end; send five acute-pain DMs; ask one human for ₹2,000.
-
-**Next (30 days)** — clear the PRD validation gate: **3 paying customers or pivot** `[D PRD §6]`.
-Partner a CA. Correct FIRC→FIRA terminology everywhere. Add rail-aware qualification.
-
-**Future** — Phase 1 dashboard productisation (gated on 3 customers), lower pricing tier, multi-rail
-reconciliation, historical backfill.
-
-**Vision** — Layer 3: embedded compliance under the payment rails.
-
----
-
-## Design System
-
-`[D src/app/globals.css, src/components/landing/*]`
-
-| Token | Value | Role |
-|---|---|---|
-| `--raha-ink` | `oklch(0.22 0.02 165)` | Primary text |
-| `--raha-cream` | `oklch(0.975 0.012 90)` | Page surface |
-| `--raha-green` | `oklch(0.32 0.06 165)` | Primary action |
-| `--raha-amber` | `oklch(0.78 0.14 75)` | Highlight, amber verdict |
-| `--raha-red` | `oklch(0.55 0.19 25)` | Red verdict |
-
-**Typography:** Fraunces (serif display) + Inter (body) + Geist Mono. **Philosophy:** editorial and
-restrained — deliberately calm, because the product sells reassurance to anxious people. Colour is
-semantic (red/amber/green mirrors the audit verdict), never decorative. OKLCH throughout for
-perceptual consistency. `[I — inferred from consistent application]`
+- **Done:** landing, audit funnel, full authenticated app, auth, 10-table RLS schema, 68 tests + E2E,
+  deployed, Layer-2 reposition, ₹2,000 Evidence Check + UPI live, rail question, delivery SOPs,
+  30-day plan + scoreboard, Nirmaan application, Razorpay/Nostro plan.
+- **Now (the 30 days):** run the channel — 15 warm asks, public answers, Tier-1 DMs, every one ending
+  in the ₹2,000 ask. Get one paid. Partner a CA.
+- **Founder's open config items:** swap WhatsApp/UPI off the personal number; register the Reddit
+  script app; (unverified) apply migration 0005 + confirm the magic-link email template.
+- **Phase 1 (gated on first paying customers):** statement→ledger processing (delivery < 45 min),
+  lower price tier, multi-rail reconciliation, historical backfill, observability, `/privacy` + `/terms`.
+- **Vision:** Layer 3 — embedded evidence infrastructure under the rails (thesis under test).
 
 ---
 
 ## Security
 
-**Posture is genuinely strong.** `[D — verified by audit]`
+Genuinely strong for the stage: RLS on all 10 tables; service-role key server-only and guarded; only
+non-secret public env vars; Zod at every action boundary; magic-link fragment-verified; open-redirect
+blocked (`safeNext()`); honeypots on both public forms; HSTS + `X-Frame-Options: DENY` + `nosniff` +
+Referrer-Policy + Permissions-Policy; private storage bucket with MIME allow-list and path-scoped RLS.
+Rate limiting deliberately absent (honeypots + Supabase limits; Vercel Firewall when traffic exists).
+`[D DECISIONS.md #13, #14]`
 
-| Control | State |
-|---|---|
-| RLS | All 10 tables. Zero unprotected. |
-| Service-role key | Server-only, guarded, never in a client-reachable import |
-| Public env vars | Only URL, anon key, site URL, WhatsApp number — no secrets |
-| Input validation | Zod at every server-action boundary |
-| Auth | Supabase-managed; magic-link token now fragment-verified |
-| Open redirect | Blocked — `safeNext()` rejects absolute and protocol-relative URLs |
-| Honeypots | On both public forms |
-| Security headers | HSTS, `X-Frame-Options: DENY`, `nosniff`, Referrer-Policy, Permissions-Policy |
-| Storage | Private bucket, MIME allow-list, 10MB cap, path-scoped RLS |
-| Rate limiting | **Deliberately absent.** Honeypots + Supabase auth limits; Vercel Firewall recommended when traffic exists `[D DECISIONS.md #14]` |
-
-**Gaps:** no `/privacy` or `/terms` (both 404 — a trust and possibly legal gap for a financial
-product) · no audit logging · no CSP header · Phase 0 concierge delivery moves client PAN, GSTIN and
-bank data into **spreadsheets, outside every control above**. That last one is the real risk.
+**Real gaps:** no `/privacy` or `/terms` (both 404 — a trust and possibly legal gap for a financial
+product) · no audit logging · no CSP · **concierge delivery moves client PAN/GSTIN/bank data into
+spreadsheets, outside every control above — the actual risk.** `[D]`
 
 ---
 
-## Deployment
+## Configuration & deployment
 
-| Environment | State |
-|---|---|
-| Development | `npm run dev` (Turbopack), `.claude/launch.json` for the browser tool |
-| Staging | **None** `[D]` |
-| Production | Vercel → `raha.software` (also `raha-iota.vercel.app`) |
+**Env:** `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`
+(server only), `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_WHATSAPP_NUMBER`, `NEXT_PUBLIC_UPI_ID`.
+`[D] — the seat-counter env is retired with the ₹20,000 seat.`
 
-**CI/CD:** `[U]` — no workflow files found. Deploys appear to be CLI (`vercel --prod`) and/or Vercel
-Git integration. Quality gates (`typecheck`, `lint`, `test`) exist as npm scripts but are **not
-enforced by automation**.
+⚠️ **Do not repoint `NEXT_PUBLIC_SITE_URL` at a new hostname without first adding it to Supabase →
+Auth → URL Configuration → Redirect URLs** — it feeds `emailRedirectTo` and the OAuth `redirectTo`;
+changing it alone breaks sign-in. `[D FINAL.md, src/app/actions/auth.ts]`
 
-**Post-deploy verification** (used in practice): `curl` status on `/`, `/audit`, `/auth/confirm`;
-confirm `/auth/confirm` returns 200 rendering the client page, not a 307.
-
-**Manual steps not yet done** `[D docs/DEPLOY.md]`: apply migration 0005 · change the Supabase
-magic-link email template from `?token_hash=` to `#token_hash=` (**the auth fix is inert without
-it**) · verify sign-in end to end.
-
----
-
-## Configuration
-
-| Variable | Scope | Purpose |
-|---|---|---|
-| `NEXT_PUBLIC_SUPABASE_URL` | public | Project URL |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | public | RLS-safe client key |
-| `SUPABASE_SERVICE_ROLE_KEY` | **server only** | Admin client; never client-reachable |
-| `NEXT_PUBLIC_SITE_URL` | public | Auth redirect base + metadata |
-| `NEXT_PUBLIC_WHATSAPP_NUMBER` | public | Concierge deep link |
-| `NEXT_PUBLIC_FOUNDING_SEATS_TAKEN` | public | Scarcity counter |
-
-**Files:** `next.config.ts` (security headers) · `tsconfig.json` · `eslint.config.mjs` ·
-`components.json` (shadcn) · `.claude/launch.json` · `.env.local` (gitignored).
-
-**Build:** `next build --turbopack`. **Gates:** `npm run typecheck && npm run lint && npm test`.
+**Deploy:** Vercel → `raha.software`. `main` auto-deploys and is in sync with production (the 27 Aug
+working-tree drift was pushed and closed). Supabase project ref `xhegzotakpbjltwqnffq`, region Mumbai.
+Runbook: `docs/DEPLOY.md`. **CI/CD `[U]`** — gates (`typecheck`, `lint`, `test`) exist as npm scripts
+but are not enforced by automation.
 
 ---
 
 ## Risks
 
-| # | Risk | Type | Severity | Mitigation |
-|---|---|---|---|---|
-| 1 | **No CA partnered.** Cannot deliver a filing if someone pays for one. | Business | **Critical** | Diagnostic scoped as unsigned risk report; recruit in parallel `[D]` |
-| 2 | **Zero revenue, 30-day self-imposed gate.** | Business | **Critical** | Only fix is asking humans for money |
-| 3 | **Price parity with a human CA at ₹20,000.** | Business | High | Lead with ₹2,000; target CA-failed prospects |
-| 4 | Rails commoditising the forward-looking wedge | Business | High | Reposition to backfill / offshore rails / reconciliation |
-| 5 | Terminology error (FIRC vs FIRA) in all sent material | Product | High | Correct everywhere before further sending |
-| 6 | Spreadsheet-based concierge holds financial PII outside RLS | Security | High | Minimise intake; formalise handling |
-| 7 | No observability — failures are invisible | Technical | Medium | Add Sentry when traffic exists |
-| 8 | No CI enforcement of gates | Technical | Medium | Add GitHub Actions |
-| 9 | Supabase is a total SPOF | Scalability | Medium | Accepted at this stage |
-| 10 | Services model ceilings at CA throughput | Scalability | Medium | Structural at ~50 customers, not now |
-| 11 | Missing privacy policy / terms | Legal | Medium | Add before real volume |
-| 12 | Tax logic could be wrong and is unaudited by a professional | Product | High | Estimate disclaimer everywhere; CA review needed |
+| # | Risk | Severity | Mitigation |
+|---|---|---|---|
+| 1 | **No CA partnered** — cannot deliver a filing if someone pays for one | Critical | Evidence Check scoped as unsigned risk report; recruiting is Pratham line-item #1 |
+| 2 | **Zero revenue; ₹2,000 never tested on one human** | Critical | The 30-day plan exists only to fix this |
+| 3 | **Distribution unsolved** — the product works, nobody has paid | Critical | Warm asks + Reddit; the whole plan |
+| 4 | **Solo founder, also a student** — named largest structural risk | High | Co-founder search is a stated Pratham goal |
+| 5 | Rails commoditise the forward wedge | High | Reposition to backfill / offshore rails / reconciliation |
+| 6 | Spreadsheet concierge holds financial PII outside RLS | High | Minimise intake; Pratham funds processing to remove it |
+| 7 | Tax logic unaudited by a professional | High | Estimate disclaimer everywhere; CA review is Pratham #1 |
+| 8 | No observability / no CI / no staging | Medium | Add when traffic exists |
+| 9 | Missing `/privacy` + `/terms` | Medium | Add before volume |
+| 10 | Services model ceilings at CA throughput (~50 customers) | Medium | Structural, not now |
 
 ---
 
-## Open Questions
+## Open questions
 
-Genuine uncertainties only.
-
-1. **Will anyone pay ₹2,000?** Never tested on a single human. Everything downstream depends on it.
-2. **Who is the CA?** No name, no terms, no agreement. `[U]`
-3. **Is the tax logic correct?** Written from research, never reviewed by a qualified professional.
-4. **What is the right Layer 2 price?** ₹20K/yr misfits a ₹25L freelancer. Unmodelled. `[U]`
-5. **Does the unserved wedge have volume?** Backfill and multi-rail are uncontested in search partly
-   because few people search them.
-6. **Rails: partner or competitor?** Research launched, never completed. `[U]`
-7. **Does the brand survive Layer 2?** "Creator taxes, handled" is now narrower than the strategy.
-8. **Is a services business acceptable?** Phase 0 does not scale like software. Ceiling unaddressed.
+1. **Will anyone pay ₹2,000?** Never tested on one human. Everything is downstream of this.
+2. **Who is the CA?** No name, no terms. `[U]`
+3. **Is the tax logic correct?** Written from research, never reviewed by a professional.
+4. **Does the ₹2,000 → ₹20,000 ladder hold across an April LUT cycle?** Untested by construction.
+5. **Does the unserved wedge have volume?** Backfill/multi-rail are uncontested partly because few search them.
+6. **Rails: partner or competitor?** The Layer-3 thesis, unresolved. `[U]`
+7. **Raha or Nostro for September?** Decided by the 3 Sep gate.
 
 ---
 
-## Missing Documentation
+## Decision log
 
-| Gap | Priority | Why |
-|---|---|---|
-| `/privacy` and `/terms` pages | **High** | Both 404. Financial product handling PII. |
-| CA partnership agreement | **High** | Delivery depends on an undefined relationship |
-| Tax-logic provenance | **High** | No document cites which rule each calculation implements |
-| API/action reference | Medium | 8 server actions, none documented |
-| Runbook | Medium | No procedure for "audit is down" or "user reports wrong figure" |
-| CI configuration | Medium | Gates exist but are unenforced |
-| Data-retention policy | Medium | Financial records with no stated retention |
-| Onboarding README | Low | `README.md` exists; freshness unverified `[U]` |
-| ADR directory | Low | `DECISIONS.md` is good but flat and chronological |
+**Engineering (all active) — full detail in `DECISIONS.md`:** standalone repo · PRD as ground truth ·
+estimate disclaimer on every figure · no automated filing ever · bundled RBI FX table with
+`rate_source` · FIRC matching suggest-then-confirm · advance tax new-regime only · no in-product
+payments · RLS on every table · magic link via URL fragment · audit report before email gate · E2E via
+real magic-link flow (no test backdoors).
 
----
+**Strategic (newer, recorded across NOW.md / decision.md / STATE.md):**
 
-## AI Collaboration Guide
-
-Recommendations from what actually worked building this project, not vendor preference. All model
-choices are `[I]`.
-
-| Category | Preferred | Why | Input format | Expected output | Review checklist |
-|---|---|---|---|---|---|
-| **Architecture** | Claude Opus (extended thinking) | Holds whole-system constraints; challenges premises | PRD + current structure + constraint | Options with trade-offs, one recommendation | Does it respect RLS? Reversible? |
-| **Coding** | Claude Code (Sonnet/Opus) | Repo access, runs tests, verifies | Task + file paths + acceptance criteria | Diff + passing tests | typecheck, lint, tests, no `any` |
-| **Debugging** | Claude Code | Reads logs, reproduces, verifies fix | Error + repro + expected | Root cause + minimal fix | Verified live, not asserted |
-| **Research** | Claude with web search, or Perplexity | Citations matter more than prose | Question + what would change the answer | Sourced findings, uncertainty flagged | Every claim has a URL |
-| **Writing (outreach)** | Claude with explicit anti-AI-tell rules | Default LLM prose is detectable | Recipient context + one real detail | Short, no em-dashes, no "Here's the thing" | Would a human write this? |
-| **Marketing strategy** | Claude Opus, instructed to be blunt | Sycophancy is the failure mode | Real numbers including bad ones | Ranked, with a stop-doing list | Did it tell me something I didn't want to hear? |
-| **Design** | Claude + a design skill | Needs a system, not vibes | Tokens + reference direction | Component code using existing tokens | Uses `--raha-*`? Both themes? |
-| **Business/finance** | Claude Opus | Order-of-magnitude modelling | Real numbers, honest baselines | Ranges, not false precision | Are assumptions stated? |
-| **Legal/tax** | **None — use a professional** | Highest-stakes area. Do not ship model output as advice. | — | — | Was a qualified human involved? |
-| **Planning** | Claude Opus + gstack `/plan-ceo-review` | Structured challenge beats free-form | Current plan + evidence | Scope decision with rationale | Did it cut anything? |
-| **Testing** | Claude Code | Runs the suite | Module + edge cases | Tests that fail before the fix | Do they fail without the fix? |
-| **Deployment** | Claude Code | Verifies against live URLs | Target + verification command | Deploy + curl proof | Did it check production, or assume? |
-| **Automation** | Claude Code + subagents | Parallel research | Precise brief + source rules | Report with citations | Sources checked? Invented contacts? |
-
-**Three rules learned the hard way in this project:**
-1. **Verify deployment, don't assume it.** Work sat committed on a branch for a day while production
-   served broken code. Always `curl` the live URL.
-2. **Demand sources.** A research agent produced 30 leads; the useful ones were the ones with URLs.
-3. **Instruct against flattery explicitly.** The blunt GTM review found the pricing-parity problem
-   that four polite analyses had missed.
-
----
-
-## Knowledge Graph
-
-```
-                        ┌──────────────────┐
-                        │  raha_prd.md     │  ground truth
-                        └────────┬─────────┘
-                                 │ superseded in parts by
-                    ┌────────────▼─────────────┐
-                    │       STATE.md           │  current truth (Layer 2)
-                    └──┬─────────┬──────────┬──┘
-           informed by │         │          │ drives
-       ┌───────────────▼──┐  ┌───▼──────┐ ┌─▼────────────────┐
-       │ GTM_REVIEW.md    │  │ WEDGE_   │ │ SALES_PLAYBOOK   │
-       │ (CA parity)      │  │ REALITY  │ │        │         │
-       └──────────────────┘  │ _CHECK   │ │        ▼         │
-                             └────┬─────┘ │ DIAGNOSTIC_      │
-                                  │       │ DELIVERY (₹2k)   │
-                     corrects     │       └──────────────────┘
-                                  ▼
-                        ┌──────────────────┐
-                        │ all outreach     │  ← FIRC→FIRA fix pending
-                        └──────────────────┘
-
-  PRODUCT
-  middleware.ts ──gate──▶ /app/* ──▶ actions/*.ts ──Zod──▶ lib/*.ts (pure, tested)
-                                          │
-                                          ▼
-                              supabase/{server,admin}.ts
-                                          │
-                                          ▼
-                            Postgres (RLS) + Storage (RLS)
-
-  audit/page.tsx ──▶ audit-wizard ──▶ lib/audit/scoring.ts ──▶ audit_completions
-                                                   │                (anonymous)
-                                                   └──▶ audit_leads (opt-in, PII)
-```
-
----
-
-## Glossary
-
-| Term | Meaning |
+| Date | Decision |
 |---|---|
-| **FIRC** | Foreign Inward Remittance Certificate. **Discontinued for exports in 2016**; survives only for FDI/FII. |
-| **FIRA** | Foreign Inward Remittance Advice. The document that actually applies today. |
-| **FIRS** | Foreign Inward Remittance Statement. Bank-specific variant of FIRA. |
-| **LUT** | Letter of Undertaking. Filed annually on the GST portal; permits export without paying IGST upfront. Free. |
-| **Zero-rated** | Taxed at 0% but **not exempt** — registration and compliance still apply. The distinction most people miss. |
-| **Export of services** | Supply to a recipient outside India, paid in convertible foreign exchange. |
-| **IGST / CGST / SGST** | Inter-state / central / state GST. Determined by supplier state vs place of supply. |
-| **44ADA** | Presumptive taxation for professionals. Flagged in-product as "ask your CA", never computed. |
-| **RLS** | Row Level Security. Postgres-enforced per-row access. Raha's entire authorisation model. |
-| **eBRC** | Electronic Bank Realisation Certificate. Ties exports to realised proceeds. |
-| **Layer 1/2/3** | Market ambition tiers: creators / all foreign-income earners / embedded infrastructure. |
-| **Phase 0/1/2** | Product stages: concierge / MVP dashboard / automation. Gated on paying customers. |
-| **Diagnostic** | The ₹2,000 written risk report. Explicitly not a filing or signed advice. |
+| 2026-07-26 | Cut the agency wedge as primary GTM (23 emails → 0 replies) |
+| 2026-07-28 | Commit to **Layer 2** — all foreign-income earners, not creators alone |
+| 2026-07-28 | Diagnostic as an unsigned risk report; skip SEO |
+| 2026-08-23 | **Yes to Razorpay/Nostro** — in-person Bangalore, 6 months, from September |
+| 2026-08-27 | **Sell the ₹2,000 Evidence Check; take the ₹20,000 seat off the front door** |
+| 2026-08-27 | One channel for 30 days; **warm network is the primary 7-day test**, Reddit is the long game |
+| 2026-08-27 | Stop cold email to agencies and all new agency sourcing |
+| 2026-08-27 | September allocation gate (3 Sep): one paid ₹2,000 or Nostro takes September |
 
 ---
 
-## Decision Log
+## Project health
 
-Reasons marked `[inferred]` were not recorded at the time.
-
-| # | Decision | Reason | Trade-off | Impact |
-|---|---|---|---|---|
-| 1 | Standalone git repo | Matches existing nested-repo pattern `[D]` | Vault history split | Clean isolation |
-| 2 | PRD is ground truth | Prevents relitigating scope `[D]` | Can ossify | Later reviews must argue explicitly |
-| 3 | Estimate disclaimer on every figure | Founder is not a CA `[D]` | Weakens confidence of copy | Legal safety |
-| 4 | No automated filing, ever | Licensing boundary `[D]` | Caps product ambition | Defines category |
-| 5 | Bundled RBI FX table, no API | Removes external dependency `[D]` | Manual updates | `rate_source` makes it auditable |
-| 6 | FIRC matching suggest-then-confirm | Never auto-confirm financial records `[D]` | More user effort | Correct default |
-| 7 | `firc_matches` join table | One FIRC covers many entries `[D]` | Extra table | Enables partial allocation |
-| 8 | Advance tax = new regime only | Conservative `[D]` | Incomplete for old-regime users | 44ADA deferred to CA |
-| 9 | No in-product payments | Concierge phase; hard operating stop `[D]` | Manual collection | UPI instead |
-| 10 | Landing built inside Next app | One deploy, no later port `[D]` | Couples marketing to app | Correct |
-| 11 | No hand-rolled rate limiting | In-memory throttles are theatre on serverless `[D]` | Exposed until Vercel Firewall | Honest |
-| 12 | E2E uses real magic-link flow | No test backdoors in app code `[D]` | Needs service-role key | Strong |
-| 13 | RLS on every table | Security model is the database `[inferred]` | Policy complexity | Best decision in the codebase |
-| 14 | Store `rate_used` + `rate_source` | Auditability `[inferred]` | Extra columns | Every INR figure traceable |
-| 15 | Magic link via URL fragment | Mail scanners were burning one-time tokens `[D]` | Needs client JS + template change | Fixed a total auth failure |
-| 16 | Audit report before email gate | Site promised "no signup" `[D]` | Fewer emails captured | Honours the promise |
-| 17 | Cut agency wedge as primary GTM | 23 emails → 0 replies `[D]` | Loses aggregator leverage | Refocus on acute pain |
-| 18 | Commit to Layer 2 | Layer 1 caps ~₹45 Cr, below ambition `[D]` | Broader, less focused audience | Wedge stays narrow |
-| 19 | Skip SEO | 12 funded competitors own the SERP `[D]` | Forgoes compounding channel | Honest |
-| 20 | Diagnostic as unsigned risk report | Ships before a CA is partnered `[D]` | Lower perceived value | Unblocks first sale |
-
----
-
-## Project Health Assessment
-
-| Dimension | Score | Justification |
+| Dimension | Score | Note |
 |---|---|---|
-| Documentation completeness | **8/10** | 29 docs, 3,102 lines, decision log maintained. Missing: privacy/terms, tax provenance, runbook. |
-| Architecture maturity | **7/10** | Clean RSC + Server Actions + RLS. No observability, no CI, no staging. |
-| Technical debt | **8/10** | Low. Pure-logic seam is well kept, tests fast, no dead code found. |
-| Code organisation | **9/10** | Exemplary. `lib/` pure and tested, 4 distinct Supabase clients, feature-grouped components. |
-| Maintainability | **8/10** | Strong typing, Zod boundaries, 68 fast tests. Solo bus factor of 1. |
-| Scalability (technical) | **7/10** | Fine to thousands. Supabase SPOF, no caching, PDF generation unbounded. |
-| Scalability (business) | **4/10** | Concierge delivery ceilings at one CA's throughput. Structural at ~50 customers. |
-| Security | **8/10** | RLS everywhere, key hygiene clean, headers set. Spreadsheet PII and missing legal pages pull it down. |
-| Commercial validation | **2/10** | Zero revenue, zero customers, one reply from 28 sends, ₹2,000 gate never tested. |
-| **Overall** | **6.5/10** | **An unusually well-engineered product attached to an unvalidated business.** The engineering is ahead of the evidence — which is the actual risk. |
+| Engineering / code organisation | 9/10 | Pure tested `lib/`, RLS everywhere, clean structure |
+| Documentation | 8/10 | Thorough; the drift this file resolves was the weak point |
+| Security | 8/10 | Strong for stage; spreadsheet PII + missing legal pages pull it down |
+| Commercial validation | 2/10 | ₹0, 0 customers, ₹2,000 gate never tested |
+| **Overall** | **6.5/10** | **An unusually well-engineered product attached to an unvalidated business. The engineering is ahead of the evidence — that is the risk.** |
 
 ---
 
-## Recommended Next Steps
+## Recommended next steps
 
-**Immediate (today, ~30 min)**
-1. Apply migration `0005_audit_completions.sql` — analytics are dead until then
-2. Change the Supabase magic-link template `?token_hash=` → `#token_hash=` — the auth fix is inert
-3. Request a magic link and click it, end to end
-4. Send the five acute-pain Reddit DMs `[D ACUTE_PAIN_TARGETS.md]`
+**Today / this week (the founder's, and nothing on the list matters more than the last one):**
+1. Swap `NEXT_PUBLIC_WHATSAPP_NUMBER` (and ideally the UPI VPA) off the personal number → redeploy.
+2. Send the ₹2,000 UPI request to yourself once — confirm it opens a real collect request.
+3. **Send all 15 warm asks in one sitting** (`docs/outreach/WARM_15_DRAFTS.md`); log each with `pipeline.py`.
+4. 2–3 public r/IndiaTax answers opening with the FIRC→FIRA correction; no mention of Raha.
+5. Submit the Nirmaan application before EOD today.
+6. **Ask one human for ₹2,000.** This is the whole game.
 
-**Short-term (this week)**
-5. Ask one human for ₹2,000. Nothing else on this list matters more.
-6. Correct FIRC → FIRA across site copy, audit questions, and all outreach templates
-7. Add rail qualification ("how are you paid?") to intake and audit — it decides whether a problem exists
-8. Add `/privacy` and `/terms`
+**The 30 days:** run the queue in `research/decision.md`; hit the weekly floor (12 answers + 5 DMs);
+every DM ends in the ₹2,000 ask; partner a CA; dry-run the deliverable once for the real time cost.
 
-**Medium-term (30 days — the PRD gate)**
-9. **3 paying customers, or pivot** `[D PRD §6]`
-10. Partner a CA with written terms
-11. Have a qualified professional review the tax logic
-12. Add CI enforcing typecheck + lint + test
-13. Model Layer 2 pricing for sub-₹20L earners
-
-**Long-term**
-14. Phase 1 productisation (only after 3 customers)
-15. Multi-rail reconciliation and historical backfill — the actual defensible wedge
-16. Add observability before real traffic
-17. Test the Layer 3 thesis: are rails partners or competitors?
+**After the first paying customer (only then):** Phase-1 productisation, lower price tier, multi-rail
+reconciliation, historical backfill, observability, `/privacy` + `/terms`.
 
 ---
 
 ## Appendices
 
-### A. Key files
+**A. Key files** — Current action: `docs/NOW.md` · 30-day plan: `research/decision.md` · Scoreboard:
+`scripts/pipeline.py` + `research/pipeline.db` · PRD: `docs/raha_prd.md` · Delivery:
+`docs/delivery/` · Objection: `docs/outreach/CA_OBJECTION.md` · Warm asks: `docs/outreach/WARM_15_DRAFTS.md`
+· Nirmaan: `docs/nirmaan/APPLICATION.md` · Razorpay/Nostro: `docs/razorpay/PLAN.md` · Engineering
+rules: `CLAUDE.md` · Decisions: `DECISIONS.md`.
 
-| Purpose | Path |
-|---|---|
-| Current status | [docs/STATE.md](docs/STATE.md) |
-| Ground truth | [docs/raha_prd.md](docs/raha_prd.md) |
-| Hardest strategic finding | [docs/outreach/GTM_REVIEW.md](docs/outreach/GTM_REVIEW.md) |
-| Wedge correction | [docs/outreach/WEDGE_REALITY_CHECK.md](docs/outreach/WEDGE_REALITY_CHECK.md) |
-| What we sell | [docs/outreach/DIAGNOSTIC_DELIVERY.md](docs/outreach/DIAGNOSTIC_DELIVERY.md) |
-| Who to contact | [docs/outreach/ACUTE_PAIN_TARGETS.md](docs/outreach/ACUTE_PAIN_TARGETS.md) |
-| Deploy + manual steps | [docs/DEPLOY.md](docs/DEPLOY.md) |
-| Decision history | [DECISIONS.md](DECISIONS.md) |
-| Engineering rules | [CLAUDE.md](CLAUDE.md) |
-
-### B. Commands
-
+**B. Commands**
 ```bash
-npm run dev        # Turbopack dev server
-npm run build      # production build
-npm run typecheck  # tsc --noEmit
-npm run lint       # eslint
-npm test           # vitest run — 68 tests, ~250ms
-npm run seed       # demo data (needs SUPABASE_SERVICE_ROLE_KEY)
-npx playwright test
-vercel --prod --yes
+npm run dev            # Turbopack dev server
+npm run build          # production build
+npm run typecheck      # tsc --noEmit
+npm run lint           # eslint
+npm test               # vitest — 68 tests, ~250ms
+npm run seed           # demo data (needs SUPABASE_SERVICE_ROLE_KEY)
+npx playwright test    # e2e (workers:1 — do not raise; shared magic-link token races)
+python3 scripts/pipeline.py stats     # the scoreboard
+python3 scripts/pipeline.py log <id> <event> --note "<ref>"   # log a pipeline touch
 ```
 
-### C. Developer onboarding
+**C. Developer onboarding** — read this file, then `CLAUDE.md`; `npm install`, copy `.env.example` →
+`.env.local`, fill Supabase keys; run migrations `0001`–`0005` in order in the Supabase SQL editor;
+`npm run seed && npm run dev`; read `src/lib/` first — the business logic lives there and it is all tested.
 
-1. Read [docs/STATE.md](docs/STATE.md) — five minutes, current reality
-2. Read [CLAUDE.md](CLAUDE.md) — the non-negotiable rules
-3. `npm install`, copy `.env.example` → `.env.local`, fill Supabase keys
-4. Run migrations `0001`–`0005` in order in the Supabase SQL editor
-5. `npm run seed && npm run dev`
-6. Read `src/lib/` first — the business logic lives there, and it is all tested
-
-### D. Live surfaces
-
-Production `https://raha.software` · Audit `https://raha.software/audit` ·
-Repo `https://github.com/Dhanush9999279/raha`
+**D. Live surfaces** — Production `https://raha.software` · Audit `https://raha.software/audit` · Repo
+`https://github.com/DhanushAleti/raha` (private) · Vault mirror `Dhanush OS/Raha/00 Home/raha-home.md`.
 
 ---
 
-*Generated 2026-07-28 at commit `b289f77`. Regenerate after any significant strategic or
-architectural change — this document is only useful while it is true.*
+*Kept current as of 2026-08-29. This document is only useful while it is true — regenerate the status,
+plan, and scoreboard sections after any significant change. Everything else in the repo is detail
+behind it, a dated log, or history.*

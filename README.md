@@ -1,6 +1,6 @@
 # Raha — creator taxes, handled
 
-Tax & GST compliance platform for Indian creators earning ₹20L–₹2Cr. Income tracking, FIRC matching (export-of-service proof), GST-compliant invoicing, live tax-liability estimates, and a document vault.
+Tax & GST compliance for **Indians earning foreign currency** — freelancers, consultants, indie-SaaS founders, agencies, and creators (Layer 2, committed 2026-07-28). Proves foreign income is a zero-rated GST export (FIRA + LUT). Entry product is the **₹2,000 Foreign Income Evidence Check**; the app does income tracking, FIRC/FIRA matching, GST-compliant invoicing, live liability estimates, and a document vault.
 
 > Every figure Raha computes is an **estimate — verify with your CA before filing**. Raha does not file returns; filings are executed by qualified Chartered Accountants.
 
@@ -36,7 +36,7 @@ npm run dev                  # http://localhost:3000
 - `src/lib/` — pure logic modules, all unit-tested, no I/O: `fx/` (RBI reference-rate conversion), `income/` (categorization, CSV), `firc/` (matching), `gst/` (invoice math), `tax/` (advance-tax + GST liability estimates), `format/` (INR lakh/crore + amount-in-words), `audit/` (risk scoring).
 - `src/lib/supabase/` — server/client Supabase helpers (`@supabase/ssr`).
 - `supabase/migrations/` — schema, RLS policies, storage policies. RLS on **every** table.
-- Docs: `docs/raha_prd.md` (ground truth) · `docs/SPEC.md` · `docs/PLAN.md` · `docs/TASKS.md` · `DECISIONS.md`.
+- Docs: **`PROJECT_MASTER_DOCUMENT.md` (single source of truth — start here)** · `docs/NOW.md` (current action list) · `docs/raha_prd.md` (product ground truth) · `docs/SPEC.md` · `docs/PLAN.md` · `docs/TASKS.md` · `DECISIONS.md`.
 
 ## Deploy
 

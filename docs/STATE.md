@@ -1,6 +1,8 @@
-# Raha — state as of 2026-07-28
+# Raha — state as of 2026-07-28 (HISTORICAL)
 
-> **⚠️ A month stale as of 2026-08-27. Read [`NOW.md`](NOW.md) first.**
+> **⚠️ HISTORY (a month+ stale). For the current picture read
+> [`../PROJECT_MASTER_DOCUMENT.md`](../PROJECT_MASTER_DOCUMENT.md) (single source of truth), then
+> [`NOW.md`](NOW.md) for the dated action list.**
 > Superseded below: the "gated behind 3 paying customers before Phase 1 build starts" framing
 > (Phase 1 shipped in July and is live), the ₹20,000/year seat as current pricing (off the front
 > door — it returns in April at LUT-renewal time), and the "Current priority order" list

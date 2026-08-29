@@ -1,5 +1,10 @@
 # NOW — the reconciled page
 
+> Canonical context lives in [`PROJECT_MASTER_DOCUMENT.md`](../PROJECT_MASTER_DOCUMENT.md). This page
+> is the **dated action layer** under it — what was true and what to do, as of the date below. When
+> this and the master document agree, good; when a newer NOW page exists, the newest dated page wins
+> on tactics.
+
 **Written 2026-08-27, late. Verified against live systems, not against other documents.**
 
 Six threads (transcript/tactics extraction · first-paying-customer strategy · outreach · painkiller

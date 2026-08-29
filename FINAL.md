@@ -1,10 +1,11 @@
-# FINAL.md — where Raha stands
+# FINAL.md — where Raha stands (HISTORICAL, 21 Jul 2026)
 
-> **⚠️ Stale as of 2026-08-27. Read [`docs/NOW.md`](docs/NOW.md) first.**
+> **⚠️ HISTORY. For the current picture read [`PROJECT_MASTER_DOCUMENT.md`](PROJECT_MASTER_DOCUMENT.md)
+> (the single source of truth), then [`docs/NOW.md`](docs/NOW.md) for the dated action list.**
 > Three things below were countermanded and are wrong to act on: the validation gate is **one paid
-> ₹2,000 by 3 Sep**, not 3 customers at ₹20,000; the ₹20,000 seat is off the front door; and cold
-> email to agencies is **stopped** — do not send the 50 drafts or start at `SEND_TODAY.md`.
-> Everything about *what was built* is still accurate.
+> ₹2,000 (interim gate 3 Sep, full window to 26 Sep)**, not 3 customers at ₹20,000; the ₹20,000 seat
+> is off the front door; and cold email to agencies is **stopped** — do not send the 50 drafts or
+> start at `SEND_TODAY.md`. Everything about *what was built* is still accurate.
 
 Built in one autonomous session, 2026-07-19. Deployed and verified live 2026-07-21.
 
@@ -25,7 +26,7 @@ outreach traffic is unaffected either way.
 |---|---|
 | Supabase | project ref `xhegzotakpbjltwqnffq`, region Mumbai |
 | Vercel | project `raha`, scope `dhanushs-projects-33bdf6aa` |
-| GitHub | `github.com/Dhanush9999279/raha` — push to `main` auto-deploys |
+| GitHub | `github.com/DhanushAleti/raha` (private) — push to `main` auto-deploys |
 
 Deploy runbook (env vars, migrations, seed): `docs/DEPLOY.md`.
 
