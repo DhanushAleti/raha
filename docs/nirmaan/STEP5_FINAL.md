@@ -131,6 +131,13 @@ Guidebook p.9: government registration may disqualify you from Pratham. You are 
 > a single reply out of 28. I would rather be taught that properly than keep paying for it in
 > months.
 >
+> **What I would use the eight weeks for, concretely.** Twenty diagnostic conversations with people
+> who bill foreign clients, split across the three payment routes, to answer the one question I
+> cannot answer from my desk: which route produces a buyer. Ten paid Evidence Checks at ₹2,000, and
+> if nobody pays at ₹2,000 that is a finding I would rather have in week eight than in year two. A
+> CA review of the computation logic. And the LUT renewal cycle tested against real customers in
+> April, which is the only date in this product that repeats on its own.
+>
 > I am not asking Nirmaan for money to find customers. The guidebook says to go and do that myself,
 > and that is fair — it is my job, not the fund's.
 
@@ -149,6 +156,11 @@ Guidebook p.9: government registration may disqualify you from Pratham. You are 
 > is exactly the list on your own mentorship page. I have done the first one to the point of writing
 > a research paper. I have not done the other two, and six months of structure pointed at ten
 > customers is worth more to me right now than any amount of money pointed at more features.
+>
+> On fit: India exports over $100 billion of services a year, and the people at the small end of
+> that — freelancers, consultants, indie software founders — carry the compliance burden with the
+> least support. That sits inside fintech, which Nirmaan lists among its themes of national
+> importance, and it is a formalisation problem rather than a new market.
 >
 > I would rather get in on an honest zero than a dressed-up one.
 
