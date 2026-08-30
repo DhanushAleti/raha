@@ -26,6 +26,7 @@ this one, this one wins.** The others are either detail behind it, or dated logs
 | **The live scoreboard** | `research/pipeline.db` via `scripts/pipeline.py` | The only source for revenue/pipeline numbers. No prose, no judgement. |
 | **Ground-truth PRD** | `docs/raha_prd.md` | Product scope. Where strategy has moved past it, this file and NOW.md say so. |
 | **Engineering decisions** | `DECISIONS.md` | 16 build-time decisions, all still active. |
+| **External programmes** | `docs/incubators/PLAN.md` (2026-08-30) + `ANSWERS.md` | Which incubators are real targets, what gates them, and the reusable application answers. |
 | **History — do not act on** | `FINAL.md` (21 Jul), `docs/STATE.md` (28 Jul), `docs/outreach/SEND_LOG.md`, `SEND_TODAY.md`, `SEND_PLAN.md` | Accurate when written, superseded now. They carry banners pointing here. See "The seven contradictions" below. |
 | **Vault mirror** | `Dhanush OS/Raha/00 Home/raha-home.md` | The Obsidian knowledge base. Browsable, cross-linked; defers to this file for current status. |
 
@@ -135,10 +136,11 @@ not re-plan, do not write another strategy document, do not rebuild the product.
 
 ---
 
-## The two parallel external bets
+## The parallel external bets
 
-Both run inside the 30-day window and both are entangled with the 3 Sep allocation gate. **Neither is
-"Raha the product"** — they are how the founder is trying to fund and de-risk it.
+Bets 1 and 2 run inside the 30-day window and both are entangled with the 3 Sep allocation gate;
+bet 3 is the tier above them and is mostly *not* actionable yet, which is itself the finding.
+**None of these is "Raha the product"** — they are how the founder is trying to fund and de-risk it.
 
 ### 1 · Nirmaan / Pratham preincubation (IIT Madras IVM) — application submitted 2026-08-29
 
@@ -179,6 +181,32 @@ Both run inside the 30-day window and both are entangled with the 3 Sep allocati
   Raha customers would ask for next — so the engine comes home whether or not the application lands.
 
 **The failure case both plans name:** arriving at 5 Sep having done neither Raha nor Nostro properly.
+
+### 3 · The incubator tier above Nirmaan — plan written 2026-08-30
+
+- **What:** the goal is no longer Nirmaan alone but the incubators above it — T-Hub, CIIE.CO, NSRCEL,
+  IITM Incubation Cell, Villgro, FITT IIT Delhi. Full dossier, ranking and calendar in
+  `docs/incubators/PLAN.md`; the reusable answer set in `docs/incubators/ANSWERS.md`. `[D]`
+- **The finding:** four of the six are gated on a registered entity, DPIIT recognition, or revenue —
+  none of which Raha has — and two (Villgro, FITT) are the wrong sector outright. Verified 30 Aug
+  against each live site. `[D docs/incubators/PLAN.md]`
+- **The rail underneath them is shut for this cycle:** the Startup India Seed Fund Scheme portal
+  carries a standing notice that startup applications closed **31 May 2026**. SISFS is the ₹20L PoC /
+  ₹50L commercialization money that flows *through* these incubators. `[D seedfund.startupindia.gov.in, read 30 Aug]`
+- **The route that actually exists:** Nirmaan is not separate from IITMIC, it feeds it —
+  **Pratham (₹2L) → Akshar (₹5L, MVP) → IITMIC**, with "startup incubated at IITMIC" counted as a
+  Nirmaan outcome metric. ₹7L across twelve months on an application already submitted.
+  `[D nirmaan.iitm.ac.in, read 30 Aug]`
+- **The only fit open today** is **NSRCEL Launchpad** (sector-agnostic, idea/prototype/MVP stage, top
+  2 get ₹5L), whose cohort is closed but whose interest form is live. NSRCEL's **Fintech CoE** names
+  RegTech in scope but requires revenue and an existing customer base. `[D nsrcel.org]`
+- **Total action this week: two hours** (two interest forms). Everything else is revenue-gated, and
+  the first paid ₹2,000 is worth more to these applications than any amount of writing.
+- **The unnamed conflict:** if Nostro lands, Oct–Mar is full time in Bangalore. Pratham is six months
+  on the Chennai campus. Ask Nirmaan what physical presence it requires **in October as a selected
+  pre-incubatee**, not in September as an applicant. `[D docs/incubators/PLAN.md §2]`
+- **Not verified:** `ciie.co` did not resolve from this machine on 30 Aug (curl and headless both).
+  Check it on another network before writing anything against remembered CIIE program details.
 
 ---
 
