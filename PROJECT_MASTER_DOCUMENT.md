@@ -27,6 +27,8 @@ this one, this one wins.** The others are either detail behind it, or dated logs
 | **Ground-truth PRD** | `docs/raha_prd.md` | Product scope. Where strategy has moved past it, this file and NOW.md say so. |
 | **Engineering decisions** | `DECISIONS.md` | 16 build-time decisions, all still active. |
 | **External programmes** | `docs/incubators/PLAN.md` (2026-08-30) + `ANSWERS.md` | Which incubators are real targets, what gates them, and the reusable application answers. |
+| **Recovered context** | `docs/RECOVERED_CONTEXT.md` (2026-09-02) | What the session-transcript and vault sweep found that no repo document recorded. Read once. |
+| **Live applications** | `docs/razorpay/APPLICATION.md` · `docs/lightspeed/OFFICE_HOURS.md` | Submission-ready answers, both due the same week. |
 | **History — do not act on** | `FINAL.md` (21 Jul), `docs/STATE.md` (28 Jul), `docs/outreach/SEND_LOG.md`, `SEND_TODAY.md`, `SEND_PLAN.md` | Accurate when written, superseded now. They carry banners pointing here. See "The seven contradictions" below. |
 | **Vault mirror** | `Dhanush OS/Raha/00 Home/raha-home.md` | The Obsidian knowledge base. Browsable, cross-linked; defers to this file for current status. |
 
@@ -179,6 +181,13 @@ bet 3 is the tier above them and is mostly *not* actionable yet, which is itself
   cost per 1,000 records — reproducible with one `npm run evaluate`. `[D docs/razorpay/PLAN.md]`
 - **Why it compounds regardless:** it makes FIRA reconciliation work at batch scale — the thing paying
   Raha customers would ask for next — so the engine comes home whether or not the application lands.
+- **STATUS 2026-09-02: the build is done, not planned.** `~/Desktop/obsedian/nostro`, 101 tests
+  passing, strict typecheck clean. Real run, seed 20260905: **96.52% allocation precision, 81.62%
+  recall, ₹0.00 under-declared, 151 priced exceptions, 44,813 records/sec** over 250 invoices and 12
+  noise classes. Layer 1/2/3 all implemented, with the core structurally unable to import the LLM
+  layer. `BREAKAGE.md` carries five real failures logged as they happened. **Two mechanical blockers
+  remain: no public GitHub URL and no video.** Submission answers in `docs/razorpay/APPLICATION.md`.
+  `[D docs/RECOVERED_CONTEXT.md]`
 
 **The failure case both plans name:** arriving at 5 Sep having done neither Raha nor Nostro properly.
 
