@@ -22,8 +22,11 @@ and for being the student they remember in 2027.
 ### Email Address
 > aletidhanush9999@gmail.com
 
-### Phone Number / IITM Roll Number
-> [yours]
+### Phone Number
+> [your number]
+
+### IITM Roll Number
+> CH24B031
 
 ### What stage is your project or research at?
 Tick **Other**, and write:
@@ -58,7 +61,7 @@ money. This sentence is differentiating and still true.
 > Revenue is ₹0. Distribution is the whole problem and I am in the middle of a 30-day test on it.
 
 ### LinkedIn Link
-> [yours]
+> https://www.linkedin.com/in/dhanushaleti/
 
 ### Anything specific you'd like to get out of this conversation?
 
