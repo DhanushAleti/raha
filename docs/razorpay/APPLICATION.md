@@ -3,9 +3,14 @@
 **Written 2026-09-02. Deadline Fri 5 Sep. Submit Thu 4 Sep.**
 Form: https://forms.gle/d9r2gvxp8cmoZhon9 · Track 04, AI Finance Controller · Project: **Nostro**
 
-**The build is done.** `~/Desktop/obsedian/nostro`, 4 commits, **101 tests passing**, `npm run
-evaluate` produces the scorecard below in 16ms, Layer 2 (`src/llm/`) is implemented and gated behind
-`ANTHROPIC_API_KEY`. Everything on this page is copied from a real run, not projected.
+**The build is done.** `~/Desktop/obsedian/nostro`, 5 commits, **110 tests passing**, strict
+typecheck clean. `npm run evaluate` produces the scorecard below in 13-16ms. Everything on this page
+is copied from a real run, not projected.
+
+**Corrected 2026-09-02:** `src/llm/` was an empty directory that the README described as working,
+and `npm run generate` pointed at a file that did not exist. Both were found by checking the repo
+against its own README before writing this page, and both are now built (commit `c213d82`). A panel
+that cloned the repo would have found them in under a minute.
 
 **Two blockers, both mechanical:**
 
@@ -33,8 +38,8 @@ npm run evaluate
 | **Under-declared (false-positive cost)** | **₹0.00, 0 invoices** |
 | Over-provisioned | ₹0.00, 0 invoices |
 | Exceptions raised | 151, across 7 reason codes |
-| Throughput | 717 records in 16ms (44,813 rec/s) |
-| Tests | 101 passing, strict typecheck |
+| Throughput | 717 records in 13-16ms (~51,000 rec/s) |
+| Tests | **110 passing**, strict typecheck clean, none require an API key |
 
 Batch is 250 invoices against their brief's floor of 50. Twelve noise classes; barely a third of
 the mix is a clean 1:1 match.

@@ -14,23 +14,26 @@ This page records **only what the repo did not already say**. Everything already
 `docs/razorpay/PLAN.md` reads as a 13-day plan and the master document describes the design in the
 future tense. **The build is finished and it is good.**
 
-`~/Desktop/obsedian/nostro`, 4 commits, no GitHub remote yet.
+`~/Desktop/obsedian/nostro`, 5 commits, no GitHub remote yet.
 
 | | |
 |---|---|
-| Tests | **101 passing**, strict typecheck clean |
+| Tests | **110 passing**, strict typecheck clean, none need an API key |
 | Allocation precision / recall / F1 | **96.52% / 81.62% / 88.45%** |
 | Status accuracy | 85.2% (213/250) |
 | Under-declared (wrongly called zero-rated) | **₹0.00, 0 invoices** |
 | Over-provisioned | ₹0.00 |
 | Exposure in batch / correctly flagged | ₹42,93,601 / ₹40,95,655 |
 | Exceptions | 151, over 7 reason codes, each priced in ₹ |
-| Throughput | 717 records in 16ms (44,813 rec/s) |
+| Throughput | 717 records in 13-16ms (~51,000 rec/s) |
 | Batch | 250 invoices, 12 noise classes, seed 20260905 |
 
-Layers are real, not aspirational: `src/core/` (deterministic, no network, cannot import
-`src/llm/`), `src/llm/` (Zod-validated hints for the mangled-narration minority only, gated behind
-`ANTHROPIC_API_KEY`), `src/exceptions/`, `src/generate/`, `src/evaluate/`, `src/cli/`.
+**One thing the sweep got wrong on first pass, and it matters.** `src/llm/` and `src/exceptions/`
+were **empty directories**, and `npm run generate` pointed at a file that did not exist, while the
+README described Layer 2 as working. The first draft of the Razorpay answers repeated that claim.
+Caught by checking the repo against its own README rather than trusting either. **Layer 2 is now
+built** (commit `c213d82`): the review queue, Zod-validated hints, four guards on the model's
+output, cost accounting, 9 tests through a stub client so the suite still needs no API key.
 
 `BREAKAGE.md` in that repo is the strongest single artefact the founder has produced: five real
 failures logged with timestamps as they happened, including a fix that was shipped and made the
