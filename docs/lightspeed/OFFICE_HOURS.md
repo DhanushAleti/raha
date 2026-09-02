@@ -49,8 +49,9 @@ money. This sentence is differentiating and still true.
 > population grows each year instead of shrinking.
 >
 > Live today: a free 9-question audit returning a scored verdict, and a ₹2,000 Evidence Check that
-> reconciles every foreign credit against the document behind it. I wrote the underlying research
-> paper. Separately I built **Nostro**, the batch engine underneath it: 250-invoice reconciliation
+> reconciles every foreign credit against the document behind it. The finding is published under my
+> name as *FIRC to FIRA: Documentary Evidence Infrastructure and the Uneven Compliance Burden on
+> India's Independent Digital Exporters*. Separately I built **Nostro**, the batch engine underneath it: 250-invoice reconciliation
 > with a measured accuracy harness, 96.5% allocation precision and ₹0.00 wrongly called zero-rated,
 > reproducible with one command.
 >
@@ -166,7 +167,65 @@ does**, and it is the version of you worth remembering when there is revenue to 
 
 ---
 
-## 3 · The week
+## 3 · What to hold back, and why the rest is safe
+
+The question behind the question: am I handing over the idea for free? No, and the reason is
+specific rather than reassuring.
+
+**What is already public, so withholding it costs you the slot and protects nothing:**
+
+| Thing | Where anyone can already get it |
+|---|---|
+| The rail stratification (Wise/PayPal/Stripe cannot produce a FIRA) | The free audit at `raha.software/audit`, in 90 seconds, no signup |
+| The FIRC-to-FIRA correction | Published paper, under your name |
+| The LUT and FIRA cadence | The IGST Act and an RBI circular. It is statute, not insight |
+| Nostro's engine and its numbers | About to be a public GitHub repo, by your own choice |
+| ₹0 revenue | Not a secret, and saying it is what makes the rest credible |
+
+**What stays out of a form and belongs in the room, or nowhere yet:**
+
+- **Which rails you would approach for the embedded-evidence layer, and on what commercial terms.**
+  The thesis is fine to state. The deal shape is the part with option value and the part you cannot
+  defend if it moves.
+- **Named prospects.** The 15-thread queue is yours. It goes in no application, ever.
+- **Pricing you have not tested.** Quoting an untested ladder as if it were validated is the one
+  thing in this document that could actually be checked and found false.
+- **Anything about the Razorpay engagement that is not signed.**
+
+If they push on the third layer, give the shape and stop: *"Rails move the money and do not own the
+compliance record. I think that layer stays separate because rails only ever solve forward, and the
+backfill population grows every year. The specifics of how you'd sit under one is what I'm testing,
+and I'm not going to design it in public before I have ten customers."* That reads as disciplined.
+Vagueness about the problem reads as having nothing.
+
+**Provenance is the real defense, and you already have it.** The paper is published under your name
+and the repo will be timestamped. An insight with a date attached to it is not stealable in any way
+that matters.
+
+### The risk that is bigger than this form
+
+You are about to spend six months inside Razorpay. **Razorpay is a rail.** Nostro is a FIRA
+reconciliation engine built on Raha's code, and question 1 above is, stripped down, *will a rail
+absorb this layer.*
+
+Indian employment and internship agreements commonly assign IP created during the engagement to the
+employer, sometimes worded broadly enough to reach same-field work done on your own time. That is
+where the company could actually be lost, and it will not feel like a moment when it happens.
+
+Three protections, all free:
+
+1. **Push Nostro public before signing anything**, so the repo carries commits dated before the
+   engagement begins.
+2. **Keep Raha's code, accounts and customer data on your own hardware and logins.** No Raha work on
+   a company machine.
+3. **Read the IP assignment and moonlighting clauses before you sign**, and get the exact wording
+   looked at. A clause limited to work using company time, equipment or confidential information is
+   normal. One that claims everything you create in the field during the term is not, and it is
+   usually negotiable for an intern because nobody expects an intern to ask.
+
+---
+
+## 4 · The week
 
 | Date | What lands |
 |---|---|
