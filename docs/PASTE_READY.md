@@ -154,6 +154,14 @@ amount tolerance and date window as every other candidate. Four guards on it: sc
 RH-YYYY-NNNN format so a mangled reference is refused instead of repaired, provenance against the
 queue I actually sent, and a confidence floor. A failed call degrades to zero hints, so Layer 2 can
 add recall and cannot remove correctness. A clean 10,000-record batch makes zero API calls.
+
+On the word agent, since the track asks for one. Nostro is a pipeline with a narrow model layer
+rather than an autonomous loop, and that is deliberate for this domain. The finance-ops loop it
+closes is the one in the brief: a batch goes in, it decides what it can prove, and it hands back
+what it cannot with a reason code and a rupee figure attached. An agent that retries and re-reasons
+its way to a confident answer is the wrong shape when the output is a tax figure. The failure mode
+here is not a slow answer. It is a wrong one that nobody catches until a notice arrives eighteen
+months later.
 ```
 
 ### What broke, and how you got out
