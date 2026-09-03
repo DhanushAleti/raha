@@ -19,17 +19,18 @@ from someone who knows the domain beats a produced pitch, and it is faster to ma
 
 *Screen: empty terminal.*
 
-> An Indian business that exports services has to prove it. Every foreign bank credit has to be tied
-> to an invoice, and to a FIRA, before that revenue counts as a zero-rated export. Break that chain
-> and the supply gets reclassified as domestic. That is eighteen percent GST on money you collected
-> and spent a year ago, plus interest.
+> There is a class of Indian business that can be assessed eighteen percent GST on revenue it
+> already collected and spent, a year later, because of one missing document. Not a late filing. A
+> missing piece of paper.
 >
-> Today this reconciliation is a spreadsheet. Done by hand, once a year, under deadline.
+> Every foreign bank credit has to be tied to an invoice, and to a FIRA, before it counts as a
+> zero-rated export. Today that reconciliation is a spreadsheet, done by hand, once a year, under
+> deadline.
 >
-> This is Nostro. It runs that reconciliation as a batch job, and it reports what it could not
-> resolve as carefully as what it could.
+> This is the batch job that finds the gaps before the department does.
 
-**Do not** open with your name, your college, or the track number. They know.
+**Do not** open with your name, your college, or the track number. They know. Open with the money:
+that is the only thing borrowed from a sales system anywhere in this recording.
 
 ## 0:35 - 1:05 · The tests
 
