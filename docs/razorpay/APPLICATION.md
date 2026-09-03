@@ -1,6 +1,10 @@
 # Razorpay AI Buildathon — final submission
 
-**Written 2026-09-02. Deadline Fri 5 Sep. Submit Thu 4 Sep.**
+**Canonical answer text lives in `docs/PASTE_READY.md`** (plain text, no markdown, rewritten
+against the AI-tells catalog) and on the published submission console. This page is the working
+record behind it.
+
+**Written 2026-09-02, updated 2026-09-03. Deadline Fri 5 Sep. Submit Thu 4 Sep.**
 Form: https://forms.gle/d9r2gvxp8cmoZhon9 · Track 04, AI Finance Controller · Project: **Nostro**
 
 **The build is done.** `~/Desktop/obsedian/nostro`, 5 commits, **110 tests passing**, strict
@@ -82,10 +86,18 @@ the mix is a clean 1:1 match.
 > run. The LLM only ever sees the mangled minority the parser flags `needsReview`, returns a
 > Zod-validated hint, never an allocation, and that hint still has to clear the same tolerance and
 > date window as everything else. Cost scales with difficulty, not batch size.
+>
+> On the word agent, since the track asks for one. Nostro is a pipeline with a narrow model layer
+> rather than an autonomous loop, and that is deliberate for this domain. The finance-ops loop it
+> closes is the one in the brief: a batch goes in, it decides what it can prove, and it hands back
+> what it cannot with a reason code and a rupee figure attached. An agent that retries and
+> re-reasons its way to a confident answer is the wrong shape when the output is a tax figure. The
+> failure mode here is not a slow answer. It is a wrong one that nobody catches until a notice
+> arrives eighteen months later.
 
-**10. GitHub repo URL** → `[blocked: push public first]`
+**10. GitHub repo URL** → `https://github.com/DhanushAleti/nostro` (public, 5 commits, verified live)
 
-**11. Video** → `[blocked: record Wed 3 Sep, script in §3]`
+**11. Video** → unlisted YouTube. Script word for word in `docs/razorpay/VIDEO.md`. **The only open item.**
 
 **12. What broke, and how you got out**
 
