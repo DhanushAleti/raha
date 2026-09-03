@@ -8,6 +8,25 @@ Chennai / Hyderabad, India · aletidhanush9999@gmail.com · github.com/DhanushAl
 
 ## Shipped
 
+### Nostro — batch reconciliation of foreign remittances, with a measured accuracy harness
+**Solo · TypeScript · Aug–Sep 2026 · Razorpay AI Buildathon, Track 04**
+
+Every foreign bank credit an Indian exporter receives must be tied to an invoice *and* a FIRA
+before the revenue counts as a zero-rated export. Nostro runs that reconciliation as a batch job
+and reports what it could not resolve as carefully as what it could.
+
+- **250 invoices, twelve noise classes** (split and merged remittances, FX drift across a rate
+  month, flat SWIFT fees, missing certificates, wrong purpose codes). **96.52% allocation
+  precision, 81.62% recall, ~51,000 records/sec.** One command reproduces every number from a seed.
+- **₹0.00 under-declared** — the rupee value of anything wrongly called zero-rated. A run that
+  under-declares exits non-zero regardless of its F1. That metric, not accuracy, is the design goal.
+- **Ambiguity is refused, never guessed.** 151 exceptions across 7 reason codes, each carrying the
+  exposure it represents, so the queue sorts by what it costs to be wrong about.
+- **The layer boundary is enforced by a test:** `src/core/` has no network dependency and cannot
+  import the model layer. The LLM sees only narrations the deterministic parser flags for review,
+  returns a schema-validated hint, and never makes an allocation.
+- **110 unit tests**, strict typecheck, none requiring an API key.
+
 ### Raha — GST & tax compliance for Indian creators earning foreign income
 **Solo founder and sole engineer · live at [raha.software](https://raha.software) · Feb–Aug 2026**
 
@@ -34,13 +53,11 @@ domestic — 18% GST on money already spent. Raha closes that loop.
 ### NEXUS — provenance-aware persistent memory for AI systems
 **Solo · research project · Python · 2026**
 
-Testing whether a structured, provenance-tracked world model beats conversation history and
-naive vector retrieval at long-horizon task continuation.
-
-- Memory records, relationship graph, repositories and lexical retrieval implemented and tested.
-- **`mypy --strict` clean across the codebase.** Unbuilt subsystems are explicitly reserved as
-  empty packages rather than shipped half-done — the status table in the README says exactly what
-  is and is not implemented.
+Testing whether a structured, provenance-tracked world model beats conversation history and naive
+vector retrieval at long-horizon task continuation. Memory records, relationship graph, repositories
+and lexical retrieval implemented and tested; **`mypy --strict` clean**. Unbuilt subsystems are
+reserved as empty packages rather than shipped half-done, and the README status table says exactly
+what is and is not implemented.
 
 ---
 
