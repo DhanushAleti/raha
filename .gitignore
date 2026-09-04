@@ -49,6 +49,7 @@ next-env.d.ts
 
 # outreach pipeline — holds prospect names and contact history
 research/pipeline.db
+docs/outreach/LEADS_*.csv
 
 __pycache__/
 *.pyc
