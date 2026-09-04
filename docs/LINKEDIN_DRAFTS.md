@@ -74,97 +74,72 @@ under-declared. That is more artifact than most funded seed founders put on a pr
 student who is not one, when you have a live product, a paper, and a measured engine. Underclaiming
 is the bigger error. The fix is to move the evidence up, not the title down.
 
-### Short headlines
-
-You were right that the old one was too long. It was also credential-stacking: your Education entry
-already puts **IIT Madras on the profile card**, so repeating it in the headline buys nothing and
-costs you the confident read. All three below drop it.
-
-**A · The one to use (recommended)** — 53 characters
+### The headline. One, decided. — 63 characters
 
 ```
-Building Raha — foreign income, proved as a 0% export
+Building Raha — evidence infrastructure for cross-border income
 ```
 
-Names the thing, states what it does, ends. No title, no credential, no pipe-separated list.
-"Proved" is the verb that carries the whole company.
+**Why this one.** "Evidence infrastructure" is a category, not a service description. It reads as a
+claim about where the world is going, which is the register founders actually write in — and it is
+the only phrasing that says what you are building without teaching anyone how to do it themselves. A
+reader learns nothing they can act on alone. They learn that you know something.
 
-**B · The confident one** — 13 characters
+It drops IIT Madras, which your Education entry already puts on the profile card. Repeating it was
+credential-stacking, and stacking is what non-elite headlines do.
 
-```
-Building Raha
-```
+**Cut, and why:**
 
-This is what the founders you are pattern-matching to actually write. The honest tradeoff: it works
-because *their* company name carries meaning. Raha's does not yet, so this only holds if the banner
-and About do the explaining — which, with the §8 banner, they would. Highest ceiling, highest risk.
-
-**C · The teaching one** — 53 characters
-
-```
-Foreign income is a 0% GST export. I build the proof.
-```
-
-Best if a freelancer or a CA is more likely to land here than an investor. Teaches in one line and
-still never says "founder".
-
-**Cut from the earlier drafts:** the 168-character version, and "Founder, Raha — GST evidence
-infrastructure for…". Both were correct and neither was elite — they explained instead of asserting,
-and stacked IIT Madras on the end.
+| Killed | Reason |
+|---|---|
+| "Foreign income is a 0% GST export — but only with a FIRA and a filed LUT…" (168 chars) | Explains instead of asserts, and hands over the mechanism |
+| "Founder, Raha — GST evidence infrastructure for…" | Opens with the title |
+| "Foreign income is a 0% GST export. I build the proof." | Good line, but teaches the punchline for free |
 
 ---
 
-## 2 · About
+## 2 · About — rewritten to stop giving it away
 
-Limit 2,600 characters. Two options. Both open with the problem, not with you — the standard
-"passionate about building" opener is the thing that makes a profile skippable.
+> **You were right. Here is exactly what was wrong.** Your master document calls the three-tier rail
+> matrix **"the core IP"**. The earlier About printed it in full: which rails issue a FIRA
+> automatically, which ones structurally cannot, and where the unserved gap sits. **That is the
+> ₹2,000 Evidence Check.** A reader could answer their own question and never contact you. The
+> version below withholds it, and uses the withholding as the hook.
 
-### Option 1 — full (recommended) · 2,293 characters
-
-```
-An Indian who bills a foreign client is, in law, an exporter. That income is zero-rated under §2(6) of the IGST Act: 0% GST, not 18%.
-
-Two documents make it real. A FIRA from the bank, proving the money arrived in convertible foreign exchange. And an LUT, filed before that financial year's first export invoice. Miss either and the same income can be assessed as a domestic supply at 18% IGST, plus interest, plus penalty — on money already earned and spent. On ₹40L of foreign income that is roughly ₹7L of avoidable exposure.
-
-Most people miss it for a boring reason. Physical FIRCs stopped being issued for export remittances in 2016. Banks raise an IRM in EDPMS and issue a FIRA instead. Nine years on, "FIRC" is still the word used by advisors, platform help pages, and GST officers at LUT renewal — so people ask their bank for a document that no longer exists, get turned away, and blame the bank.
-
-I build Raha to close that gap. It reconciles every foreign credit in a period against the document behind it, says which credits stand up as zero-rated exports, and prices the exposure on the ones that do not.
-
-The part most people get wrong is that the payment rail decides the answer. Skydo, Karbon, Winvesta and Payoneer already issue a FIRA automatically, and those users need nothing from me — I tell them so. Wise, PayPal and Stripe structurally cannot issue one, because the money lands as a domestic transfer. Direct bank transfers, and anyone with two years to backfill, are where the real gap is.
-
-What I actually do: define the product, write the code, do the research, and talk to the people with the problem. Next.js, TypeScript, Supabase, Postgres with row-level security on every table. The money math is pure functions with unit tests — no model gets to decide a rupee.
-
-Raha does not file returns and I am not a Chartered Accountant. Every figure it produces is an estimate to confirm with a qualified CA. That boundary is deliberate.
-
-Second-year B.Tech Chemical Engineering at IIT Madras. Chemical engineering is mass balances and process control, which turns out to be reasonable training for reconciliation: things in, things out, find the leak.
-
-I build in public and write up what I learn, including the parts that broke.
-
-raha.software · github.com/DhanushAleti
-```
-
-### Option 2 — short · 840 characters
-
-Use this if Option 1 reads as too much. Keeps the sentence that matters and drops the rail detail.
+### The About — 1,000 characters, limit 2,600
 
 ```
-An Indian who bills a foreign client is, in law, an exporter. That income is zero-rated: 0% GST, not 18% — but only with a FIRA from the bank and an LUT filed before that year's first export invoice. Miss either and the same money can be assessed at 18%, plus interest, plus penalty.
+An Indian billing foreign clients is an exporter in law. That income is zero-rated: 0% GST, not 18%.
 
-Physical FIRCs stopped being issued in 2016; banks issue a FIRA now. Almost nobody knows, including people who advise on this for a living.
+Most people cannot prove it. The document banks actually issue changed in 2016, and nine years on the wrong word is still in use everywhere — so people ask for a certificate that no longer exists, get turned away, and pay tax they never owed.
 
-I build Raha, which reconciles foreign credits against the evidence behind them and prices what is exposed. I define the product, write the code, do the research, and talk to the people with the problem.
+Raha produces the proof.
 
-Raha does not file returns and I am not a CA — every figure is an estimate to confirm with one.
+Whether you can produce it at all depends on how the money reached you. Some routes hand you the evidence automatically. Others structurally cannot, no matter who you ask. Most people have never checked which one they are on, and that single question is worth more than everything else on this page.
 
-Second-year B.Tech Chemical Engineering, IIT Madras. I build in public.
+I build all of it — product, code, research, and the calls with the people who have the problem. Next.js, TypeScript, Supabase. Every rupee-affecting calculation is a pure function with a test behind it. No model decides money.
 
-raha.software · github.com/DhanushAleti
+Not a CA. Raha does not file.
+
+Second-year B.Tech Chemical Engineering, IIT Madras.
+
+raha.software
 ```
 
-**Swap in if you prefer it:** the last line of Option 1 can become *"I run a one-person company —
-models, tools and agents do the volume work and I decide how the pieces fit."* That is your GitHub
-README line and it is a good one. It is left out above only because on LinkedIn it invites
-"AI founder" pattern-matching that the FIRA detail otherwise saves you from.
+**The line doing the work:** *"Some routes hand you the evidence automatically. Others structurally
+cannot."* That states the answer **exists and varies**, without saying which is which. The reader
+knows there is a real question, knows they have not asked it, and cannot resolve it alone. That is
+the whole difference between publishing your diagnostic and advertising it.
+
+**What else changed:**
+
+| Was | Now | Reason |
+|---|---|---|
+| Skydo, Karbon, Winvesta, Payoneer, Wise, PayPal, Stripe named by tier | Gone | This is the deliverable. Never publish it. |
+| "FIRA" and "LUT" spelled out with the mechanism | "The document banks actually issue changed in 2016" | Same credibility, no instructions. The specific terms belong in a conversation you are paid for. |
+| "On ₹40L that is roughly ₹7L of avoidable exposure" | Gone | That arithmetic is the audit's output. Let the tool do it, on their numbers, after they arrive. |
+| Three sentences of legal disclaimer | "Not a CA. Raha does not file." | The boundary is non-negotiable; its length was not. Six words holds the line without sounding defensive. |
+| 2,293 characters | 1,000 | Assertion is shorter than explanation. |
 
 ---
 
@@ -346,26 +321,28 @@ gets you the first paid ₹2,000, and the 30-day window says stop making content
 So treat these as reserve. If you want the profile to look alive when a reviewer lands on it, **one
 post is enough.** Post #1 only.
 
-**Post 1 — the correction.** Teaches something true, sells nothing, needs no traction to be worth
-reading. 1,439 characters.
+> **The old Post 1 was the worst leak of all.** It named all seven rails by tier in one paragraph,
+> then handed over the ₹7L arithmetic. Anyone who read it had the Evidence Check for free, in a
+> format they could screenshot. Deleted, not edited down.
+
+**Post 1 — the correction.** Teaches one true thing, proves you know the domain, leaves the valuable
+half unsaid. 811 characters.
 
 ```
-Physical FIRCs stopped being issued for export remittances in 2016.
+If you bill foreign clients from India, you are an exporter. That income is zero-rated — 0% GST, not 18%.
 
-RBI A.P. (DIR Series) Circular 74. Banks stopped issuing the certificate and started raising an IRM in EDPMS, then issuing a FIRA instead.
+Almost nobody I speak to can prove it, and the reason is a nine-year-old vocabulary problem. The certificate everyone still asks their bank for stopped being issued in 2016. Banks issue something else now. Ask for the old thing and you get turned away, assume the bank is wrong, and file as though the income was domestic.
 
-Nine years later, "FIRC" is still the word used by advisors, by platform help pages, and by GST officers at LUT renewal. So a freelancer walks into a bank, asks for a FIRC, gets told it doesn't exist, and concludes the bank is wrong.
+The harder part is that whether you can get the evidence at all depends on how the money reaches you. Some payment routes produce it automatically. Some cannot produce it, ever, no matter who you escalate to. Most people have never checked which one they are on.
 
-It matters because of what the document is for. If you bill a foreign client, you are an exporter, and that supply is zero-rated — 0% GST instead of 18%. But only if you can evidence it: a FIRA per remittance, and an LUT filed before that financial year's first export invoice.
+If you earn in foreign currency, that is the question to go and answer this week.
 
-Without them, the same income can be assessed as a domestic supply at 18%, plus interest, plus penalty. On ₹40L of foreign income that is around ₹7L, on money you already spent.
-
-The part almost nobody checks: your payment rail decides whether you can get one at all. Skydo, Karbon, Winvesta and Payoneer issue a FIRA automatically. Wise, PayPal and Stripe structurally cannot — the money reaches you as a domestic transfer. Direct bank transfer, you are on your own.
-
-If you earn in foreign currency, the question worth asking your bank this week is "can you issue me a FIRA for these remittances", not "can you issue me a FIRC".
-
-Not tax advice, and I'm not a CA — confirm anything here with yours before you file.
+Not tax advice, and I'm not a CA.
 ```
+
+**What it withholds:** the current document's name, the LUT timing rule, which rails sit in which
+tier, and the exposure math. Someone who reads this cannot self-serve. They can only go and find out
+— from their bank, from a CA who probably gets it wrong, or from you.
 
 **Post 2 — the negative result.** Hold this one. It is a better post than #1 but it reads as
 positioning when there are no customers yet; it lands properly once there are. 666 characters.
